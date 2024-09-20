@@ -1,0 +1,26 @@
+import { Command } from 'commander';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const program = new Command();
+
+
+program
+        .option('-d', 'Flag para Debug', false)
+        .option('--mode <mode>', 'Modo de ejecucion: dev | production', 'production');
+   
+program.parse();
+const mode = program.opts().mode;
+
+const mongoDbUri = mode === 'dev' 
+    ? process.env.MONGODB_URI_DEV  
+    : process.env.MONGODB_URI; 
+
+export default {
+    debug: program.opts().d,
+    mode: mode,
+    mongoDbUri: mongoDbUri,
+    port: process.env.PORT || 3000, 
+    jwt_secret: process.env.JWT_SECRET,
+};
