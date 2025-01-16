@@ -10,7 +10,7 @@ export default class ProductsController{
     static async getById(pid){
         const product = await ProductMongoDbDao.getById(pid)
         console.log('Product',product);
-        
+        return product
     }
     
     static async create(data){

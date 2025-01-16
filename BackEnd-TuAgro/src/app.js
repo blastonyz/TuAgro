@@ -22,4 +22,18 @@ app.get('/',async (req,res) =>{
     
 });
 
+app.get('/:pid',async (req,res) =>{
+  const {pid} = req.params;
+  console.log('id: ',pid);
+  
+  
+  const product = await ProductsController.getById(pid);
+  console.log('getId: ',product);
+  
+  
+  
+  res.send(product)
+  
+});
+
 export default app;
