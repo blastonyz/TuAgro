@@ -1,0 +1,17 @@
+@import '../../../colors.css';
+
+.titleContainer{
+    width:max-content;
+    padding: 15px;
+    background-color:var(--yellow);
+    display: flex;
+    text-align: center;
+    border-radius:25px;
+    box-shadow: var(--gray) 5px 7px;
+   
+}
+
+.sectionTitle{
+    color: black;
+    background-color:var(--yellow);
+}

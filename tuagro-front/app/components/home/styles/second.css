@@ -1,0 +1,42 @@
+.secondMain {
+    width: 100%;
+    height: 70dvh;
+    display: flex;
+    justify-content: space-between;  
+    flex-direction: column;
+}
+
+.textsMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    left:35%;
+    margin-top: 25px;
+    z-index: 10;
+    height: 400px;
+}
+.mainTitleContainer{
+    align-items: center;
+    margin: auto;
+}
+.mainItems{
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+}
+.secondText{
+    padding: 5px 10px;
+    font-size: 24px;
+}
+.secondImage {
+    width: 80%; 
+    height: 70%;
+    z-index: -10; 
+    opacity: 0.35;
+    display: flex;
+    justify-content: last baseline;
+    align-items: center;
+    margin-top: 12%;
+    margin-left: 10%;
+}

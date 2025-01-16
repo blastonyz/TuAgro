@@ -1,0 +1,19 @@
+@import '../../../colors.css';
+
+.linkContainer{
+    background-color:var(--green);
+    width: 20%;
+    padding: 10px;
+    align-items: center;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    border-radius: 15px ;
+}
+
+.link{
+    align-items: center;
+    text-decoration: none;
+    align-self: center;
+    color: var(--white);
+}
