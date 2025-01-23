@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import NavBar from "./components/navbar/NavBar";
-import Header from "./components/header/Header";
 import "./globals.css";
+import Header from "./components/header/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "TuAgro insumos y servicios",
-  description: "todo lo que buscas para tu campo",
+  title: "TuAgro Insumos y Servicios",
+  description: "todo lo que buscas para tu campo, asesoramiento, productos, granos, compra y vende tus productos",
 };
 
 export default function RootLayout({ children }) {
@@ -23,8 +23,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
     <meta name="theme-color" content="#4CAF50"></meta>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-     
-      <NavBar/>
+     {/*Auth && Cart Context */}
+      <Header/>
         {children}
       </body>
     </html>

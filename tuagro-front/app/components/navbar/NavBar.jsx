@@ -17,9 +17,6 @@ const NavBar = () => {
 
   return (
     <nav className="navbar">
-
-      
-        <Header/>
       
         <div className="navContainer">
           <aside className={menuOpen?'linksContainer':'linksCollapse'}>   
