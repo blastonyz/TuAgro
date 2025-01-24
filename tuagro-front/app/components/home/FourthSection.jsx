@@ -1,22 +1,33 @@
-'useCLient'
-import React from "react";
-import { Button } from "@mui/material";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+'use client'
+import { useCategoriesContext } from "../context/CategoriesContext";
+import { CldImage } from "next-cloudinary";
 
 
-const FourthSection = ()=> {
- 
+
+const FourthSection = () => {
+  const { loading, categories } = useCategoriesContext();
+
 
   return (
     <div>
-     
-      <Button
-        variant="contained"
-        startIcon={<AddShoppingCartIcon />}
-        
-      >
-        Add to Cart
-      </Button>
+      {categories && categories.map(cat => {
+        return (
+
+          <div key={cat._id}><h3>{cat.title}</h3>
+
+          { cat.image?
+           <CldImage
+              width="300"
+              height="300"
+              src={cat.image}
+              alt="Description of my image"
+            />
+          :null
+          }
+          </div>
+        )
+      })}
+
     </div>
   );
 }

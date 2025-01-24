@@ -2,17 +2,15 @@
 import { useState } from "react"
 import Link from "next/link"
 import { links } from "../links/links"
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "../ui/icons/MenuIcon";
 import './navbar.css'
-import Header from "../header/Header";
+import { colors } from "../ui/colors";
 
 const NavBar = () => {
     const [menuOpen,setMenuOpen] = useState(false)
 
     const collapse = () => {
       setMenuOpen(!menuOpen)
-      console.log(menuOpen);
-      
     }
 
   return (
@@ -30,8 +28,11 @@ const NavBar = () => {
             )
         })}
         </aside>
-    
-        <MenuIcon className="menu" fontSize="50" onClick={collapse}/>
+         <div className="menu" onClick={collapse}>
+       
+          <MenuIcon color={colors.green} size="50px" />
+         </div> 
+       
         </div>
     </nav>
   )
