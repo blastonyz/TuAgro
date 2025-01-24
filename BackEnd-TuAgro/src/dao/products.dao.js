@@ -1,6 +1,6 @@
 import { ProductModel } from "../models/products.model.js";
 
-export default class ProductMongoDbDao {
+export default class ProductDao {
     static get(criteria = {}){
         return ProductModel.find(criteria);
     }
