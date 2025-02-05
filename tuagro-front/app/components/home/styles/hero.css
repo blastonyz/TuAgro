@@ -23,8 +23,6 @@
     background-position: center;
     z-index: -1;
     animation: hero-animation 1s linear;
-  
-  
   }
 
   @keyframes hero-animation {
@@ -60,7 +58,7 @@
     font-weight: bold;
     color: var(--green2);
     font-family: 'RoadRage';
-   text-shadow: rgba(255, 255, 255, 0.645) 2px 4px 2px;
+   text-shadow: rgb(22, 21, 21) 2px 4px 2px;
 }
 
   .hero1{

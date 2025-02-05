@@ -1,0 +1,10 @@
+.categoriesMain{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    align-items: center;
+    padding: 20px;
+    justify-content: center;
+}
+

@@ -1,0 +1,27 @@
+.categoriesContainer{
+    margin-top:50px;
+    display: flex;
+    height: max-content;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap:25px;
+    max-width: 1280px;
+    align-items: stretch;
+}
+categorieCard {
+    display: flex;
+    max-width: calc(25%-20px);
+    min-width: 250px; 
+    box-sizing: border-box; 
+    border-radius: 20px;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: space-between;
+}
+
+.categorieImage {
+    border-radius: 20px;
+    max-width: 100%; 
+   
+}

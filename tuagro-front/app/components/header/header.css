@@ -22,7 +22,8 @@
 }
 .contactPhone{
     display: flex;
-    padding: 20px 0px;
+    padding: 22px 0px;
+    font-size: 14px;
 }
 .contacts{
     color: var(--white);

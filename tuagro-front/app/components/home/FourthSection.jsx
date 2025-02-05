@@ -1,6 +1,8 @@
 'use client'
 import { useCategoriesContext } from "../context/CategoriesContext";
-import { CldImage } from "next-cloudinary";
+import SectionTitle from "../ui/title/SectionTitle";
+import CategorieCard from "../categories/CategorieCard";
+import './styles/fourth.css'
 
 
 
@@ -9,26 +11,16 @@ const FourthSection = () => {
 
 
   return (
-    <div>
-      {categories && categories.map(cat => {
-        return (
+    <section className="categoriesMain">
+      <SectionTitle size={'35px'} text={'Productos'} />
+     {categories ?
+        <CategorieCard categories={categories} />
+        :
+        <h3>Error al Cargar Categorias</h3>
+      }
+      
 
-          <div key={cat._id}><h3>{cat.title}</h3>
-
-          { cat.image?
-           <CldImage
-              width="300"
-              height="300"
-              src={cat.image}
-              alt="Description of my image"
-            />
-          :null
-          }
-          </div>
-        )
-      })}
-
-    </div>
+    </section>
   );
 }
 

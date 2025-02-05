@@ -2,22 +2,52 @@
     width: 100%;
     height: 70dvh;
     display: flex;
-    justify-content: space-between;  
-    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative; 
+    overflow: hidden;
+    background-image: url('../../../../public/section2-back.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.imagesContainer{
+    width: 50%;
+    align-items: center;
+    position: relative;
+}
+.circle{
+    width: 400px;
+    height: 400px;
+    background-color: rgba(182, 215, 48, 0.35);
+    border-radius:50%;
+    margin-top: 5rem;
+    margin-left: 15%;
+    z-index: -10;
+}
+
+.img2section{
+    position: absolute;
+    left: 35%;
+    top: 5rem;
+    z-index: 10;
+    border-radius: 25% 10%;
+}
+
+.img2{
+    border-radius: 25% 10%;
+    position: absolute;
 }
 
 .textsMain{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: absolute;
-    left:35%;
-    margin-top: 25px;
+    margin: 0 auto;
     z-index: 10;
     height: 400px;
+    width: 50%;
 }
 .mainTitleContainer{
-    align-items: center;
     margin: auto;
 }
 .mainItems{
@@ -32,7 +62,7 @@
 .secondImage {
     width: 80%; 
     height: 70%;
-    z-index: -10; 
+    z-index: -100; 
     opacity: 0.35;
     display: flex;
     justify-content: last baseline;
