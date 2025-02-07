@@ -7,6 +7,13 @@ export default class ProductsController{
         return products;
     }
 
+    static async getByCategory({category}){
+        const products = await ProductDao.getByCategory({category});
+        console.log(`category ${category}`,products);
+        return products;
+    }
+
+
     static async getById(pid){
         const product = await ProductDao.getById(pid)
         console.log('Product',product);

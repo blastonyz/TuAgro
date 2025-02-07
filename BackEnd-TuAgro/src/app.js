@@ -14,11 +14,24 @@ app.use(express.urlencoded({ extended: true }));
 
 
 //app.use(express.static(path.join(__dirname,'../public')));
-app.get('/', async (req, res) => {
+app.get('/products', async (req, res) => {
   const products = await ProductsController.get({});
   console.log(products);
   const productsJSON = JSON.stringify(products);
   console.log(productsJSON);
+
+  res.send(productsJSON)
+
+});
+
+app.get('/products/:category', async (req, res) => {
+  const {category} = req.params
+  console.log('params',category);
+  
+  const categoryProducts = await ProductsController.getByCategory({category});
+
+  const productsJSON = JSON.stringify(categoryProducts);
+  console.log('response: ',productsJSON);
 
   res.send(productsJSON)
 
@@ -34,7 +47,7 @@ app.get('/categories', async (req, res) => {
 
 });
 
-app.get('/:pid', async (req, res) => {
+app.get('/product/:pid', async (req, res) => {
   const { pid } = req.params;
   console.log('id: ', pid);
   const product = await ProductsController.getById(pid);

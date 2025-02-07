@@ -5,6 +5,10 @@ export default class ProductDao {
         return ProductModel.find(criteria);
     }
 
+    static getByCategory(category){
+        return ProductModel.find(category);
+    }
+
     static getById(pid){
         return ProductModel.findById(pid);
     }
