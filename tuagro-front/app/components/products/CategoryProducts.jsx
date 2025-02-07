@@ -1,7 +1,12 @@
 'use client'
 import { useState, useEffect } from "react"
+import ProductsCards from "./ProductsCards"
+import './category.products.css'
+import SectionTitle from "../ui/title/SectionTitle"
 
 const CategoryProducts = ({ category }) => {
+    console.log('category',category);
+    
     const [productsFiltered, setProductsFiltered] = useState([])
 
     useEffect(() => {
@@ -13,7 +18,7 @@ const CategoryProducts = ({ category }) => {
             console.log('endpo: ',endpoint);
             
             try {
-                const response = await fetch(endpoint);
+                const response = await fetch(endpoint,{ cache: "no-store" });
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -28,17 +33,15 @@ const CategoryProducts = ({ category }) => {
     }, [category])
 
     return (
-        <div>
-        { productsFiltered.map((prods,index) => (
-                    <div key={index}>
-                    <h3>{prods.title}</h3>
-                    <h3>{prods.price}</h3>
-                    <h3>{prods.shortDescription}</h3>
-                    <h3>{prods.brand}</h3>
-                    </div>
-                )
-            )
-        }
+        <div className="mainProducts">
+          
+                <SectionTitle 
+                text={category !== "all" ? productsFiltered[0]?.category : 'Productos'}
+                size={26}
+                />
+            
+           
+        <ProductsCards products={productsFiltered}/>
         </div>
     )
 }

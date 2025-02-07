@@ -20,4 +20,3 @@ import  {SectionLink}  from '../ui/link/SectionLink'
 
 export default Hero
 
-/*   <SectionTitle size={'35px'} text={'Bienvenido a TuAgro'}/>*/

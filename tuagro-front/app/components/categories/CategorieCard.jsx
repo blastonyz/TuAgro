@@ -1,9 +1,12 @@
-import React from 'react'
+'use client'
+import { useCategoriesContext } from '../context/CategoriesContext'
 import { CldImage } from 'next-cloudinary'
 import './categories.css'
 import Link from 'next/link'
 
- const CategorieCard = ({categories}) => {
+ const CategorieCard = () => {
+    const { loading, categories } = useCategoriesContext();
+
   return (
     <div className='categoriesContainer'>
     {categories && categories.map(cat => {

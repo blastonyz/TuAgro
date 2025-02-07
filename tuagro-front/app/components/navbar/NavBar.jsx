@@ -23,6 +23,7 @@ const NavBar = () => {
                 <Link
                 key={link.label}
                 href={link.href}
+                onClick={()=>setMenuOpen(!menuOpen)}
                 className="links"
                 >{link.label}</Link>
             )
