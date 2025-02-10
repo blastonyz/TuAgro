@@ -13,7 +13,7 @@ import './products.cards.css'
           <div key={index} className="productCard">
           <Link href={`/producto/${prods._id}`} className="productsLinks">
           <h3>{prods.title}</h3>
-          <h3>{prods.price}</h3>
+          <h4>{prods.price}</h4>
            { prods.image?
               <CldImage
                           width="250"
@@ -25,7 +25,7 @@ import './products.cards.css'
           :
           null            
                       }
-          <h3>{prods.shortDescription}</h3>
+       
           <h3>{prods.brand}</h3>
           </Link>
           </div>

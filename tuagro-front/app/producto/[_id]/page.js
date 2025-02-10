@@ -1,7 +1,7 @@
 import ProductDetails from "@/app/components/products/ProductDetail";
 
 export default async function page({params}) {
-    const {_id} =  params 
+    const {_id} =  await params 
     console.log('id params: ',);
     
     return (

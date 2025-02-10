@@ -5,4 +5,5 @@ export const colors = {
     greenShadow:'rgba(91, 255, 51 , 0.75)',
     gray:'#7c7c7b',
     white:'#FFFFFF',
+    olive:' rgba(182, 215, 48, 0.35)'
 }

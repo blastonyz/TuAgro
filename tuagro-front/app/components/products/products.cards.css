@@ -1,22 +1,25 @@
+@import '../../colors.css';
+
 .productsList{
     margin-top:50px;
     display: flex;
     height: max-content;
+    width: 80%;
     flex-direction: row;
     flex-wrap: wrap; 
-    justify-content: center;
     gap:25px;
-    max-width: 1280px;
-    align-items: stretch;
+    
 }
 .productCard{
     display: flex;
     flex-direction: column;
+    background-color: var(--olive) ;
     justify-content: space-around;
     width: 30% ;
-    height: max-content;
+    height:400px;
     align-items: center;
-   border: 2px red  solid;
+    text-align: center;
+    border-radius: 20px;
 }
 
 .productsLinks{

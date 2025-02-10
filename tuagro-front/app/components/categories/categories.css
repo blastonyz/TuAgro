@@ -18,10 +18,11 @@ categorieCard {
     background-color: #f4f4f4;
     display: flex;
     justify-content: space-between;
+    
 }
 
 .categorieImage {
     border-radius: 20px;
     max-width: 100%; 
-   
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
 }
