@@ -18,7 +18,7 @@ export const CategoriesProvider = ({children}) => {
           }
           const data = await response.json(); 
           console.log('context fetch data:', data); 
-          setCategories(data); // Establecemos los datos JSON en el estado
+          setCategories(data); 
         } catch (error) {
             console.error("Error fetching categories:", error);
           } finally {

@@ -7,6 +7,8 @@
     width: 80%;
     flex-direction: row;
     flex-wrap: wrap; 
+    justify-content: center;
+    align-items: center;
     gap:25px;
     
 }
@@ -14,14 +16,56 @@
     display: flex;
     flex-direction: column;
     background-color: var(--olive) ;
-    justify-content: space-around;
-    width: 30% ;
-    height:400px;
+    justify-content: space-evenly;
+    width: 350;
+    height:450px;
     align-items: center;
     text-align: center;
     border-radius: 20px;
+    box-shadow: 2px 4px 10px var(--yellow);
+}
+
+.productImage{ 
+    border-radius: 20px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.productTitle{
+    font-family: "Chelsea-Market";
+    color: var(--green);
+    font-size: 20px;
+}
+
+.brand{
+    color: black;
+}
+
+.priceContainer{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-evenly;
+}
+
+.priceBox{
+    display: flex;
+    width: max-content;
+    border-radius: 6px;
+    background-color: var(--green);
+}
+
+.precio{
+    color: var(--gray);
+    padding-top: 2px;
+}
+
+.price{
+   font-size: 20px; 
+   color: var(--yellow);
 }
 
 .productsLinks{
     text-decoration: none;
+    color: var(--yellow);
+
 }

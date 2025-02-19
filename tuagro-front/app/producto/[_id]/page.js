@@ -1,4 +1,4 @@
-import ProductDetails from "@/app/components/products/ProductDetail";
+import ProductDetailContainer from "@/app/components/products/ProductDetailContainer";
 
 export default async function page({params}) {
     const {_id} =  await params 
@@ -6,7 +6,7 @@ export default async function page({params}) {
     
     return (
      <div>
-        <ProductDetails id={_id} />
+        <ProductDetailContainer id={_id} />
      </div>
       
     );

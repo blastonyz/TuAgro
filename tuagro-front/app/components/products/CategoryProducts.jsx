@@ -1,16 +1,21 @@
 'use client'
-import { useState, useEffect } from "react"
+import { useState, useEffect, useLayoutEffect } from "react"
 import ProductsCards from "./ProductsCards"
 import './category.products.css'
 import SectionTitle from "../ui/title/SectionTitle"
 
 const CategoryProducts = ({ category }) => {
-    console.log('category',category);
     
+    useLayoutEffect(() => {
+        window.scrollTo({ top: 0});
+    }, [category]);
+
     const [productsFiltered, setProductsFiltered] = useState([])
 
     useEffect(() => {
+        
         const fetchCategoryProducts = async () => {
+
             const endpoint = (category === "all") ?
              "/api/products"
             : 
@@ -30,6 +35,7 @@ const CategoryProducts = ({ category }) => {
             }
         }
         fetchCategoryProducts()
+        
     }, [category])
 
     return (

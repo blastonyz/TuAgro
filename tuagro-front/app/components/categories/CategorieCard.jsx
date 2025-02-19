@@ -2,6 +2,7 @@
 import { useCategoriesContext } from '../context/CategoriesContext'
 import { CldImage } from 'next-cloudinary'
 import './categories.css'
+import {motion} from 'motion/react'
 import Link from 'next/link'
 
  const CategorieCard = () => {
@@ -17,8 +18,8 @@ import Link from 'next/link'
          <Link href={`/productos/${cat.title}`}>
             { cat.image?
              <CldImage
-                width="300"
-                height="300"
+                width="240"
+                height="350"
                 src={cat.image}
                 alt="Description of my image"
                 className='categorieImage'

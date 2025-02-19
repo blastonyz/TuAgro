@@ -16,7 +16,7 @@ export const links = [
         href: "/contacto"
     },
     {
-        label: "Admin",
-        href: "/admin"
+        label: "Carrito",
+        href: "/carrito"
     }
 ]

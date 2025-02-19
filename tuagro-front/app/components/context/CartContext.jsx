@@ -1,3 +1,4 @@
+'use client'
 import { createContext, useContext,useState } from "react";
 
 const CartContext = createContext()
@@ -6,7 +7,7 @@ const CartContext = createContext()
 
  export const CartProvider = ({children}) => {
     const [cart,setCart] = useState([])
-
+    console.log(cart);
     const addToCart = (item) => {
         setCart((prevCart) => [...prevCart, item]); 
       };
@@ -19,7 +20,7 @@ const CartContext = createContext()
         setCart(() => []); 
       };
     return(
-        <CartContext.Provider value={{addToCart,removeFromCart,clearCart}}>
+        <CartContext.Provider value={{cart,addToCart,removeFromCart,clearCart}}>
             {children}
         </CartContext.Provider>
     )

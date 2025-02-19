@@ -1,0 +1,32 @@
+.productDetailsMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.prodData{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.dataContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    margin-right:20% ;
+
+}
+
+.imageContainer{
+    border: 3px solid red;
+    margin-top: -40px;
+}
+
+.descriptionContainer{
+    width: 50%;
+    margin: 25px auto;
+}

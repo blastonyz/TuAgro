@@ -9,10 +9,11 @@
     max-width: 1280px;
     align-items: stretch;
 }
-categorieCard {
+.categorieCard {
     display: flex;
     max-width: calc(25%-20px);
-    min-width: 250px; 
+    height: 350px;
+    min-width: 240px; 
     box-sizing: border-box; 
     border-radius: 20px;
     background-color: #f4f4f4;
@@ -23,6 +24,7 @@ categorieCard {
 
 .categorieImage {
     border-radius: 20px;
+    height: 350px;
     max-width: 100%; 
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
 }

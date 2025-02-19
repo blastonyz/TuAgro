@@ -26,7 +26,7 @@ const ContactForm = () => {
 
 
   return (
-    <div className="contactMain">
+ 
         <div className="contactContainer">
 
           <form className="contactForm">
@@ -38,7 +38,7 @@ const ContactForm = () => {
 
         </div>
         
-    </div>
+
   )
 }
 

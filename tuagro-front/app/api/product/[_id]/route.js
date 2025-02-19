@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
-    const { _id } = params
+    const { _id } = await params
     console.log('id: ',_id);
     
     try {

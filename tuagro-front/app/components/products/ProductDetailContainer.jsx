@@ -1,7 +1,8 @@
 'use client'
+import ProductDetails from "./ProductDetails";
 import { useState,useEffect } from "react"
 
-const ProductDetails = ({id}) =>{
+const ProductDetailContainer = ({id}) =>{
     console.log('id link: ',id);
     
     const [productSelected, setProductSelected] = useState({})
@@ -25,11 +26,9 @@ const ProductDetails = ({id}) =>{
 
     return(
         <div>
-            <h3>{productSelected.title}</h3>
-            <h3>{productSelected.price}</h3>
-            <h3>{productSelected.brand}</h3>
+           <ProductDetails productSelected={productSelected}/>
         </div>
     )
 }
 
-export default ProductDetails
+export default ProductDetailContainer
