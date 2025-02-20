@@ -30,8 +30,7 @@ app.get('/products/:category', async (req, res) => {
   
   const categoryProducts = await ProductsController.getByCategory({category});
 
-  const productsJSON = JSON.stringify(categoryProducts);
-  console.log('response: ',productsJSON);
+  const productsJSON = JSON.stringify(categoryProducts);;
 
   res.send(productsJSON)
 
@@ -39,10 +38,7 @@ app.get('/products/:category', async (req, res) => {
 
 app.get('/categories', async (req, res) => {
   const categories = await CategoryController.get();
-  console.log(categories);
   const categoriesJSON = JSON.stringify(categories);
-  console.log(categoriesJSON);
-
   res.send(categoriesJSON)
 
 });
