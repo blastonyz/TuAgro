@@ -1,27 +1,31 @@
-import ProductDao from "../dao/products.dao.js";
+import ProductsServices from "../services/products.service.js";
 
 export default class ProductsController{
-   static async get({}){
-        const products = await ProductDao.get({});
+    constructor() {
+        this.productsServices = new ProductsServices()
+    }
+
+    async get({}){
+        const products = await this.productsServices.get({});
         console.log('Total Products',products.length);
         return products;
     }
 
-    static async getByCategory({category}){
-        const products = await ProductDao.getByCategory({category});
+     async getByCategory(category){
+        const products = await this.productsServices.getByCategory(category);
         console.log(`category ${category}`,products);
         return products;
     }
 
 
-    static async getById(pid){
-        const product = await ProductDao.getById(pid)
+     async getById(pid){
+        const product = await this.productsServices.getById(pid)
         console.log('Product',product);
         return product
     }
     
-    static async create(data){
-        const newPorduct = await ProductDao.create(data);
+     async create(data){
+        const newPorduct = await this.productsServices.create(data);
         console.log('Product Created',newPorduct);
         
     }

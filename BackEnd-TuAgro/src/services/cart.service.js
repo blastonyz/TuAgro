@@ -1,4 +1,4 @@
-import CartRepository from "../repository/cart.repository";
+import CartRepository from "../repository/cart.repository.js";
 
 export default class CartRepository{
     constructor(){

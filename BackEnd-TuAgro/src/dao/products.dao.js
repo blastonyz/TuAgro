@@ -1,24 +1,24 @@
 import { ProductModel } from "../models/products.model.js";
 
-export default class ProductDao {
-    static get(criteria = {}){
-        return ProductModel.find(criteria);
+export default class ProductsDao {
+    async get(criteria = {}){
+        return await ProductModel.find(criteria);
     }
 
-    static getByCategory(category){
-        return ProductModel.find(category);
+    async getByCategory(category){
+        return await ProductModel.find(category);
     }
 
-    static getById(pid){
-        return ProductModel.findById(pid);
+    async getById(pid){
+        return await ProductModel.findById(pid);
     }
     
-    static create(data){
-        return ProductModel.create(data);
+    async create(data){
+        return await ProductModel.create(data);
     }
 
-    static updateById(pid, data){
-        return ProductModel.findByIdAndUpdate(pid, data)
+    async updateById(pid, data){
+        return await ProductModel.findByIdAndUpdate(pid, data)
     }
 
 }

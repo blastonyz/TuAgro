@@ -1,4 +1,4 @@
-import ProductsRepository from "../repository/products.repository";
+import ProductsRepository from "../repository/products.repository.js";
 
 export default class ProductsServices {
     constructor(){
@@ -9,8 +9,8 @@ export default class ProductsServices {
         return await this.productsRepository.get()
     }
 
-    async getByCategorie(categorie){
-        return this.productsRepository.getByCategorie(categorie)
+    async getByCategory(category){
+        return await this.productsRepository.getByCategory(category)
     }
 
     async getById(pid){

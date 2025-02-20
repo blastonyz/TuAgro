@@ -1,32 +1,32 @@
-import GenericRepository from "./generic.repository";
+import ProductsDao from "../dao/products.dao.js"
 
-export default class ProductsRepository extends GenericRepository{
-    constructor(dao){
-        super(dao)
+export default class ProductsRepository{
+    constructor(){
+        this.productsDao = new ProductsDao
     }
 
-    get = () => {
-        return this.get()
+    async get ()  {
+        return await this.productsDao.get()
     }
 
-    getByCategory = (categorie) => {
-        return this.getBy({categorie})
+    async getByCategory (category)  {
+        return await this.productsDao.getByCategory({category})
     }
 
-    getById = (pid) => {
-        return this.getBy({pid})
+    async getById (pid)  {
+        return await this.productsDao.getById(pid)
     }
 
-    create = (data) => {
-        return this.create({data})
+    async create (data)  {
+        return await this.productsDao.create({data})
     }
 
-    update = (id,data) =>{
-        return this.update({id,data});
+    async update (id,data) {
+        return await this.productsDao.update({id,data});
     }
 
-    delete = (id) =>{
-        return this.delete({id});
+    async delete (id) {
+        return await this.productsDao.delete({id});
     }
 
 }

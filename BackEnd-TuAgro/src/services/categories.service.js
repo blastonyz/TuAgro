@@ -1,7 +1,7 @@
-import CategoriesRepository from "../repository/categoires.repository"
+import CategoriesRepository from "../repository/categories.repository.js"
 
 export default class CategoriesService {
-    cosntructor(){
+    constructor(){
         this.categoriesRepository =  new CategoriesRepository()
     }
 

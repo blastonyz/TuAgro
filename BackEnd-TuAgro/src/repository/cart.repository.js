@@ -1,24 +1,23 @@
-import GenericRepository from "./generic.repository";
+import CartDao from "../dao/carts.dao.js"
 
-export default class CartRepository extends GenericRepository{
-    constructor(dao){
-        super(dao)
+
+
+export default class CartRepository {
+    constructor(){
+        this.cartDao = new CartDao()
     }
 
-    get = () => {
-        return this.get()
-    }
 
     getCart = (cid) =>{
-         return this.getBy(cid)
+         return this.cartDao.getCart(cid)
     }
 
     create = (data) => {
-        return this.create({data})
+        return this.cartDao.create({data})
     }
 
     update = (id,data) => {
-        return this.create({id,data})
+        return this.cartDao.create({id,data})
     }
 
 }

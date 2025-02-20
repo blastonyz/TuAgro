@@ -1,22 +1,22 @@
 import {CartModel} from "../models/carts.model.js"
 
 export default class CartDao {
-    static getCart(cartId){
-        return CartModel.findById(cartId);
+    async getCart(cartId){
+        return await CartModel.findById(cartId);
     }
 
-    static create({}){
-        return CartModel.create({});
+    async create({}){
+        return await CartModel.create({});
     }
 
-    static update(_id,update){
-        return CartModel.updateOne({_id},update);
+    async update(_id,update){
+        return await CartModel.updateOne({_id},update);
     }
 
-    static delete(_id){
-        return CartModel.deleteOne({_id});
+    async delete(_id){
+        return await CartModel.deleteOne({_id});
     }
-    static getPopulate(_id){
-        return   CartModel.findById(_id).populate('products.prodId')
+    async getPopulate(_id){
+        return   await CartModel.findById(_id).populate('products.prodId')
     }
 }
