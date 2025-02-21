@@ -1,31 +1,35 @@
-import GenericRepository from "./generic.repository.js";
+import UsersDao from "../dao/users.dao.js"
 
 export default class UsersRepository{
-    constructor(dao){
-        super(dao)
+    constructor(){
+      this.usersDao = new UsersDao()
     }
 
-    get = (params) => {
-        return this.get(params)
+    async get(params) {
+        return this.usersDao.get(params)
     }
 
-    getById = (uid) => {
-        return this.getBy({uid})
+    async getById(uid){
+        return this.usersDao.getById({uid})
     }
 
-    getByEmail = (email) => {
-        return this.getBy({email})
+    async getByEmail(email){
+        return this.usersDao.getByEmail({email})
     }
 
-    create = (data) => {
-        return this.create({data})
+    async createUser(data){
+        return this.usersDao.createUser(data)
     }
 
-    update = (uid,data) => {
-        return this.update({uid,data})
+    async update(uid,data){
+        return this.usersDao.updateUserbyEmail({uid,data})
     }
 
-    delete = (uid) => {
-        return this.delete({uid})
+    async getByIdAndUpdate(sid,data){
+            return this.usersDao.getByIdAndUpdate(sid,data);
+    }
+
+    async delete(uid){
+        return this.usersDao.delete({uid})
     }
 }

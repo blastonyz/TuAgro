@@ -1,28 +1,34 @@
-import UsersDao from '../dao/users.dao.js'
+import UsersService from "../services/users.service.js";
 
 export default class UsersController {
-        static async get(){
-            return UsersDao.find();
+    constructor(){
+        this.userServices = new UsersService()
+    }
+
+         async get(){
+            return this.userServices.find();
         }
     
-        static async getByEmail(email){
-            return UsersDao.findOne(email);
+         async getByEmail(email){
+            return this.userServices.findOne(email);
         }
-        static async getById(uid){
-            return UsersDao.findById(uid);
-        }
-    
-        static async createUser(newUser){
-            return UsersDao.create(newUser);
+         async getById(uid){
+            return this.userServices.findById(uid);
         }
     
-        static async updateUserbyEmail(email,user){
-            return UsersDao.updateOne(email,user);
+         async createUser(newUser){
+            console.log(newUser);
+            
+            return this.userServices.createUser(newUser);
         }
-        static async getByIdAndUpdate(sid,data){
-            return UsersDao.findByIdAndUpdate(sid,data);
+    
+         async updateUserbyEmail(email,user){
+            return this.userServices.update(email,user);
         }
-        static async getByEmailAndDelete(email){
-            return UsersDao.findOneAndDelete({email});
+         async getByIdAndUpdate(sid,data){
+            return this.userServices.findByIdAndUpdate(sid,data);
+        }
+         async getByEmailAndDelete(email){
+            return this.userServices.findOneAndDelete({email});
         }
 }

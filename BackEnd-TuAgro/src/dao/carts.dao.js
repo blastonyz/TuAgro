@@ -1,11 +1,15 @@
-import {CartModel} from "../models/carts.model.js"
+import CartModel from "../models/carts.model.js"
 
 export default class CartDao {
+    async get(){
+        return await CartModel.find();
+    }
+
     async getCart(cartId){
         return await CartModel.findById(cartId);
     }
 
-    async create({}){
+    async createCart({}){
         return await CartModel.create({});
     }
 

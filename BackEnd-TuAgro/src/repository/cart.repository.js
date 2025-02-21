@@ -1,23 +1,26 @@
 import CartDao from "../dao/carts.dao.js"
 
 
-
 export default class CartRepository {
     constructor(){
         this.cartDao = new CartDao()
     }
 
 
-    getCart = (cid) =>{
+    async getCart(cid){
          return this.cartDao.getCart(cid)
     }
 
-    create = (data) => {
-        return this.cartDao.create({data})
+    async createCart(data) {
+        return this.cartDao.createCart({data})
     }
 
-    update = (id,data) => {
+    async update(id,data) {
         return this.cartDao.create({id,data})
+    }
+
+    async getPopulate(_id) {
+        return this.cartDao
     }
 
 }

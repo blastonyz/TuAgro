@@ -1,6 +1,6 @@
 import CartRepository from "../repository/cart.repository.js";
 
-export default class CartRepository{
+export default class CartService{
     constructor(){
         this.cartRepository = new CartRepository()
     }
@@ -14,7 +14,7 @@ export default class CartRepository{
     }
 
     async create(data){
-        return await this.cartRepository.create(data)
+        return await this.cartRepository.createCart(data)
     }
 
    async  update(id,data){

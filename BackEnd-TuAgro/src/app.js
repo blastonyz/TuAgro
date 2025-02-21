@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
-import ProductsController from "./controller/products.controller.js"
+import productRouter from './routers/products.routes.js'
+import sessionRouter from  './routers/sessions.routes.js'
 import CategoryController from "./controller/category.controller.js";
 
 const app = express();
@@ -16,29 +17,11 @@ app.use(express.urlencoded({ extended: true }));
 //app.use(express.static(path.join(__dirname,'../public')));
 
 const categoryController = new CategoryController()
-const productsController = new ProductsController()
 
-app.get('/products', async (req, res) => {
-  const products = await productsController.get({});
-  console.log(products);
-  const productsJSON = JSON.stringify(products);
-  console.log(productsJSON);
 
-  res.send(productsJSON)
+app.use('/',productRouter,sessionRouter)
 
-});
 
-app.get('/products/:category', async (req, res) => {
-  const {category} = req.params
-  console.log('params',category);
-  
-  const categoryProducts = await productsController.getByCategory(category);
-
-  const productsJSON = JSON.stringify(categoryProducts);;
-
-  res.send(productsJSON)
-
-});
 
 app.get('/categories', async (req, res) => {
 
@@ -48,13 +31,6 @@ app.get('/categories', async (req, res) => {
 
 });
 
-app.get('/product/:pid', async (req, res) => {
-  const { pid } = req.params;
-  console.log('id: ', pid);
-  const product = await productsController.getById(pid);
-  console.log('getId: ', product);
-  res.send(product)
 
-});
 
 export default app;
