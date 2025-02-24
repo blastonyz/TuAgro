@@ -1,34 +1,26 @@
 import UsersService from "../services/users.service.js";
 
 export default class UsersController {
-    constructor(){
+    constructor() {
         this.userServices = new UsersService()
     }
 
-         async get(){
-            return this.userServices.find();
-        }
-    
-         async getByEmail(email){
-            return this.userServices.findOne(email);
-        }
-         async getById(uid){
-            return this.userServices.findById(uid);
-        }
-    
-         async createUser(newUser){
-            console.log(newUser);
-            
-            return this.userServices.createUser(newUser);
-        }
-    
-         async updateUserbyEmail(email,user){
-            return this.userServices.update(email,user);
-        }
-         async getByIdAndUpdate(sid,data){
-            return this.userServices.findByIdAndUpdate(sid,data);
-        }
-         async getByEmailAndDelete(email){
-            return this.userServices.findOneAndDelete({email});
-        }
+    async get() {
+        return await this.userServices.find();
+    }
+
+    async getById(uid) {
+        return await this.userServices.getById(uid)
+    }
+
+    async createUser(newUser) {
+        return await this.userServices.createUser(newUser);
+    }
+
+    async logInUser(email, password) {
+        const accesToken = await this.userServices.logInUser(email, password)
+        console.log('controller login: ', accesToken);
+        return accesToken
+    }
+
 }

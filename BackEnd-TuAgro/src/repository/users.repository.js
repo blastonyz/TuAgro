@@ -10,7 +10,7 @@ export default class UsersRepository{
     }
 
     async getById(uid){
-        return this.usersDao.getById({uid})
+        return this.usersDao.getById(uid)
     }
 
     async getByEmail(email){
