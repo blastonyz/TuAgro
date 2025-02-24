@@ -1,12 +1,16 @@
 'use client'
 import'./counter.css'
+import { useAuthContext } from '../../context/AuthContext'
 import { useCartContext } from '../../context/CartContext'
 import { useState } from "react"
 
-const Counter = ({item}) => {
+const AddCart = ({item}) => {
+    const {user} = useAuthContext()
     const {addToCart} = useCartContext()
-    const [quantity, setQuantity] = useState(1)
 
+    const [quantity, setQuantity] = useState(1)
+    const [modalOpen,setModalOpen] = useState(false)
+    const [addMessage,setAddMessage] = useState(false)
     const increase = () => {
         setQuantity(prev => prev+1)  
     }    
@@ -18,18 +22,23 @@ const Counter = ({item}) => {
     }    
 
     const addHandler = () => {
-      
-        addToCart({ ...item, quantity })
+       if(!user) setModalOpen(!modalOpen)
+        setAddMessage(!addMessage)
+       addToCart({ ...item, quantity })
     }
 
     return (
+        <>
+        {modalOpen? <p>Registrese</p>:null}
+        {addMessage? <p>Agregado!</p>:null}
         <div className="counterContainer">
             <button onClick={decrease}>-</button>
             <p>{quantity}</p>
             <button onClick={increase}>+</button>
             <button onClick={addHandler} >Agregar</button>
         </div>
+        </>
     )
 }
 
-export default Counter
+export default AddCart

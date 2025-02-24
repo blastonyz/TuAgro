@@ -64,6 +64,7 @@
   .hero1{
     width: 100%;
     z-index: 10;
+    max-width: 1000px;
   }
   .mainText{
     position: relative;

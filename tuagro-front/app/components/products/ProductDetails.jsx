@@ -1,6 +1,6 @@
 import { CldImage } from "next-cloudinary"
 import './product.details.css'
-import Counter from "../ui/counter/Counter"
+import AddCart from "../ui/addcart/AddCart"
 
 const ProductDetails = ({ productSelected }) => {
 
@@ -14,7 +14,7 @@ const ProductDetails = ({ productSelected }) => {
           <h3>{productSelected.title}</h3>
           <h4>{productSelected.price}</h4>
           <h5>{productSelected.category}</h5>
-          <Counter item={productSelected}/>
+          <AddCart item={productSelected}/>
           
         </div>
 

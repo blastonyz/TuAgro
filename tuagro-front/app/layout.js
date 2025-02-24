@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./components/header/Header";
 import { CartProvider } from "./components/context/CartContext";
 import { CategoriesProvider } from "./components/context/CategoriesContext";
+import { AuthProvider } from "./components/context/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,11 +27,13 @@ export default function RootLayout({ children }) {
       <meta name="theme-color" content="#107C10"></meta>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <CategoriesProvider>
+          <AuthProvider>
           <CartProvider>
             {/*Auth && Cart Context */}
             <Header />
             {children}
           </CartProvider>
+          </AuthProvider>
         </CategoriesProvider>
       </body>
     </html>
