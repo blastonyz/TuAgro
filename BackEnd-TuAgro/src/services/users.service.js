@@ -37,12 +37,13 @@ export default class UsersService {
     async logInUser(email, password) {
         const user = await this.usersRepository.getByEmail(email)
         if (!user) throw new Error("Usuario no encontrado");
-        //comparo hash
+       
         const verify = isValidPassword(password, user)
         if (!verify) throw new Error("email o password incorrectos");
-        //doy permiso para enviar cookie
+       
         const token = await sessionToken(user)
-        return token
+        const { first_name, last_name, email: userEmail,role } = user;
+        return {token:token,user:{first_name,last_name,email: userEmail,role}}
     }
 
     async update(uid, data) {

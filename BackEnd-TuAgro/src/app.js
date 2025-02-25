@@ -1,26 +1,27 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from 'cookie-parser'
 import productRouter from './routers/products.routes.js'
 import sessionRouter from  './routers/sessions.routes.js'
 import CategoryController from "./controller/category.controller.js";
 
 const app = express();
+
 app.use(cors({
-  origin: 'http://localhost:8081', 
+  origin: 'http://localhost:3030', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type']
+  allowedHeaders: ['Content-Type'],
+  credentials:true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cookieParser());
 
 //app.use(express.static(path.join(__dirname,'../public')));
 
 const categoryController = new CategoryController()
 
-
 app.use('/',productRouter,sessionRouter)
-
 
 
 app.get('/categories', async (req, res) => {

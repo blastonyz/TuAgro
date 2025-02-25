@@ -2,9 +2,6 @@ import jwt from 'jsonwebtoken'
 import configuration from '../config/configuration.js'
 
 
-
-
-
 export const sessionToken = async (user) => {
     const payload = {userId: user._id.toString()}
     console.log('token: ', payload.userId);
@@ -16,13 +13,17 @@ export const sessionToken = async (user) => {
 //usar DTO
 export const verifyToken = (usersController) => {
     return async (req, res, next) => {
+    const authToken = req.cookies?.authToken;
+ 
+    
         try {
-            const authHeader = req.get('Authorization');
-            console.log('Header recibido:', authHeader);
-
-            if (!authHeader) return res.status(403).json({ message: 'unauthorized' });
-
-            const token = authHeader.split(' ')[1];
+  
+            console.log('middleware token: ',authToken);
+            
+            if (!authToken) {
+                return res.status(401).json({ message: "No authentication token" });
+            }
+            const token = authToken.split('=')[1];
             const decodedToken = jwt.verify(token, configuration.jwt_secret);
             console.log('Token decodificado:', decodedToken);
 
@@ -37,5 +38,5 @@ export const verifyToken = (usersController) => {
             console.error('Error en verifyToken:', error);
             return res.status(403).json({ message: 'unauthorized' });
         }
-    };
+    }
 };

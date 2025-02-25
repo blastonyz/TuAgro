@@ -18,9 +18,9 @@ export default class UsersController {
     }
 
     async logInUser(email, password) {
-        const accesToken = await this.userServices.logInUser(email, password)
-        console.log('controller login: ', accesToken);
-        return accesToken
+        const userAndToken = await this.userServices.logInUser(email, password)
+   
+        return { token: userAndToken.token,user: userAndToken.user }
     }
 
 }

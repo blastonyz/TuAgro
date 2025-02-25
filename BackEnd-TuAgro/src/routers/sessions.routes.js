@@ -17,16 +17,29 @@ router.post('/register',async (req, res)=> {
 router.post('/login', async (req,res) => {
     const userData = req.body
     try {
-        const userToken = await usersController.logInUser(userData.email,userData.password)
-        res.header('Authorization',userToken).json({message: 'succesfull logged',userToken})
+        const userAndToken = await usersController.logInUser(userData.email,userData.password)
 
+        /*res.header('Authorization',userAndToken.token).json({message: 'succesfull logged',user: userAndToken.user})*/
+
+        res.cookie('authToken', userAndToken.token, {
+            httpOnly: true, 
+            secure: true, 
+            sameSite: 'None',  
+            maxAge: 60 * 60 * 1000 
+        }).json({ message: 'Successfully logged in', user: userAndToken.user });
+
+        
     } catch (error) {
         console.error(error.msg)
+    }finally{
+        console.log(res.getHeaders()['set-cookie']);
     }
 })
 
 //ruta protegida de prueba
 router.get('/protected', verifyToken(usersController),async (req,res) => {
+    console.log('accedio');
+    
     res.json({ message: "Acceso permitido", user: req.user });
 })
 
