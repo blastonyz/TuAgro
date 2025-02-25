@@ -1,12 +1,14 @@
 'use client'
 import './contact.form.css'
 import { useState } from 'react'
-
+import Button from '../ui/button/Button'
+import SectionTitle from '../ui/title/SectionTitle'
 
 const ContactForm = () => {
     const [data,setData] = useState({
         firstName:"",
         email:"",
+        phone:"",
         consult:""
     })
 
@@ -28,12 +30,14 @@ const ContactForm = () => {
   return (
  
         <div className="contactContainer">
-
-          <form className="contactForm">
-                <input onChange={handleContact} type="text" name="firstName" placeholder="Nombre" value={data.firstName}/>
-                <input onChange={handleContact} type="email" name="email" placeholder="email" value={data.email}/>
-                <textarea onChange={handleContact} name="consult" value={data.consult}></textarea>
-                <button type="submit"></button>
+            <SectionTitle text={'Contactanos'} size={26}/>
+          <form className="genericForm">
+                <input onChange={handleContact} type="text" name="firstName" placeholder="Nombre" value={data.firstName} className='inputsFields'/>
+                <input onChange={handleContact} type="email" name="email" placeholder="E-mail" value={data.email} className='inputsFields'/>
+                <input onChange={handleContact} type="number" name="phone" placeholder="Telefono" value={data.phone} className='inputsFields'/>
+                <textarea onChange={handleContact} name="consult" value={data.consult} className='inputsArea' placeholder='Dejanos tu Consulta'></textarea>
+                <Button text={'Enviar'} type={'submit'} />
+                
           </form>
 
         </div>

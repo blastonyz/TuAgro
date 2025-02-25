@@ -1,6 +1,11 @@
+import RegisterForm from "@/app/components/auth/register/RegisterForm"
+
 
 export default function page(){
     return(
-        <h1>login</h1>
+      <div className="registerMain">
+        <RegisterForm/>
+
+      </div>
     )
 }

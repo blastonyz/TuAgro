@@ -8,21 +8,31 @@ export async function POST(request){
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(requestBody) 
+            body: JSON.stringify(requestBody),
+            credentials: 'include' 
         });
         
     
         if(!response.ok) throw new Error('error al loguearse')
-         const data = response.json()
-         const token = response.headers.get('Authorization') 
-         console.log('authToken: ',token);
-           
-        return new NextResponse(JSON.stringify(data),{
-            status: 200,
-            headers:{ 'Content-Type': 'application/json',
-                ...(token ? { "Authorization": token } : {})    
-             }
-        })   
+         const data = await response.json()
+         const token = response.headers.get('set-cookie') 
+         console.log('token: ',token);
+         
+           const nextResponse = NextResponse.json({
+            user: data.user, 
+            token: token 
+        });
+
+        // Configurar la cookie
+        nextResponse.cookies.set('authToken', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', 
+            sameSite: 'strict',
+            maxAge: 60 * 60 * 24 * 7, 
+            path: '/', 
+        });
+
+        return nextResponse;
 
     } catch (error) {
         console.error("Error en API /api/login:", error);

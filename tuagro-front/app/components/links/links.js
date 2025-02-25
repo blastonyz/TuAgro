@@ -16,6 +16,10 @@ export const links = [
         href: "/contacto"
     },
     {
+        label: "Sesion",
+        href: "/auth/login"
+    },
+    {
         label: "Carrito",
         href: "/carrito"
     }

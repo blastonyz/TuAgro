@@ -1,0 +1,30 @@
+@import '../../../colors.css';
+.registerMain{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.registerContainer{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: max-content;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    background-color: var(--olive);
+    border: 2px solid var(--grenn);
+    border-radius: 20px;
+}
+
+.inputsFields2{
+    height: 2rem;
+    width: 250px;
+    border: 2px solid var(--green);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px 5px;
+}

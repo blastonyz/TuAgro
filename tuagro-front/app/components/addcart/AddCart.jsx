@@ -1,7 +1,7 @@
 'use client'
 import'./counter.css'
-import { useAuthContext } from '../../context/AuthContext'
-import { useCartContext } from '../../context/CartContext'
+import { useAuthContext } from '../context/AuthContext'
+import { useCartContext } from '../context/CartContext'
 import { useState } from "react"
 
 const AddCart = ({item}) => {
@@ -22,9 +22,15 @@ const AddCart = ({item}) => {
     }    
 
     const addHandler = () => {
-       if(!user) setModalOpen(!modalOpen)
-        setAddMessage(!addMessage)
+        console.log('user: ',user);
+        
+      if(!user.email){setModalOpen(!modalOpen)
+
+      }else{
+       
        addToCart({ ...item, quantity })
+       setAddMessage(!addMessage)
+      }
     }
 
     return (

@@ -10,13 +10,43 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding-top: 50px;
     background-color: var(--olive);
+    text-align: center;
+    align-items: center;
 }
 
-.contactForm{
+.genericForm{
     display: flex;
+    margin-top: 25px;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    height: 35vh;
+    height: 40vh;
+}
+
+.inputsFields{
+    height: 2rem;
+    width: 250px;
+    border: 2px solid var(--green);
+    border-radius: 10px;
+    margin: 25px;
+    padding: 10px 5px;
+}
+
+.inputsFields:focus{
+    border: 3px solid var(--yellow);
+    outline: none;
+}
+
+.inputsArea{
+    border: 2px solid var(--green);
+    width: 250px;
+    height: 6rem;
+    border-radius: 10px;
+    padding: 10px 5px;
+}
+
+.inputsArea:focus{
+    border: 3px solid var(--yellow);
+    outline: none;
 }

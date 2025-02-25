@@ -1,6 +1,6 @@
 import { CldImage } from "next-cloudinary"
 import './product.details.css'
-import AddCart from "../ui/addcart/AddCart"
+import AddCart from "../addcart/AddCart"
 
 const ProductDetails = ({ productSelected }) => {
 
