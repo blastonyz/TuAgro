@@ -48,11 +48,7 @@
     z-index: 10;
   }
 
-  /*background: linear-gradient(to right,var(--green),rgb(255, 255, 255) );
-    -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent; 
-  */
+  
   .welcome{
     font-size: 100px;
     font-weight: bold;
@@ -74,18 +70,16 @@
     font-family: 'Chelsea-Market';
   }
 
-   .mainAAText{
-    color: var(--white);
-    font-size: 40px;
-    text-shadow: 10px 2px 15px var(--green-shadow);
-    background: linear-gradient(rgba(255, 255, 255, 0.3),rgba(203, 201, 201, 0.209),rgba(255, 249, 249, 0.25));
-    padding: 10px;
-    border-radius: 20px;
-    border: gray 1px solid
-  }
 
-  .hero1{
-    width: 90%;
-   z-index: 10;
+  @media  (max-width: 592px) {
+    .heroMain{
+      padding-left: 40px;
+    }
+    .welcome{
+      font-size: 55px;
+    }
 
+    .mainText{
+      font-size: 26px;
+    }
   }

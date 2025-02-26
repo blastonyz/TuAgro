@@ -43,3 +43,16 @@
 .charge{
     color: var(--yellow);
 }
+
+@media  (max-width: 592px) {
+    .thirdMain{
+        background-image: url('../../../../public/trigo-1049jp.jpg');
+        
+    }
+    .thirdTextContainer{
+        width: 90%;
+    }
+    .thirdText{
+        font-size: 22px;
+    }
+}

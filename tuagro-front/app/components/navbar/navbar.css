@@ -51,4 +51,10 @@
     align-items: flex-end;
   
   }
+
+  @media  (max-width: 592px) {
+    .linksContainer{
+      width: max-content;
+    }
+  }
   

@@ -2,7 +2,7 @@
 
 .linkContainer{
     background-color:var(--green);
-    width: 20%;
+    width: max-content;
     padding: 10px;
     align-items: center;
     display: flex; 
@@ -17,3 +17,9 @@
     align-self: center;
     color: var(--white);
 }
+
+@media  (max-width: 592px) {
+    .linkText{
+        font-size: 16px;
+    }
+  }

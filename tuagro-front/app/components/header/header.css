@@ -38,3 +38,10 @@
     display: flex;
     justify-content: space-around;
 }
+
+
+@media  (max-width: 592px) {
+    .contactPhone{
+        font-size: 9px;
+    }
+}

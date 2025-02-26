@@ -40,13 +40,17 @@ const LoginForm = () => {
     const handleLogin = (e) => {
         e.preventDefault()
         getUser(userData)
+        setUserData({  
+            email:'',
+            password:''
+        })
     }
 
   return (
   
-    <div className="loginMain">
+    <div className="loginContainer">
         <SectionTitle size={26} text={'Inicia Sesion'}/>
-        <form className="genericForm">
+        <form className="loginForm">
             <input onChange={handleChange} type="email" name="email" placeholder="Email" value={userData.email} className="inputsFields"/>
             <input onChange={handleChange} type="password" name="password" placeholder="Password" value={userData.password} className="inputsFields"/>
             <Button type="submit" onClick={handleLogin} text={'Iniciar Sesion'}/>

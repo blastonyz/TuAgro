@@ -15,14 +15,14 @@ const SecondSection = () => {
           </div>
         </div>
         <div className='img2section'>
-         <Image src={'/agricultor.webp'} width={250} height={400} alt='fotografia de agricutor en su siembra' style={{borderRadius: '25% 10%'}}/>
+         <Image src={'/agricultor.webp'} fill='true' alt='fotografia de agricutor en su siembra' style={{borderRadius: '25% 10%'}}/>
          
         </div>
       </div>
 
       <div className='textsMain'>
         <div className='mainTitleContainer'>
-          <SectionTitle size={'35px'} text={'Nuestros Servicios'} />
+          <SectionTitle size={'clamp(20px, 5vw, 26px)'} text={'Nuestros Servicios'} />
         </div>
 
         <div className='mainItems'>

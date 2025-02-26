@@ -51,6 +51,7 @@
 }
 .mainTitleContainer{
     margin: auto;
+    z-index: 10;
 }
 .mainItems{
     display: flex;
@@ -71,4 +72,39 @@
     align-items: center;
     margin-top: 12%;
     margin-left: 10%;
+}
+
+@media  (max-width: 592px) {
+   .secondMain{
+    flex-direction: column;
+    height: max-content;
+    padding-bottom: 25px;
+   }
+   .imagesContainer{
+    width: 90%;
+    align-items: center;
+    position: relative;
+   }
+   .circle{
+    width: 200px;
+    height: 200px;
+    margin-top: 2rem;
+    }
+    .img2section{
+        width: 140px;
+        height: 230px;
+        top: 2rem;
+    }
+    .mainTitleContainer{
+        height: min-content;
+    }
+    .mainItems{
+        margin-top: 10px;
+    }
+    .textsMain{
+        width: 80%;
+    }
+   .secondText{
+    font-size: 16px;
+   }
 }
