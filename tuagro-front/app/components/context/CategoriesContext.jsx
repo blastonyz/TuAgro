@@ -12,7 +12,7 @@ export const CategoriesProvider = ({children}) => {
     const fetchCategories = async () => {
        
         try {
-          const response = await fetch('/api/categories');
+          const response = await fetch('/api/categories',{cache:'force-cache'});
           if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
           }

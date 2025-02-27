@@ -33,6 +33,8 @@
     top: 5rem;
     z-index: 10;
     border-radius: 25% 10%;
+    height: 400px;
+    width: 250px;
 }
 
 .img2{
@@ -86,23 +88,28 @@
     position: relative;
    }
    .circle{
-    width: 200px;
-    height: 200px;
+    width: 230px;
+    height: 230px;
     margin-top: 2rem;
+    margin-left: 17%;
     }
     .img2section{
         width: 140px;
         height: 230px;
         top: 2rem;
+        left: 40%;
     }
     .mainTitleContainer{
-        height: min-content;
+        height:75px;
+        margin-top: 40px;
+        margin-bottom: 0px;
     }
     .mainItems{
-        margin-top: 10px;
+        margin-top: 5px;
     }
     .textsMain{
         width: 80%;
+      
     }
    .secondText{
     font-size: 16px;

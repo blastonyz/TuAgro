@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function GET(request){
   {
     try {
-        const response = await fetch('http://localhost:8080/products');
+        const response = await fetch('http://localhost:8080/products',{cache:'force-cache'});
         if (!response.ok) throw new Error("Error al obtener productos");
         
         const data = await response.json();

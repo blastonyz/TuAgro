@@ -15,18 +15,29 @@
     flex-direction: row;
     height: max-content;
     justify-content: space-around;
-
 }
+
 .headerContainer{
     width: 100%;
 }
+
 .contactPhone{
     display: flex;
     padding: 22px 0px;
     font-size: 14px;
 }
+
 .contacts{
     color: var(--white);
+}
+
+.contactMail{
+    display: flex;
+    flex-direction: row;
+    color: var(--white);
+    align-items: center;
+    padding-bottom: 2px;
+    width: max-content;
 }
 .mailIcon{
     padding-top: 5px;
@@ -37,6 +48,7 @@
     width: 100px;
     display: flex;
     justify-content: space-around;
+    padding-bottom: 5px ;
 }
 
 
@@ -44,4 +56,12 @@
     .contactPhone{
         font-size: 9px;
     }
+    .mail{
+        display: none;
+    }
+    .contacts{
+        margin: auto;
+        padding:0px 0px ;
+    }
+   
 }

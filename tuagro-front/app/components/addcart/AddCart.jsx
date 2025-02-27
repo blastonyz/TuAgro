@@ -3,6 +3,7 @@ import'./counter.css'
 import { useAuthContext } from '../context/AuthContext'
 import { useCartContext } from '../context/CartContext'
 import { useState } from "react"
+import Button from '../ui/button/Button'
 
 const AddCart = ({item}) => {
     const {user} = useAuthContext()
@@ -38,11 +39,19 @@ const AddCart = ({item}) => {
         {modalOpen? <p>Registrese</p>:null}
         {addMessage? <p>Agregado!</p>:null}
         <div className="counterContainer">
-            <button onClick={decrease}>-</button>
-            <p>{quantity}</p>
-            <button onClick={increase}>+</button>
-            <button onClick={addHandler} >Agregar</button>
+
+            <div className='quantityCont'>
+                <Button onClick={decrease} text={'-'}/>
+                <p className='number'>{quantity}</p>
+                <Button onClick={increase} text={'+'}/>
+            </div>   
+         
+            <div className='addCont'>  
+                <Button onClick={addHandler} text={'Agregar'}/>
+            </div>    
+             
         </div>
+        
         </>
     )
 }

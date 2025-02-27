@@ -1,9 +1,9 @@
-const PhoneIcon = ({ className, color = 'black' }) => (
+const PhoneIcon = ({ className, color = 'black',size = '24px' }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      height="24"
+      height={size}
       viewBox="0 0 24 24"
-      width="24"
+      width={size}
       className={className}
       fill={color} 
     >

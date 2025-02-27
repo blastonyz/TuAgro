@@ -1,3 +1,5 @@
+@import '../../colors.css';
+
 .productDetailsMain{
     display: flex;
     flex-direction: column;
@@ -5,28 +7,140 @@
     margin-top: 50px;
 }
 
+.detailsContainer{
+    display: flex;
+    flex-direction: column;
+    width: clamp(700px,60%,900px);
+    height:max-content;
+    margin: auto;
+    background-color: var(--soft-green);
+    border-radius: 20px;
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+}
+
 .prodData{
     display: flex;
     flex-direction: row;
-    width: 50%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 10px 15%;
 }
 
 .dataContainer{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 50%;
-    margin-right:20% ;
-
+    width: 100%;
 }
 
 .imageContainer{
-    border: 3px solid red;
-    margin-top: -40px;
+    width: 350px;
+    height: 350px;
+    border-radius: 20px;
+    padding: 10px;
 }
-
+.productDetailImage{
+    border-radius: 20px;
+}
 .descriptionContainer{
     width: 50%;
     margin: 25px auto;
+}
+
+.detailTitle{
+    color: var(--green);
+    font-family: 'Chelsea-Market';
+}
+
+.priceCont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.priceText{
+    color: var(--gray);
+    font-size: larger;
+    padding-top: 10px;
+}
+
+.detailPrice{
+    background-color: var(--green);
+    padding: 10px;
+    color: var(--yellow);
+    border-radius: 10px;
+}
+
+.detailCat{
+    margin-top: 2px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.number{
+    font-size: larger;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+@media  (max-width: 720px) {
+    .detailsContainer{
+        width: 90%;
+    }
+    .prodData{
+        margin: 20px;
+    }
+    .descriptionContainer{
+        width: 90%;
+    }
+}
+
+@media  (max-width: 635px) {
+  .productDetailImage{
+    width: 100%;
+    min-width: 220px;
+    height: auto;
+  }
+  .top{
+    max-height: 300px;
+  }
+  .prodData{
+    width: 70%;
+  }
+  .detailTitle{
+    font-size: 16px;
+  }
+  .detailCat{
+    font-size: 16px;
+  }
+}
+
+@media  (max-width: 460px) {
+    .top{
+        max-height: 250px;
+    }
+    .prodData{
+        margin: 5px 5px;
+    }
+    .imageContainer{
+        margin-top: 15px;
+    }
+    .productDetailImage{
+        min-width: 150px;
+    }
+    .dataContainer{
+        max-height: 250px;
+        justify-content: space-evenly;
+    }
+    .priceCont{
+        justify-content: space-around;
+    }
+    .detailPrice{
+        font-size: medium;
+    }
+    .priceText{
+        font-size: medium;
+    }
 }

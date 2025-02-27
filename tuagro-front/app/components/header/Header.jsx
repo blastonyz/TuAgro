@@ -11,24 +11,25 @@ const Header = () => {
         <div className='headerContainer'>
             <header className="mainHeader">
                 <div className='contactPhone'>
-                    <PhoneIcon className={'phoneIcon'} color={colors.yellow} />
+                    <PhoneIcon className={'phoneIcon'} color={colors.yellow} size={'clamp(18px, 4vw, 24px)'}/>
                     <h2 className='contacts'>3875321321</h2>
                 </div>
                 <div className='contactPhone'>
-                    <PhoneIcon className={'phoneIcon'} color={colors.yellow} />
+                    <PhoneIcon className={'phoneIcon'} color={colors.yellow} size={'clamp(18px, 4vw, 24px)'}/>
                     <h2 className='contacts'>3875321321</h2>
                 </div>
-                <div className='contactPhone'>
+                <div className='contactMail'>
 
                     <div className='mailIcon'>
-                        <MailIcon color={colors.yellow} />
+                        <MailIcon color={colors.yellow}  />
                     </div>
-                    <h2 className='contacts'>jorgemoreno@tuagro.com.ar</h2>
+                    <h2 className='contacts mail'>jorgemoreno@tuagro.com.ar</h2>
                 </div>
 
                 <div className='socialsContainer'>
-                    <FacebookIcon color={'blue'} size='28px' />
-                    <InstagramIcon size='24px' />
+                    <FacebookIcon color={'blue'} size={'clamp(22px, 4vw, 28px)'} />
+                    <InstagramIcon size={'clamp(18px, 4vw, 24px)'}/>
+                    
                 </div>
 
             </header>

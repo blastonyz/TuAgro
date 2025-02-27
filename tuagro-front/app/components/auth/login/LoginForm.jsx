@@ -23,6 +23,7 @@ const LoginForm = () => {
             }})
         if(!response.ok)throw new Error('fallo fecth a ruta prot')
         const data = await response.json()    
+        console.log(data);
         
     
     }
