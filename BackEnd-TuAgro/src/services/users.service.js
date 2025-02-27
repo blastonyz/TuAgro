@@ -23,14 +23,22 @@ export default class UsersService {
     }
 
     async createUser(data) {
-        const newCart = await this.cartService.create()
-        const newCartId = newCart._id.toString()
-        const planePassword = data.password
-        const hashPassword = createHash(planePassword)
-
-        const newUser = { ...data, password: hashPassword, cart: newCartId }
-
-        return this.usersRepository.createUser(newUser)
+        try {
+            const exist = await this.usersRepository.getByEmail(data.email)
+            if(exist) throw new Error('user already exist')
+            const newCart = await this.cartService.create()
+            const newCartId = newCart._id.toString()
+            const planePassword = data.password
+            const hashPassword = createHash(planePassword)
+    
+            const newUser = { ...data, password: hashPassword, cart: newCartId }
+    
+            return this.usersRepository.createUser(newUser)
+        } catch (error) {
+              console.log('error: ',error);
+              throw error   
+        }
+   
 
     }
 

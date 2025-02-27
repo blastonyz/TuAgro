@@ -28,6 +28,9 @@ app.get('/categories', async (req, res) => {
 
   const categories = await categoryController.get();
   const categoriesJSON = JSON.stringify(categories);
+  res.setHeader('Cache-Control', 'public, max-age=3600');
+  res.setHeader('Pragma', ''); // Elimina la cabecera Pragma si existe
+  res.setHeader('Expires', ''); // Elimina la cabecera Expires si e
   res.send(categoriesJSON)
 
 });

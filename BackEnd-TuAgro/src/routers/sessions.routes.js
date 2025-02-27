@@ -6,40 +6,46 @@ const router = Router();
 
 const usersController = new UsersController()
 
-router.post('/register',async (req, res)=> {
-    const user = req.body
-    console.log(user);
-    const newUser = await usersController.createUser(user)
-    console.log(newUser);
-    res.json(newUser)
+router.post('/register', async (req, res) => {
+    try {
+        const user = req.body
+        console.log(user);
+        const newUser = await usersController.createUser(user)
+        console.log(newUser);
+        res.json(newUser)
+    } catch (error) {
+        console.log('router error: ',error);
+        res.status(400).json({ error: error.message });
+    }
+
 })
 
-router.post('/login', async (req,res) => {
+router.post('/login', async (req, res) => {
     const userData = req.body
     try {
-        const userAndToken = await usersController.logInUser(userData.email,userData.password)
+        const userAndToken = await usersController.logInUser(userData.email, userData.password)
 
         /*res.header('Authorization',userAndToken.token).json({message: 'succesfull logged',user: userAndToken.user})*/
 
         res.cookie('authToken', userAndToken.token, {
-            httpOnly: true, 
-            secure: true, 
-            sameSite: 'None',  
-            maxAge: 60 * 60 * 1000 
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None',
+            maxAge: 60 * 60 * 1000
         }).json({ message: 'Successfully logged in', user: userAndToken.user });
 
-        
+
     } catch (error) {
         console.error(error.msg)
-    }finally{
+    } finally {
         console.log(res.getHeaders()['set-cookie']);
     }
 })
 
 //ruta protegida de prueba
-router.get('/protected', verifyToken(usersController),async (req,res) => {
+router.get('/protected', verifyToken(usersController), async (req, res) => {
     console.log('accedio');
-    
+
     res.json({ message: "Acceso permitido", user: req.user });
 })
 
