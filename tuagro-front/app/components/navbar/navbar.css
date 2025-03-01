@@ -22,7 +22,7 @@
     top: -75px;
     height:100dvh;
     background-color: #0a0a0ae8;
-    width: 20%;
+    width: max-content;
     display: flex;
     flex-direction: column;
     padding-top: 6%;
@@ -52,9 +52,15 @@
   
   }
 
-  @media  (max-width: 592px) {
+  @media (max-width:592px){
     .linksContainer{
-      width: max-content;
+      padding-top: 80px;
     }
+    .links{
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 20px 30px;
+     }
   }
-  

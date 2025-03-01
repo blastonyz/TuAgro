@@ -10,7 +10,7 @@
 }
 
 .cartMainList{
-    width: 80%;
+    width: clamp(300px, 55vw,65vw);
     margin-top: 25px;
     background-color: var(--olive);
     padding: 20px;
@@ -20,7 +20,7 @@
 .cartItemsList{
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: clamp(280px, 50vw,60vw);
     background-color: aliceblue;
     padding: 10px;
     border-radius: 16px;
@@ -57,4 +57,21 @@
     color: var(--green);
     font-size: 20px;
     font-family: 'Chelsea-Market';
+}
+
+@media (max-width:592px){
+    
+    .cartImage{
+        width: 100%;
+        height: auto;
+        min-width: 108px;
+    }
+    .itemData{
+        padding: 0px;
+        min-width: 150px;
+    }
+    
+    .itemTitle{
+        font-size: 16px;
+    }
 }

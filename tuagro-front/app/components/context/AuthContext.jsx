@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     })
 
     console.log('user: ', user);
-
+    //http://localhost:8080/login
     const getUser = async (userData) => {
         try {
             const response = await fetch('/api/auth', {
@@ -28,16 +28,21 @@ export const AuthProvider = ({ children }) => {
                 }),
                  credentials: 'include'
             });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
             const data = await response.json();
-            console.log('context data: ',data);
+            if (!response.ok || !data.user) {
+                console.log('status: ',data );
+                setUser({ first_name: '', last_name: '', email: null, role: '' })
+                return { success: false, message: data.message || "Failed to login" }
+            }
             
+           
+            console.log('context data: ',data);
             setUser(data.user)
-            console.log("User set in context:", data.user);
+            return { success: true, user: data.user }
         } catch (error) {
             console.error("Error throguh login:", error);
+            setUser({ first_name: '', last_name: '', email: null, role: '' }); 
+            throw error;
         }
     }
 

@@ -13,7 +13,14 @@ export async function POST(request){
         });
         
     
-        if(!response.ok) throw new Error('error al loguearse')
+        if(!response.ok) {
+            const errorData = await response.json()
+            return new NextResponse(JSON.stringify(errorData),{
+                status: response.status,
+                headers: { 'Content-Type': 'application/json' }
+         })
+      
+        }
          const data = await response.json()
          const token = response.headers.get('set-cookie') 
          console.log('token: ',token);
@@ -35,7 +42,7 @@ export async function POST(request){
         return nextResponse;
 
     } catch (error) {
-        console.error("Error en API /api/login:", error);
+        console.warn("Error en API /api/login:", error);
         return new NextResponse(JSON.stringify({ error: "Failed to login" }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' }

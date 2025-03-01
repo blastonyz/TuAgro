@@ -95,12 +95,22 @@
     .descriptionContainer{
         width: 90%;
     }
+    .priceText{
+        font-size: large;
+        padding-top: 10px;
+    }
+    
+    .detailPrice{
+        background-color: var(--green);
+        padding: 10px;
+        border-radius: 10px;
+    }
 }
 
 @media  (max-width: 635px) {
   .productDetailImage{
     width: 100%;
-    min-width: 220px;
+    min-width: 180px;
     height: auto;
   }
   .top{
@@ -118,6 +128,9 @@
 }
 
 @media  (max-width: 460px) {
+    .detailsContainer{
+        width: 95%;
+    }
     .top{
         max-height: 250px;
     }
@@ -128,7 +141,7 @@
         margin-top: 15px;
     }
     .productDetailImage{
-        min-width: 150px;
+        min-width: 128px;
     }
     .dataContainer{
         max-height: 250px;
@@ -138,9 +151,11 @@
         justify-content: space-around;
     }
     .detailPrice{
-        font-size: medium;
+        padding-top: 7px;
+        font-size:14px;
     }
     .priceText{
-        font-size: medium;
+        font-size: 16px;
+       padding-bottom: 6px;
     }
 }
