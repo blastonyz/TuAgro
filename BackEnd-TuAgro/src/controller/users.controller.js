@@ -14,18 +14,23 @@ export default class UsersController {
     }
 
     async createUser(newUser) {
-        try { 
+        try {
             return await this.userServices.createUser(newUser);
         } catch (error) {
             throw error
         }
-       
+
     }
 
     async logInUser(email, password) {
-        const userAndToken = await this.userServices.logInUser(email, password)
-   
-        return { token: userAndToken.token,user: userAndToken.user }
+        try {
+            const userAndToken = await this.userServices.logInUser(email, password)
+
+            return { token: userAndToken.token, user: userAndToken.user }
+        } catch (error) {
+            throw error
+        }
+
     }
 
 }

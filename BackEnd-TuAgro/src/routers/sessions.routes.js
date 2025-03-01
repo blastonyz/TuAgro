@@ -24,9 +24,8 @@ router.post('/login', async (req, res) => {
     const userData = req.body
     try {
         const userAndToken = await usersController.logInUser(userData.email, userData.password)
-
-        /*res.header('Authorization',userAndToken.token).json({message: 'succesfull logged',user: userAndToken.user})*/
-
+        console.log('router, controller resp: ',userAndToken);
+        
         res.cookie('authToken', userAndToken.token, {
             httpOnly: true,
             secure: true,
@@ -34,12 +33,13 @@ router.post('/login', async (req, res) => {
             maxAge: 60 * 60 * 1000
         }).json({ message: 'Successfully logged in', user: userAndToken.user });
 
-
     } catch (error) {
-        console.error(error.msg)
-    } finally {
-        console.log(res.getHeaders()['set-cookie']);
-    }
+        res.clearCookie('authToken', {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None'
+        }).status(401).json({ message: error.message });
+    } 
 })
 
 //ruta protegida de prueba

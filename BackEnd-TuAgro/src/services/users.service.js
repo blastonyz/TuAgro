@@ -29,7 +29,7 @@ export default class UsersService {
             const newCart = await this.cartService.create()
             const newCartId = newCart._id.toString()
             const planePassword = data.password
-            const hashPassword = createHash(planePassword)
+            const hashPassword = await createHash(planePassword)
     
             const newUser = { ...data, password: hashPassword, cart: newCartId }
     
@@ -46,7 +46,7 @@ export default class UsersService {
         const user = await this.usersRepository.getByEmail(email)
         if (!user) throw new Error("Usuario no encontrado");
        
-        const verify = isValidPassword(password, user)
+        const verify =  await isValidPassword(password, user)
         if (!verify) throw new Error("email o password incorrectos");
        
         const token = await sessionToken(user)
