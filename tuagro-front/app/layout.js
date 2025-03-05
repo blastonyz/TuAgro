@@ -22,8 +22,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
+    <html lang="es">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3"></meta>
       <meta name="theme-color" content="#107C10"></meta>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <CategoriesProvider>

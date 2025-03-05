@@ -16,16 +16,20 @@ import Link from 'next/link'
           <div key={cat._id} className='categorieCard'>
 
          <Link href={`/productos/${cat.title}`}>
-            { cat.image?
-             <CldImage
-                width="240"
-                height="350"
-                src={cat.image}
-                alt="Description of my image"
-                className='categorieImage'
-              />
-            :null
-            }
+
+      
+              { cat.image?
+               <CldImage
+                  width="240"
+                  height="350"
+                  src={cat.image}
+                  alt="Description of my image"
+                  className='categorieImage'
+                />
+              :null
+              }
+        
+
          </Link>
 
           </div>

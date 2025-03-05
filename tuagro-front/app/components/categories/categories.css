@@ -26,5 +26,24 @@
     border-radius: 20px;
     height: 350px;
     max-width: 100%; 
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+
+}
+
+.categorieImage:hover {
+  transform: rotateY(15deg)
+}
+
+@media (max-width:592px){
+    .categorieCard{
+        width: 180px;
+        min-width: 180px;
+        height: auto;
+ 
+    }
+
+    .categorieImage{
+        width: 100%;
+        height: auto;
+       min-width: 180px;
+    }
 }

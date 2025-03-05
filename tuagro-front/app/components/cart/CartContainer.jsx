@@ -2,10 +2,10 @@
 import { useCartContext } from "../context/CartContext"
 import SectionTitle from "../ui/title/SectionTitle"
 import CartItems from "./CartItems"
-import { CldImage } from 'next-cloudinary'
+
 
  const CartContainer = () => {
-    const {cart,removeFromCart,clearCart} = useCartContext()
+    const {cart,removeFromCart,clearCart,total} = useCartContext()
 
     console.log('carrito: ',cart);
     
@@ -16,6 +16,7 @@ import { CldImage } from 'next-cloudinary'
       <SectionTitle text={'Tu Pedido'} size={26} />
 
          <CartItems cart={cart} />
+         <p>{total(cart)}</p>
         </div>
   )
 }
