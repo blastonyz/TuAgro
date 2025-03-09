@@ -2,6 +2,7 @@
 
 .formButton{
     width: auto;
+    height: max-content;
     background-color: var(--green);
     border-radius: 20px;
     padding: 10px 10px;

@@ -28,7 +28,9 @@ export const CartProvider = ({ children }) => {
 
 
   const removeFromCart = (itemId) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
+    setCart((prevCart) => prevCart.filter((item) => item._id !== itemId));
+    console.log('removido: ',itemId);
+    
   };
 
   const total = (cart) => {

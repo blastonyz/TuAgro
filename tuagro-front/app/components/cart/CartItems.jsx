@@ -1,7 +1,7 @@
 import { CldImage } from "next-cloudinary"
 import './cart.items.css'
 
-const CartItems = ({ cart }) => {
+const CartItems = ({ cart, removeFromCart }) => {
 
     return (
         <div className="cartMainList">
@@ -44,8 +44,14 @@ const CartItems = ({ cart }) => {
                                 </div>
                             </div>
                             <div className="cartButtons">
-                                <p>X</p>
-                                <p>boton</p>
+                                <button 
+                                onClick={() => {
+                                    console.log("Eliminando producto:", product._id); 
+                                    removeFromCart(product._id);
+                                  }}
+                                className="removeButton">
+                                   Eliminar
+                                </button>
                             </div>
 
                         </div>

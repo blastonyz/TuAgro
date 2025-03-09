@@ -10,7 +10,7 @@
 }
 
 .cartMainList{
-    width: clamp(300px, 55vw,65vw);
+    width: clamp(810px, 55vw,65vw);
     margin-top: 25px;
     background-color: var(--olive);
     padding: 20px;
@@ -20,7 +20,7 @@
 .cartItemsList{
     display: flex;
     flex-direction: column;
-    width: clamp(280px, 50vw,60vw);
+    width: clamp(780px, 50vw,60vw);
     background-color: aliceblue;
     padding: 10px;
     border-radius: 16px;
@@ -29,6 +29,7 @@
 .cartItem{
     display: flex;
     flex-direction: row; 
+    justify-content: space-between;
     border-bottom: solid 2px var(--soft-green);
     width: 100%;
 }
@@ -59,7 +60,37 @@
     font-family: 'Chelsea-Market';
 }
 
+.cartButtons{
+    align-items: end;
+}
+.removeButton{
+   border: 2px  solid rgba(255, 0, 0, 0.823);
+   padding: 5px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+
+@media (max-width:820px){
+    
+    .cartMainList{
+        width: clamp(600px, 80vw,90vw);
+    }
+
+    .cartItemsList{
+        width: clamp(570px, 75vw,85vw);
+    }
+   
+}
+
 @media (max-width:592px){
+    .cartMainList{
+        width: clamp(350px, 80vw,90vw);
+    }
+
+    .cartItemsList{
+        width: clamp(320px, 75vw,85vw);
+    }
     
     .cartImage{
         width: 100%;

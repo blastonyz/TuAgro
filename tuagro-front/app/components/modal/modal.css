@@ -1,0 +1,45 @@
+@import '../../colors.css';
+
+.modalContainer{
+    width:100%;
+    height: auto;
+    z-index: 1000;
+    position: absolute;
+    top: 150px;
+    left: 0;
+   
+}
+
+.modalFormContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.filterModal{
+    width:100%;
+    height: 70%;
+    position: absolute;
+    top: 150px;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(248, 248, 248, 0.635);
+}
+
+.closeModal{
+    position: absolute;
+    top: 0;
+    right: 35%;
+    border: 3px solid var(--green);
+    border-radius: 15px;
+    padding: 5px;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--green);
+    background-color: var(--yellow);
+}
+
+.closeModal:hover{
+    transform: scale(1.1);
+}

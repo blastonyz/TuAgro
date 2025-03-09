@@ -15,7 +15,7 @@ import CartItems from "./CartItems"
     <div className="cartContainer">
       <SectionTitle text={'Tu Pedido'} size={26} />
 
-         <CartItems cart={cart} />
+         <CartItems cart={cart} removeFromCart={removeFromCart}/>
          <p>{total(cart)}</p>
         </div>
   )

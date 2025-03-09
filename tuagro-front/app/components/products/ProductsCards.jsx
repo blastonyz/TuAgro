@@ -15,15 +15,6 @@ const ProductsCards = ({ products }) => {
           <h3 className="productTitle">{prods.title}</h3>
           <h2 className="brand">{prods.brand}</h2>
 
-          <div className="priceContainer">
-            <p className="precio">Precio</p>
-
-            <div className="priceBox">
-              <h4 className="price">U$D {prods.price}
-              </h4>
-            </div>
-          </div>
-
           {prods.image ?
             <CldImage
               width="250"
@@ -35,6 +26,15 @@ const ProductsCards = ({ products }) => {
             :
             null
           }
+
+          <div className="priceContainer">
+            <p className="precio">Precio</p>
+
+            <div className="priceBox">
+              <h4 className="price">U$D {prods.price}
+              </h4>
+            </div>
+          </div>
 
           <div className="linkContainer">
             <Link href={`/producto/${prods._id}`} className="productsLinks"> Mas

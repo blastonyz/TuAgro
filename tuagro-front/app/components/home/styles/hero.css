@@ -71,6 +71,12 @@
     font-family: 'Chelsea-Market';
   }
 
+  @media  (max-width: 1200px) {
+    .heroMain{
+      padding-left: 10%;
+    }
+   
+  }
 
   @media  (max-width: 592px) {
     .heroMain{

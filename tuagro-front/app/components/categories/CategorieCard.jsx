@@ -1,44 +1,21 @@
 'use client'
 import { useCategoriesContext } from '../context/CategoriesContext'
-import { CldImage } from 'next-cloudinary'
-import './categories.css'
-import {motion} from 'motion/react'
-import Link from 'next/link'
+import CategorieCardItem from './CategorieCardItem'
 
  const CategorieCard = () => {
-    const { loading, categories } = useCategoriesContext();
+  const { loading, categories } = useCategoriesContext();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className='categoriesContainer'>
-    {categories && categories.map(cat => {
-        return (
-
-          <div key={cat._id} className='categorieCard'>
-
-         <Link href={`/productos/${cat.title}`}>
-
-      
-              { cat.image?
-               <CldImage
-                  width="240"
-                  height="350"
-                  src={cat.image}
-                  alt="Description of my image"
-                  className='categorieImage'
-                />
-              :null
-              }
-        
-
-         </Link>
-
-          </div>
-        )
-      })
-    }
+      {categories.map((cat) => (
+        <CategorieCardItem key={cat._id} cat={cat} />
+      ))}
     </div>
-    )
-
+  );
 }
 
 

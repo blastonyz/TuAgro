@@ -39,6 +39,7 @@
 
 .last{
     font-size: 30;
+    text-align: center;
 }
 
 .charge{
@@ -58,6 +59,9 @@
         width: 90%;
     }
     .thirdText{
-        font-size: 22px;
+        font-size: 28px;
+    }
+    .last{
+        text-align: center;
     }
 }
