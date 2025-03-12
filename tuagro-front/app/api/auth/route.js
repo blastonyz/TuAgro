@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
 export async function POST(request){
     try {
@@ -31,15 +32,15 @@ export async function POST(request){
         });
 
         // Configurar la cookie
-        nextResponse.cookies.set('authToken', token, {
+        cookies().set("authToken", token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production', 
-            sameSite: 'strict',
-            maxAge: 60 * 60 * 24 * 7, 
-            path: '/', 
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "strict",
+            maxAge: 60 * 60 * 24 * 7, // 7 días
+            path: "/",
         });
 
-        return nextResponse;
+        return nextResponse
 
     } catch (error) {
         console.warn("Error en API /api/login:", error);

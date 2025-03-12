@@ -34,7 +34,7 @@ const AddCart = ({ item }) => {
 
             <div className="counterContainer">
 
-                <div className='quantityCont'>
+                <div className='quantityMain'>
                     <Counter onQuantityChange={setQuantity} />
                 </div>
 

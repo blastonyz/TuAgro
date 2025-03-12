@@ -17,6 +17,11 @@
     align-items: center;
 }
 
+.modalSection{
+    width: max-content;
+    padding: 30px;
+    margin: auto;
+}
 .filterModal{
     width:100%;
     height: 70%;
@@ -27,10 +32,15 @@
     background-color: rgba(248, 248, 248, 0.635);
 }
 
+.butonContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .closeModal{
-    position: absolute;
-    top: 0;
-    right: 35%;
+    display: flex;
     border: 3px solid var(--green);
     border-radius: 15px;
     padding: 5px;

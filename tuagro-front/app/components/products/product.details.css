@@ -94,6 +94,15 @@
     align-items: center;
 }
 
+.controlsContianer{
+    height: 160px;
+}
+
+
+.counterContianer{
+ height: 160px;
+}
+
 @media (max-width: 720px) {
     .detailsContainer {
         width: 90%;
@@ -151,7 +160,7 @@
     }
 
     .detailCat {
-        font-size: 16px;
+        font-size: 15px;
     }
 }
 
@@ -165,7 +174,7 @@
     }
 
     .prodData {
-        padding: 10px;
+        padding: 5px;
     }
 
     .imageContainer {

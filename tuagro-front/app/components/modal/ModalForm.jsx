@@ -2,18 +2,21 @@
 import RegisterForm from '../auth/register/RegisterForm'
 import './modal.css'
 
-const ModalForm = ({onClose}) => {
+const ModalForm = ({ onClose }) => {
   return (<>
- 
-        <div className="modalContainer">
-                <div className='modalFormContainer'>
-                <p>soy el modal</p>
-                <RegisterForm/>
-                <button onClick={onClose} className='closeModal'>X</button>
-                </div>
-            </div>
-        <div className='filterModal'>
-        </div>    
+
+    <div className="modalContainer">
+      <div className='modalFormContainer'>
+        <div className='modalSection'>
+          <div className='butonContainer'>
+            <button onClick={onClose} className='closeModal'>X</button>
+          </div>
+          <RegisterForm />
+        </div>
+      </div>
+    </div>
+    <div className='filterModal'>
+    </div>
   </>
   )
 }
