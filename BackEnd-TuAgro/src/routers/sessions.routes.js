@@ -42,6 +42,23 @@ router.post('/login', async (req, res) => {
     } 
 })
 
+router.get('/verify-session', verifyToken(usersController), async (req, res) => {
+    try {
+        const user = req.user; // Accede al usuario adjuntado por el middleware
+        console.log('Usuario en verify-session:', user);
+
+        if (!user) {
+            return res.status(401).json({ message: "Invalid session" });
+        }
+
+        res.json({ message: "Session active", user });
+    } catch (error) {
+        console.error('Error en verify-session:', error);
+        res.status(500).json({ message: "Error verifying session" });
+    }
+
+});
+
 //ruta protegida de prueba
 router.get('/protected', verifyToken(usersController), async (req, res) => {
     console.log('accedio');
