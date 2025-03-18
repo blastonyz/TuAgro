@@ -22,6 +22,8 @@ export const AuthProvider = ({ children }) => {
     }
     ,[])
 
+   
+
     console.log('user: ', user);
     //http://localhost:8080/login
 
@@ -44,7 +46,7 @@ export const AuthProvider = ({ children }) => {
                 setUser({ first_name: '', last_name: '', email: null, role: '' })
                 return { success: false, message: data.message || "Failed to login" }
             }
-            
+        
            
             console.log('context data: ',data);
             setUser(data.user)
@@ -71,7 +73,7 @@ export const AuthProvider = ({ children }) => {
                 setUser({ first_name: '', last_name: '', email: null, role: '' })
                 return { success: false, message: data.message || "Failed to login" }
             }
-            
+          
             console.log('context data: ',data);
             setUser(data.user)
             return { success: true, user: data.user }

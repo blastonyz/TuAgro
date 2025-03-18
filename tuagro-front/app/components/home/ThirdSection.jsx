@@ -47,6 +47,7 @@ const ThirdSection = () => {
 
   return (
     <section className='thirdMain' ref={thirdSectionRef}>
+      
       <div className="filterOverlay"></div>    
       <article className='thirdTextContainer'>
    
@@ -78,6 +79,7 @@ const ThirdSection = () => {
           Estas a unos pasos de adquirir los productos perfectos para Tu Empresa
         </motion.h4>
       </article>
+     
     </section>
   )
 }

@@ -10,10 +10,7 @@ const Header = () => {
     return (
         <div className='headerContainer'>
             <header className="mainHeader">
-                <div className='contactPhone'>
-                    <PhoneIcon className={'phoneIcon'} color={colors.yellow} size={'clamp(18px, 4vw, 24px)'}/>
-                    <h2 className='contacts'>3875321321</h2>
-                </div>
+                
                 <div className='contactPhone'>
                     <PhoneIcon className={'phoneIcon'} color={colors.yellow} size={'clamp(18px, 4vw, 24px)'}/>
                     <h2 className='contacts'>3875321321</h2>

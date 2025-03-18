@@ -1,10 +1,12 @@
+@import '../../colors.css';
+
 
 .navbar {
   width: 100%;
   background-color: #ffffff;
   display: flex;
+  flex-direction: row;
   height: 3.5rem;
-  align-items: center;
   position: relative;
   z-index: 1000; 
   box-shadow:0px 4px 7px rgba(0, 0, 0, 0.813); 
@@ -14,8 +16,29 @@
     display: flex;
     width: 100%; 
     height: max-content;
+    justify-content: space-between;
+    padding: 0 150px ;
 }
  
+  .logoContainer{
+    width: max-content;
+    height: auto;
+  }
+
+  .cartIconContainer{
+    display: flex;
+    flex-direction: row;
+    width: 50px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 5px;
+  }
+
+  .cartClose{
+    display: none;
+  }
+
   .linksContainer{
     position: absolute;
     left: 0;
@@ -41,18 +64,29 @@
     padding: 30px 40px;
     font-family: 'Chelsea-Market';
   }
+
+ 
   .menu{
     font-size: 50;
-    position: absolute;
-    right: 8%;
-    top: 2px;
-    color: #04B404;
+    color: var(--green);
     justify-content: right;
     align-items: flex-end;
   
   }
 
+  @media (max-width:1024px){
+   .navContainer{
+    padding: 0 75px;
+   }
+  }
+
   @media (max-width:592px){
+    .navContainer{
+      padding: 0 25px;
+     }
+     .cartIconContainer{
+      left: 60%;
+     }
     .linksContainer{
       padding-top: 80px;
     }

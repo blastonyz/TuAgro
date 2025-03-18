@@ -64,6 +64,12 @@
     font-family: 'Chelsea-Market';
 }
 
+.cartButtonsFooter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 .cartButtons{
     display: flex;
     flex-direction: column;
