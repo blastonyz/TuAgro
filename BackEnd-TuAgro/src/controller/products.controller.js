@@ -13,14 +13,14 @@ export default class ProductsController{
 
      async getByCategory(category){
         const products = await this.productsServices.getByCategory(category);
-        console.log(`category ${category}`,products);
+        console.log(`category ${category}`);
         return products;
     }
 
 
      async getById(pid){
         const product = await this.productsServices.getById(pid)
-        console.log('Product',product);
+     
         return product
     }
     

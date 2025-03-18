@@ -7,12 +7,9 @@ const productsController = new ProductsController()
 
 router.get('/products', async (req, res) => {
     const products = await productsController.get({});
-    console.log(products);
     const productsJSON = JSON.stringify(products);
-    console.log(productsJSON);
-  
+
     res.send(productsJSON)
-  
   });
   
  router.get('/products/:category', async (req, res) => {
@@ -29,7 +26,7 @@ router.get('/products', async (req, res) => {
     const { pid } = req.params;
     console.log('id: ', pid);
     const product = await productsController.getById(pid);
-    console.log('getId: ', product);
+
     res.send(product)
   
   });
