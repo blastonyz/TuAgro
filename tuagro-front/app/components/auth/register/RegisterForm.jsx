@@ -63,7 +63,7 @@ const RegisterForm = () => {
       return toast.error('Error al Registrarte');
     } else {
       notify('Te Registraste!', () => {
-        router.push('/auth/login');
+        router.push('/auth');
       });
       console.log('reg data: ', data);
       setUserData({ first_name: '', last_name: '', address: '', email: '', password: '', confirmPassword: '' })

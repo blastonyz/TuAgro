@@ -5,25 +5,17 @@ import { useAuthContext } from "../../context/AuthContext"
 import SectionTitle from "../../ui/title/SectionTitle"
 import Button from "../../ui/button/Button"
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { ToastContainer, toast } from 'react-toastify'
+
 
 const LoginForm = () => {
-    const router = useRouter()
 
     const { getUser, user } = useAuthContext()
 
-    
     const [userData, setUserData] = useState({
         email: '',
         password: ''
     })
-
-    const notify = (message, onCloseCallback) => {
-        toast(message, {
-            onClose: onCloseCallback,
-        });
-    };
+;
 
     const fetchToProtected = async () => {
         const response = await fetch('/api/prueba', {
@@ -34,14 +26,10 @@ const LoginForm = () => {
             }
         })
 
-
         if (!response.ok) throw new Error('fallo fecth a ruta prot')
         console.log('response: ', response);
-
         const data = await response.json()
         console.log(data);
-
-
     }
 
     const handleChange = (e) => {
@@ -51,43 +39,24 @@ const LoginForm = () => {
             [name]: value,
         }));
         console.log(userData);
-
     }
 
     const handleLogin = async (e) => {
         e.preventDefault()
-        if (!userData.email || !userData.password) {
-            toast.error('Por favor, completa todos los campos')
-            return
-        }
+     
         try {
             const result = await getUser(userData); 
-
             setUserData({
                 email: '',
                 password: ''
             });
-    
-            if (result.success) {
-                notify('Sesión Iniciada', () => {
-                    router.push('/');
-                });
-            } 
-
-             if(!result.user || result.user.email == '')   {
-                toast.error(result.message || 'Correo o Contraseña inválidos');
-            }
-            
-    
+            return result
         } catch (error) {
-            toast.error('Error al iniciar sesión');
             console.error(error);
         }
-
     }
 
     return (
-
         <div className="loginContainer">
             <SectionTitle size={26} text={'Inicia Sesion'} />
             <form className="loginForm">
@@ -121,7 +90,7 @@ const LoginForm = () => {
                 Probar
             </button>
 
-            <ToastContainer autoClose={1200} />
+          
         </div>
     )
 }

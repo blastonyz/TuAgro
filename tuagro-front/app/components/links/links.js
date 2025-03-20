@@ -17,7 +17,7 @@ export const links = [
     },
     {
         label: "Sesion",
-        href: "/auth/login"
+        href: "/auth"
     },
     {
         label: "Carrito",

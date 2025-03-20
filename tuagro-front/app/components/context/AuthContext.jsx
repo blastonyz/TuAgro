@@ -1,5 +1,7 @@
 'use client'
 import { createContext, useContext, useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { toast,ToastContainer } from "react-toastify"
 
 const AuthContext = createContext()
 
@@ -12,7 +14,7 @@ export const AuthProvider = ({ children }) => {
         email: null,
         role: ''
     })
-
+     const router = useRouter()
 
     useEffect( ()=>{
         const fetchData = async () => {
@@ -43,6 +45,7 @@ export const AuthProvider = ({ children }) => {
             const data = await response.json();
             if (!response.ok || !data.user) {
                 console.log('status: ',data );
+                toast.error('Error al iniciar sesión');
                 setUser({ first_name: '', last_name: '', email: null, role: '' })
                 return { success: false, message: data.message || "Failed to login" }
             }
@@ -50,10 +53,15 @@ export const AuthProvider = ({ children }) => {
            
             console.log('context data: ',data);
             setUser(data.user)
+            toast.success('Inicio de sesión exitoso', {
+                onClose: () => router.push('/'), 
+            });
+
             return { success: true, user: data.user }
         } catch (error) {
             console.error("Error throguh login:", error);
             setUser({ first_name: '', last_name: '', email: null, role: '' }); 
+            toast.error('Error al iniciar sesión');
             throw error;
         }
     }
@@ -80,6 +88,7 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.error("Error throguh login:", error);
             setUser({ first_name: '', last_name: '', email: null, role: '' }); 
+            toast.error('Error al iniciar sesión');
             throw error;
         }
     }
@@ -88,6 +97,7 @@ export const AuthProvider = ({ children }) => {
         <AuthContext.Provider value={{ user, getUser }}
         >
             {children}
+            <ToastContainer autoClose={1200}/>
         </AuthContext.Provider>
 
     )

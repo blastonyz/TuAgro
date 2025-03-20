@@ -1,7 +1,7 @@
 import RegisterForm from "@/app/components/auth/register/RegisterForm"
 
 
-export default function page(){
+export default function RegisterPage(){
     return(
       <div className="registerMain">
         <RegisterForm/>
