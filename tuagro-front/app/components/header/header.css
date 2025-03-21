@@ -9,7 +9,6 @@
     width: 100%;}
 
 .mainHeader{
-    background-color: var(--green);
     width: 100%;
     display: flex;
     flex-direction: row;

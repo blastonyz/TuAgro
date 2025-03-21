@@ -1,13 +1,24 @@
 'use client'
+import { useEffect, useState } from "react"
 import { useCartContext } from "../context/CartContext"
 import SectionTitle from "../ui/title/SectionTitle"
 import CartItems from "./CartItems"
 
 
 const CartContainer = () => {
-  const { cart, removeFromCart, clearCart, total, updateQuantity } = useCartContext()
+  const { cart, removeFromCart, clearCart, total, updateQuantity,saveCart } = useCartContext()
+
+  const [isSave,setIsSave] = useState(false)
 
   console.log('carrito: ', cart);
+  
+  useEffect(() => {
+    if (cart.length > 0 && !isSave) {
+      saveCart(cart).then(() => setIsSave(true)); 
+    }
+  }, [cart, isSave]); 
+  
+ 
 
   return (
     <div className="cartContainer">

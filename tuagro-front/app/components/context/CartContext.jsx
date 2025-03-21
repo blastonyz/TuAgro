@@ -9,14 +9,19 @@ export const CartProvider = ({ children }) => {
 
   const [cart, setCart] = useState([])
   const {user} = useAuthContext()
-
-
   console.log(cart);
 
   useEffect(() => {
     const existingCart = localStorage.getItem(`cart-${user.email}`)
-    existingCart ? setCart(JSON.parse(existingCart)) : setCart([])
-    ;
+    console.log('cart local: ',existingCart);
+    
+    if(existingCart){
+    setCart(JSON.parse(existingCart)) 
+    } else{
+      setCart([])
+    }
+ 
+    
   }, [user?.email]); 
 
   useEffect(() => {
@@ -70,24 +75,33 @@ export const CartProvider = ({ children }) => {
     localStorage.removeItem(`cart-${user.email}`);
   };
 
-  const saveCart = async () => {
+  const saveCart = async (cart) => {
+    console.log('cart to req in context: ',cart);
+    const cartBody = {
+      cid: user.cart,
+      products: cart.map(item => ({
+        productId: item._id,  
+        quantity: item.quantity 
+      }))
+    };
     const response = await fetch('/api/cart',{
       method:'POST',
       headers:{
-        "Content-Type": "aplication/json",
+        "Content-Type": "application/json",
         
       },
-      body:JSON.stringify(cart),
+      body:JSON.stringify(cartBody),
       credentials: 'include'
     })
-    const data = await data.json()
+    const data = await response.json()
     if(!response.ok){
       return { success: false, message: data.message || "Failed to save cart" }
     }
-    console.log('data.cart: ',data.cart);
+    console.log('data.cart: ',data);
     
     return { success: true, cart: data.cart }
   }
+
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, total,updateQuantity,saveCart }}>
       {children}

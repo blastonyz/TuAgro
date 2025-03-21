@@ -8,14 +8,16 @@ const AuthContext = createContext()
 export const useAuthContext = () => useContext(AuthContext)
 
 export const AuthProvider = ({ children }) => {
+    const router = useRouter()
+
     const [user, setUser] = useState({
         first_name: '',
         last_name: '',
         email: null,
-        role: ''
+        role: '',
+        cart:''
     })
-     const router = useRouter()
-
+    
     useEffect( ()=>{
         const fetchData = async () => {
             await verifyUser();
@@ -24,10 +26,7 @@ export const AuthProvider = ({ children }) => {
     }
     ,[])
 
-   
-
     console.log('user: ', user);
-    //http://localhost:8080/login
 
     const getUser = async (userData) => {
         try {

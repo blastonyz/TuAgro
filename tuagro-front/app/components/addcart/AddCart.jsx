@@ -6,6 +6,8 @@ import { useState } from "react"
 import RegisterModal from '@/app/producto/(..)auth/register/page'
 import Counter from './Counter'
 import Button from '../ui/button/Button'
+import AddModal from '../ui/add-modal/AddModal'
+
 
 const AddCart = ({ item }) => {
     const { user } = useAuthContext()
@@ -30,7 +32,7 @@ const AddCart = ({ item }) => {
     return (
         <>
             {showModal && <RegisterModal onClose={() => setShowModal(false)} />}
-            {addMessage ? <p>Agregado!</p> : null}
+            {addMessage ? <AddModal onCloseModal={setAddMessage} addMessage={addMessage} setAddMessage={setAddMessage} /> : null}
 
             <div className="counterContainer">
 

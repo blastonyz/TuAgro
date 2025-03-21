@@ -12,7 +12,6 @@ export async function POST(request){
             body: JSON.stringify(requestBody),
             credentials: 'include' 
         });
-        
     
         if(!response.ok) {
             const errorData = await response.json()
