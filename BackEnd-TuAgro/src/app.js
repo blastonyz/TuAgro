@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from 'cookie-parser'
 import productRouter from './routers/products.routes.js'
 import sessionRouter from  './routers/sessions.routes.js'
+import cartRouter from './routers/cart.routes.js';
 import CategoryController from "./controller/category.controller.js";
 
 const app = express();
@@ -21,7 +22,7 @@ app.use(cookieParser());
 
 const categoryController = new CategoryController()
 
-app.use('/',productRouter,sessionRouter)
+app.use('/',productRouter,sessionRouter,cartRouter)
 
 
 app.get('/categories', async (req, res) => {
@@ -31,7 +32,5 @@ app.get('/categories', async (req, res) => {
   res.send(categoriesJSON)
 
 });
-
-
 
 export default app;

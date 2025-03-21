@@ -50,9 +50,9 @@ export default class UsersService {
         if (!verify) throw new Error("email o password incorrectos");
        
         const token = await sessionToken(user)
-        const { first_name, last_name, email: userEmail, role } = user;
+        const { first_name, last_name, email: userEmail, role,cart } = user;
         
-        return {token:token,user:{first_name,last_name,email: userEmail,role}}
+        return {token:token,user:{first_name,last_name,email: userEmail,role,cart}}
        
     }
 

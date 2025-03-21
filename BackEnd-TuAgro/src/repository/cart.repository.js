@@ -15,8 +15,8 @@ export default class CartRepository {
         return this.cartDao.createCart({data})
     }
 
-    async update(id,data) {
-        return this.cartDao.create({id,data})
+    async updateCart(id,data) {
+        return this.cartDao.update(id,data)
     }
 
     async getPopulate(_id) {

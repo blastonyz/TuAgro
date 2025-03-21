@@ -13,8 +13,27 @@ export default class CartDao {
         return await CartModel.create({});
     }
 
-    async update(_id,update){
-        return await CartModel.updateOne({_id},update);
+    async update(cid,update){
+        console.log('dao update:', update)
+        try {
+            const updatedCart = await CartModel.findByIdAndUpdate(
+              cid,
+              { $set: { products: update } },
+              { new: true } 
+            );
+        
+            if (!updatedCart) {
+              return { message: "Carrito no encontrado", status: 404 };
+            }
+        
+            return {
+              message: "Carrito actualizado",
+              data: updatedCart
+            };
+          } catch (error) {
+            console.error(error);
+            return { message: "Error al actualizar el carrito", error: error.message };
+          }
     }
 
     async delete(_id){

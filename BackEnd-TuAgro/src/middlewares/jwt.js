@@ -6,7 +6,7 @@ export const sessionToken = async (user) => {
     const payload = {userId: user._id.toString()}
     console.log('token: ', payload.userId);
     return jwt.sign(payload,configuration.jwt_secret,{
-        expiresIn:'10m'
+        expiresIn:'5m'
     })
 }
 
