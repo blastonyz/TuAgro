@@ -1,9 +1,9 @@
 'use client'
 import { useAuthContext } from "../components/context/AuthContext";
 import { usePathname } from "next/navigation";
-import { ToastContainer } from "react-toastify";
 
-export default function AuthLayout({ login, profile,children}) {
+
+export default function AuthLayout({ login, profile,admin,children}) {
     const { user } = useAuthContext();
     const pathname = usePathname();
 
@@ -14,8 +14,9 @@ export default function AuthLayout({ login, profile,children}) {
     if (!user?.email || user.email == '') {
         return login
         
-    } else {
-     
+    } else if (user.role == 'admin' ){
+        return admin
+    }else{
         return profile; 
     }
 }

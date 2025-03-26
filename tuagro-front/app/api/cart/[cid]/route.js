@@ -1,16 +1,16 @@
 import { NextResponse } from "next/server";
 
-export async function POST(request) {
-    try {
-        const requestBody = await request.json()
-        console.log('api cart: ', requestBody);
 
-        const response = await fetch('http://localhost:8080/cart', {
-            method: 'POST',
+export async function GET(request,{params}) {
+    const { cid } = await params
+    console.log('cid api: ',cid);
+    
+    try {
+        const response = await fetch(`http://localhost:8080/cart/${cid}`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(requestBody),
             credentials: 'include'
         })
 
@@ -23,9 +23,15 @@ export async function POST(request) {
         }
 
         const data = await response.json()
-        return NextResponse.json({
-            message: 'carrito guardado',
-            data
+        const simplifiedCart = data.products.map(p => ({
+            ...p.productId,      
+            quantity: p.quantity 
+          }))
+
+        return NextResponse.json(JSON.stringify(simplifiedCart), {
+            status: response.status,
+            headers: { 'Content-Type': 'application/json' }
+
         });
     } catch (error) {
         return NextResponse.json({

@@ -7,6 +7,7 @@ export async function GET(request){
         if (!response.ok) throw new Error("Error al obtener productos");
         
         const data = await response.json();
+
         
         return new NextResponse(JSON.stringify(data), {
             status: 200,
