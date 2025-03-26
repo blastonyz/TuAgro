@@ -1,21 +1,29 @@
 import CartService from "../services/cart.service.js"
 
-export default class CartsController{
-    constructor(){
+export default class CartsController {
+    constructor() {
         this.cartServices = new CartService()
     }
 
-    async get(){
+    async get() {
         return this.cartServices.get()
     }
 
-    async getCart(cid){
-        const cart = await this.cartServices.getCart(cid)
-        return cart
+    async getCart(cid) {
+        try {
+            const cart = await this.cartServices.getCart(cid)
+            console.log('controller cart: ', cart);
+
+            return cart
+        } catch (error) {
+            console.log('controller error: ', error);
+
+        }
+
     }
 
-    async updateCart(cid,data){
-        return await this.cartServices.updateCart(cid,data)
+    async updateCart(cid, data) {
+        return await this.cartServices.updateCart(cid, data)
     }
 
 }

@@ -6,7 +6,7 @@ export default class CartDao {
     }
 
     async getCart(cartId){
-        return await CartModel.findById(cartId);
+        return await CartModel.findById(cartId)
     }
 
     async createCart({}){
@@ -40,6 +40,6 @@ export default class CartDao {
         return await CartModel.deleteOne({_id});
     }
     async getPopulate(_id){
-        return   await CartModel.findById(_id).populate('products.prodId')
+        return   await CartModel.findById(_id).populate('products.productId')
     }
 }

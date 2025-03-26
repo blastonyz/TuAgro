@@ -8,7 +8,7 @@ export default class CartRepository {
 
 
     async getCart(cid){
-         return this.cartDao.getCart(cid)
+         return this.cartDao.getPopulate(cid)
     }
 
     async createCart(data) {
@@ -19,8 +19,6 @@ export default class CartRepository {
         return this.cartDao.update(id,data)
     }
 
-    async getPopulate(_id) {
-        return this.cartDao
-    }
+
 
 }

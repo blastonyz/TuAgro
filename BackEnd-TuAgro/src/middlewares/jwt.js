@@ -6,7 +6,7 @@ export const sessionToken = async (user) => {
     const payload = {userId: user._id.toString()}
     console.log('token: ', payload.userId);
     return jwt.sign(payload,configuration.jwt_secret,{
-        expiresIn:'5m'
+        expiresIn:'1m'
     })
 }
 
@@ -28,7 +28,7 @@ export const verifyToken = (usersController) => {
             console.log('Token decodificado:', decodedToken);
 
             const user = await usersController.getById(decodedToken.userId.toString());
-            console.log('Usuario encontrado:', user);
+            console.log('Usuario encontrado:', user.email);
 
             if (!user) return res.status(403).json({ message: 'user does not exist' });
 

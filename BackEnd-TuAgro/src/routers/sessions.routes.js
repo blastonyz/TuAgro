@@ -24,7 +24,7 @@ router.post('/login', async (req, res) => {
     const userData = req.body
     try {
         const userAndToken = await usersController.logInUser(userData.email, userData.password)
-        console.log('router, controller resp: ',userAndToken);
+      //  console.log('router, controller resp: ',userAndToken);
         
         res.cookie('authToken', userAndToken.token, {
             httpOnly: true,
@@ -45,7 +45,7 @@ router.post('/login', async (req, res) => {
 router.get('/verify-session', verifyToken(usersController), async (req, res) => {
     try {
         const user = req.user; // Accede al usuario adjuntado por el middleware
-        console.log('Usuario en verify-session:', user);
+        //console.log('Usuario en verify-session:', user);
 
         if (!user) {
             return res.status(401).json({ message: "Invalid session" });

@@ -10,7 +10,11 @@ export default class CartService{
     }
 
     async getCart(cid){
-         return await this.cartRepository.getCart(cid)
+        
+        const cart =  await this.cartRepository.getCart(cid)
+        console.log('service populate cart: ',cart);
+        return cart
+            
     }
 
     async create(data){
