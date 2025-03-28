@@ -23,4 +23,6 @@ export default {
     mongoDbUri: mongoDbUri,
     port: process.env.PORT || 3000, 
     jwt_secret: process.env.JWT_SECRET,
+    client_id:process.env.CLIENT_ID_GOOGLE,
+    client_secret:process.env.CLIENT_SECRET_GOOGLE
 };

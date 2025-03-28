@@ -1,6 +1,9 @@
 import { Router } from "express";
 import UsersController from '../controller/users.controller.js';
 import { verifyToken } from "../middlewares/jwt.js";
+import configuration from "../config/configuration.js";
+import {OAuth2Client} from'google-auth-library'
+
 
 const router = Router();
 
@@ -41,6 +44,48 @@ router.post('/login', async (req, res) => {
         }).status(401).json({ message: error.message });
     } 
 })
+
+//google-oauth
+ 
+const oAuth2Client = new OAuth2Client(
+    configuration.client_id,
+    configuration.client_secret,
+    "http://localhost:8080/auth/google/callback"
+  );
+
+router.get('/auth/google', async (req,res) => {
+
+    const authorizeUrl = oAuth2Client.generateAuthUrl({
+        access_type: 'offline',
+        scope: 'https://www.googleapis.com/auth/userinfo.profile',
+      });
+      res.redirect(authorizeUrl)
+})
+//callback url
+
+router.get('/auth/google/callback', async (req,res) => {
+    try {
+        const { code } = req.query;
+        const { tokens } =  oAuth2Client.getToken(code);
+       oAuth2Client.setCredentials(tokens);
+
+        // Obtener información del usuario
+        const userInfo = await oAuth2Client.request({
+            url: "https://www.googleapis.com/oauth2/v3/userinfo",
+        });
+
+        // Guardar en cookies (opcional)
+        res.cookie("Oauth-token", tokens.id_token, { httpOnly: true });
+
+        // Enviar respuesta con datos del usuario
+        res.json(userInfo.data);
+    } catch (error) {
+        console.error("Error en autenticación:", error);
+        res.status(500).json({ error: "Error al autenticar con Google" });
+    }
+})
+
+
 
 router.get('/verify-session', verifyToken(usersController), async (req, res) => {
     try {
