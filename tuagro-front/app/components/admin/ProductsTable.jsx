@@ -29,7 +29,7 @@ const ProductsTable = ({products}) => {
                                 <tr key={product._id}>
                                     <td className="p-2">{product.title}</td>
                                     <td className="p-2">$ {product.price}</td>
-                                    <td className="p-2">{product.categoria}</td>
+                                    <td className="p-2">{product.category}</td>
                                     <td className="p-2">{product.stock}</td>
                                     <td className="p-2">{product.description}</td>
                                     <td className="p-2">{product._id}</td>
@@ -44,7 +44,7 @@ const ProductsTable = ({products}) => {
                                         </td>
                                     <td className="p-2">
                                         <button className="bg-green-400">
-                                            <Link href={`auth/admin/edit/${product._id}`}>editar</Link>
+                                            <Link href={`auth/edit/${product._id}`}>editar</Link>
                                         </button>
                                     </td>
                                 </tr>
@@ -54,6 +54,11 @@ const ProductsTable = ({products}) => {
                     </tbody>   
  
             </table>
+            <div className="tableFooter">
+                <Link href={'/auth/create'}>Crear
+                </Link>
+            </div>
+
             </div>
   )
 }

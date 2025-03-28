@@ -1,6 +1,8 @@
 'use client'
 import './contact.form.css'
 import { useState } from 'react'
+import FormContainer from '../ui/form/FormContainer'
+import CustomInputs from '../ui/form/CustomInputs'
 import Button from '../ui/button/Button'
 import SectionTitle from '../ui/title/SectionTitle'
 
@@ -31,14 +33,28 @@ const ContactForm = () => {
  
         <div className="contactContainer">
             <SectionTitle text={'Contactanos'} size={26}/>
-          <form className="genericForm">
-                <input onChange={handleContact} type="text" name="firstName" placeholder="Nombre" value={data.firstName} className='inputsFields'/>
-                <input onChange={handleContact} type="email" name="email" placeholder="E-mail" value={data.email} className='inputsFields'/>
-                <input onChange={handleContact} type="number" name="phone" placeholder="Telefono" value={data.phone} className='inputsFields'/>
+          <FormContainer >
+                <CustomInputs
+                 onChange={handleContact}
+                  type={"text"} 
+                  name={"firstName" }
+                  placeholder={"Nombre"}
+                   value={data.firstName} />
+
+                <CustomInputs
+                 onChange={handleContact} type={"email"} 
+                 name={"email"} placeholder={"E-mail"} 
+                 value={data.email} />
+
+                <CustomInputs 
+                onChange={handleContact} type={"number"} 
+                name={"phone"} placeholder={"Telefono"} 
+                value={data.phone} />
+
                 <textarea onChange={handleContact} name="consult" value={data.consult} className='inputsArea' placeholder='Dejanos tu Consulta'></textarea>
                 <Button text={'Enviar'} type={'submit'} />
                 
-          </form>
+          </FormContainer>
 
         </div>
         

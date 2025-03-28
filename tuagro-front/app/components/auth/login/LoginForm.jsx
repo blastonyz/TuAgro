@@ -3,6 +3,8 @@ import './login.css'
 import { useState } from "react"
 import { useAuthContext } from "../../context/AuthContext"
 import SectionTitle from "../../ui/title/SectionTitle"
+import FormContainer from '../../ui/form/FormContainer'
+import CustomInputs from '../../ui/form/CustomInputs'
 import Button from "../../ui/button/Button"
 import Link from 'next/link'
 
@@ -15,7 +17,11 @@ const LoginForm = () => {
         email: '',
         password: ''
     })
-;
+        ;
+
+    const googleOAuth = async () => {
+         window.location.href = "http://localhost:8080/auth/google"
+    }
 
     const fetchToProtected = async () => {
         const response = await fetch('/api/prueba', {
@@ -43,9 +49,9 @@ const LoginForm = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault()
-     
+
         try {
-            const result = await getUser(userData); 
+            const result = await getUser(userData);
             setUserData({
                 email: '',
                 password: ''
@@ -59,28 +65,26 @@ const LoginForm = () => {
     return (
         <div className="loginContainer">
             <SectionTitle size={26} text={'Inicia Sesion'} />
-            <form className="loginForm">
-                <input
+            <FormContainer>
+                <CustomInputs
                     onChange={handleChange}
-                    type="email"
-                    name="email"
-                    placeholder="Email"
+                    type={"email"}
+                    name={"email"}
+                    placeholder={"Email"}
                     value={userData.email}
-                    className="inputsFields"
                     required={true}
                 />
-                <input
+                <CustomInputs
                     onChange={handleChange}
-                    type="password"
-                    name="password"
-                    placeholder="Password"
+                    type={"password"}
+                    name={"password"}
+                    placeholder={"Password"}
                     value={userData.password}
-                    className="inputsFields"
                     required={true}
                 />
 
                 <Button type="submit" onClick={handleLogin} text={'Iniciar Sesion'} />
-            </form>
+            </FormContainer>
             <div className='registerLink'>
                 <p className='registerText'>No te registraste aun?</p>
 
@@ -90,7 +94,9 @@ const LoginForm = () => {
                 Probar
             </button>
 
-          
+            <button onClick={googleOAuth}>
+                Google
+            </button>
         </div>
     )
 }

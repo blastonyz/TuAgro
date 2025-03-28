@@ -109,7 +109,8 @@
     align-items: center;
     height: 150px;
     width: 250px;
-    background: linear-gradient(45deg  ,var(--green),var(--green2),var(--green-shadow),var(--soft-green), var(--green2),var(--green));
+    background: rgb(247,204,15);
+    background: linear-gradient(145deg, rgba(247,204,15,1) 0%, rgba(224,197,25,1) 28%, rgba(89,255,55,1) 67%, rgba(95,187,70,1) 100%);
     position: absolute;
     border-radius: 20px;
     border: var(--gray) 3px solid;

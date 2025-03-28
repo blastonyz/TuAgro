@@ -3,6 +3,8 @@ import './register.css'
 import { useState } from "react"
 import Button from "../../ui/button/Button"
 import SectionTitle from "../../ui/title/SectionTitle"
+import FormContainer from '../../ui/form/FormContainer'
+import CustomInputs from '../../ui/form/CustomInputs'
 import { ToastContainer, toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 
@@ -74,52 +76,54 @@ const RegisterForm = () => {
   return (
     <div className="registerContainer">
       <SectionTitle text={'Registrate'} size={26} />
-      <form className="genericForm">
-        <input
+      <FormContainer >
+        <CustomInputs
           onChange={handleChange}
-          type="text"
-          name="first_name"
-          placeholder="Nombre"
-          value={userData.first_name} className="inputsFields2" />
-        <input
+          type={"text"}
+          name={"first_name"}
+          placeholder={"Nombre"}
+          value={userData.first_name} 
+          />
+        <CustomInputs
           onChange={handleChange}
-          type="text"
-          name="last_name"
-          placeholder="Apellido"
+          type={"text"}
+          name={"last_name"}
+          placeholder={"Apellido"}
           value={userData.last_name}
-          className="inputsFields2" />
-        <input
+          />
+        <CustomInputs
           onChange={handleChange}
-          type="text"
-          name="address"
-          placeholder="Direccion"
+          type={"text"}
+          name={"address"}
+          placeholder={"Direccion"}
           value={userData.address}
-          className="inputsFields2" />
-        <input
+          />
+        <CustomInputs
           onChange={handleChange}
-          type="email"
-          name="email"
-          placeholder="Email"
+          type={"email"}
+          name={"email"}
+          placeholder={"Email"}
           value={userData.email}
-          className="inputsFields2" />
-        <input
+          />
+        <CustomInputs
           onChange={handleChange}
-          type="password"
-          name="password"
-          placeholder="Password"
+          type={"password"}
+          name={"password"}
+          placeholder={"Password"}
           value={userData.password}
-          className="inputsFields2" />
-        <input
+          />
+        <CustomInputs
           onChange={handleChange}
-          type="password"
-          name="confirmPassword"
-          placeholder="Repite Password"
-          value={userData.confirmPassword} className="inputsFields2" />
+          type={"password"}
+          name={"confirmPassword"}
+          placeholder={"Repite Password"}
+          value={userData.confirmPassword} 
+          />
 
         <div className="errorContainer"> {error && <p style={{ color: 'red' }}>Las contraseñas no coinciden.</p>}</div>
         <Button type="submit" onClick={handleSubmit} text={'Registrarte'} />
 
-      </form>
+      </FormContainer>
       <ToastContainer autoClose={1200} />
     </div>
   )
