@@ -11,7 +11,7 @@ import Link from 'next/link'
 
 const LoginForm = () => {
 
-    const { getUser, user } = useAuthContext()
+    const { getUser, user,verifyUser } = useAuthContext()
 
     const [userData, setUserData] = useState({
         email: '',
@@ -21,6 +21,9 @@ const LoginForm = () => {
 
     const googleOAuth = async () => {
          window.location.href = "http://localhost:8080/auth/google"
+         setTimeout(async () => {
+            await verifyUser(); 
+        }, 2000);
     }
 
     const fetchToProtected = async () => {
