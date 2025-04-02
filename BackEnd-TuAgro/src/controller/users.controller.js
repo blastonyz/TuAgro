@@ -33,4 +33,9 @@ export default class UsersController {
 
     }
 
+    async googleUser(data){
+        const token = await this.userServices.googlAauthentication(data)
+        return token
+    }
+   
 }

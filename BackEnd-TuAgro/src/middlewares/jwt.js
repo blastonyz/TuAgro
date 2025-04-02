@@ -4,7 +4,7 @@ import configuration from '../config/configuration.js'
 
 export const sessionToken = async (user) => {
     const payload = {userId: user._id.toString()}
-    console.log('token: ', payload.userId);
+    console.log('sesionIDtoken: ', payload.userId);
     return jwt.sign(payload,configuration.jwt_secret,{
         expiresIn:'1m'
     })

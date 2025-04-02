@@ -56,6 +56,23 @@ export default class UsersService {
        
     }
 
+    async googlAauthentication(data){
+        try {
+            const user = await this.usersRepository.getByEmail(data.email)
+            if(user){
+                return sessionToken(user)
+            }
+            const newCart = await this.cartService.create()
+            const newCartId = newCart._id.toString()
+            const newUserData = {...data,cart:  newCartId}
+            const newUser = await this.usersRepository.createUser(newUserData)
+            return sessionToken(newUser)
+        } catch (error) {
+            console.log('error: ',error);
+              throw error   
+        }
+    }
+
     async update(uid, data) {
         return this.usersRepository.updateUserbyEmail({ uid, data })
     }

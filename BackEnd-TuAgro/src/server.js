@@ -6,7 +6,8 @@ import { connectionDB } from './db/mongoose.js';
 await connectionDB();
 const server =  http.createServer(app);
 const PORT = configuration.port;
+const HOST = configuration.host
 //init(server);
 
 
-server.listen(PORT,()=>{console.log(`Server runing on port:${PORT} `)});
+server.listen(PORT,HOST, ()=>{console.log(`Server runing on port:${HOST}:${PORT} `)});

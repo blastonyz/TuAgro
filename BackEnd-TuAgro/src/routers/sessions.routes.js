@@ -55,9 +55,9 @@ const oAuth2Client = new OAuth2Client(
 
 router.get('/auth/google', async (req,res) => {
 
-    const authorizeUrl = oAuth2Client.generateAuthUrl({
+    const authorizeUrl =  oAuth2Client.generateAuthUrl({
         access_type: 'offline',
-        scope: 'https://www.googleapis.com/auth/userinfo.profile',
+        scope:['profile', 'email'],
       });
       res.redirect(authorizeUrl)
 })
@@ -66,19 +66,32 @@ router.get('/auth/google', async (req,res) => {
 router.get('/auth/google/callback', async (req,res) => {
     try {
         const { code } = req.query;
-        const { tokens } =  oAuth2Client.getToken(code);
+        const { tokens } = await oAuth2Client.getToken(code);
        oAuth2Client.setCredentials(tokens);
-
+     //   console.log('tokens: ',tokens);
+        
         // Obtener información del usuario
         const userInfo = await oAuth2Client.request({
             url: "https://www.googleapis.com/oauth2/v3/userinfo",
         });
-
+       
         // Guardar en cookies (opcional)
-        res.cookie("Oauth-token", tokens.id_token, { httpOnly: true });
+        //
 
+        //jwt con session id
+        const data = {first_name: userInfo.data.given_name, last_name: userInfo.data.family_name, email: userInfo.data.email} 
+        console.log('userInfo: ',data);
+        
+        const token = await usersController.googleUser(data)
+        console.log('token2: ',token);
+        const editedToken = `authToken=${token}`
         // Enviar respuesta con datos del usuario
-        res.json(userInfo.data);
+        res.cookie('authToken',editedToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None',
+            maxAge: 60 * 60 * 1000
+        }).redirect('http://localhost:3000');
     } catch (error) {
         console.error("Error en autenticación:", error);
         res.status(500).json({ error: "Error al autenticar con Google" });

@@ -21,7 +21,8 @@ export default {
     debug: program.opts().d,
     mode: mode,
     mongoDbUri: mongoDbUri,
-    port: process.env.PORT || 3000, 
+    port: process.env.PORT || 8080, 
+    host: process.env.HOST,
     jwt_secret: process.env.JWT_SECRET,
     client_id:process.env.CLIENT_ID_GOOGLE,
     client_secret:process.env.CLIENT_SECRET_GOOGLE
