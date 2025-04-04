@@ -65,6 +65,7 @@ const LoginForm = () => {
         }
     }
 
+  
     return (
         <div className="loginContainer">
             <SectionTitle size={26} text={'Inicia Sesion'} />
@@ -100,6 +101,12 @@ const LoginForm = () => {
             <button onClick={googleOAuth}>
                 Google
             </button>
+
+            <Link href={'/auth/recovery-form'}>
+               Recuperar Contraseña
+            </Link>
+
+            
         </div>
     )
 }

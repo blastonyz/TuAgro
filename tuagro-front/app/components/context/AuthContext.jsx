@@ -93,7 +93,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ user, getUser }}
+        <AuthContext.Provider value={{ user, getUser,verifyUser }}
         >
             {children}
             <ToastContainer autoClose={1200}/>

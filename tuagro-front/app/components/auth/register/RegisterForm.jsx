@@ -83,6 +83,7 @@ const RegisterForm = () => {
           name={"first_name"}
           placeholder={"Nombre"}
           value={userData.first_name} 
+          required={true}
           />
         <CustomInputs
           onChange={handleChange}
@@ -90,6 +91,7 @@ const RegisterForm = () => {
           name={"last_name"}
           placeholder={"Apellido"}
           value={userData.last_name}
+          required={true}
           />
         <CustomInputs
           onChange={handleChange}
@@ -104,6 +106,7 @@ const RegisterForm = () => {
           name={"email"}
           placeholder={"Email"}
           value={userData.email}
+          required={true}
           />
         <CustomInputs
           onChange={handleChange}
@@ -111,6 +114,7 @@ const RegisterForm = () => {
           name={"password"}
           placeholder={"Password"}
           value={userData.password}
+          required={true}
           />
         <CustomInputs
           onChange={handleChange}
@@ -118,6 +122,7 @@ const RegisterForm = () => {
           name={"confirmPassword"}
           placeholder={"Repite Password"}
           value={userData.confirmPassword} 
+          required={true}
           />
 
         <div className="errorContainer"> {error && <p style={{ color: 'red' }}>Las contraseñas no coinciden.</p>}</div>
