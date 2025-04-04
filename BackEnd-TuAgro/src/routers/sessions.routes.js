@@ -27,8 +27,7 @@ router.post('/login', async (req, res) => {
     const userData = req.body
     try {
         const userAndToken = await usersController.logInUser(userData.email, userData.password)
-      //  console.log('router, controller resp: ',userAndToken);
-        
+   
         res.cookie('authToken', userAndToken.token, {
             httpOnly: true,
             secure: true,
@@ -68,24 +67,18 @@ router.get('/auth/google/callback', async (req,res) => {
         const { code } = req.query;
         const { tokens } = await oAuth2Client.getToken(code);
        oAuth2Client.setCredentials(tokens);
-     //   console.log('tokens: ',tokens);
-        
         // Obtener información del usuario
         const userInfo = await oAuth2Client.request({
             url: "https://www.googleapis.com/oauth2/v3/userinfo",
         });
        
-        // Guardar en cookies (opcional)
-        //
-
-        //jwt con session id
         const data = {first_name: userInfo.data.given_name, last_name: userInfo.data.family_name, email: userInfo.data.email} 
         console.log('userInfo: ',data);
         
         const token = await usersController.googleUser(data)
         console.log('token2: ',token);
         const editedToken = `authToken=${token}`
-        // Enviar respuesta con datos del usuario
+
         res.cookie('authToken',editedToken, {
             httpOnly: true,
             secure: true,
@@ -102,9 +95,7 @@ router.get('/auth/google/callback', async (req,res) => {
 
 router.get('/verify-session', verifyToken(usersController), async (req, res) => {
     try {
-        const user = req.user; // Accede al usuario adjuntado por el middleware
-        //console.log('Usuario en verify-session:', user);
-
+        const user = req.user; 
         if (!user) {
             return res.status(401).json({ message: "Invalid session" });
         }
@@ -116,6 +107,25 @@ router.get('/verify-session', verifyToken(usersController), async (req, res) => 
     }
 
 });
+
+router.post('/recovery-link', async (req,res)=> {
+    const {email} = req.body
+    const recoveryData = await usersController.createRecoveryLink(email)
+    if(!recoveryData){
+        throw error('error al crear link de recuperacionn')
+    } 
+    res.status(200).json(recoveryData)
+})
+
+router.post('/recovery-password/:token',async (req,res)=> {
+    const {token} = req.params
+    console.log('params: ',token)
+    const {password} = req.body
+ 
+    const updated = await usersController.updatePass(token,password)
+    console.log('actualizado: ',updated)
+    res.status(200).json(updated)
+})
 
 //ruta protegida de prueba
 router.get('/protected', verifyToken(usersController), async (req, res) => {

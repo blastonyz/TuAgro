@@ -26,7 +26,7 @@ export default class UsersRepository{
     }
 
     async getByIdAndUpdate(sid,data){
-            return this.usersDao.getByIdAndUpdate(sid,data);
+            return  this.usersDao.getByIdAndUpdate(sid,data);
     }
 
     async delete(uid){

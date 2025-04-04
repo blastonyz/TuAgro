@@ -2,6 +2,8 @@ import UsersRepository from "../repository/users.repository.js";
 import CartService from "./cart.service.js";
 import { createHash, isValidPassword } from '../middlewares/isAuth.js'
 import { sessionToken } from "../middlewares/jwt.js";
+import { decodedToken } from "../middlewares/jwt.js";
+
 
 export default class UsersService {
     constructor() {
@@ -71,6 +73,25 @@ export default class UsersService {
             console.log('error: ',error);
               throw error   
         }
+    }
+
+    async createRecoveryLink(email){
+        const isValidEmail = await this.usersRepository.getByEmail(email)
+        if(!isValidEmail){
+            throw new Error('usuario no registrado')
+        } 
+        const token = await sessionToken(isValidEmail)
+        const recoveryLink = `http://localhost:3000/recovery-pass?token=${token}`;  
+       return recoveryLink
+    }
+
+    async updatePass(token,password){
+        
+        const tokenData = await decodedToken(token)
+        console.log('datos del token: ',tokenData)
+        const hashedPass = await createHash(password)
+        const updated = await this.usersRepository.getByIdAndUpdate(tokenData.userId,{ password: hashedPass })
+        return updated
     }
 
     async update(uid, data) {

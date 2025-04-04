@@ -25,5 +25,11 @@ export default {
     host: process.env.HOST,
     jwt_secret: process.env.JWT_SECRET,
     client_id:process.env.CLIENT_ID_GOOGLE,
-    client_secret:process.env.CLIENT_SECRET_GOOGLE
+    client_secret:process.env.CLIENT_SECRET_GOOGLE,
+    mail: {
+        emailServices: process.env.EMAIL_SERVICES || 'gmail',
+        emailPort: process.env.EMAIL_PORT || 587,
+        emailUser: process.env.EMAIL_USER,
+        emailPassword: process.env.EMAIL_PASSWORD
+    }
 };

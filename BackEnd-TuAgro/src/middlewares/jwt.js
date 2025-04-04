@@ -1,12 +1,11 @@
 import jwt from 'jsonwebtoken'
 import configuration from '../config/configuration.js'
 
-
 export const sessionToken = async (user) => {
     const payload = {userId: user._id.toString()}
     console.log('sesionIDtoken: ', payload.userId);
     return jwt.sign(payload,configuration.jwt_secret,{
-        expiresIn:'1m'
+        expiresIn:'5m'
     })
 }
 
@@ -40,3 +39,20 @@ export const verifyToken = (usersController) => {
         }
     }
 };
+
+export const decodedToken = async (token) => {
+    try {
+        const decoded = jwt.verify(token, configuration.jwt_secret);
+        console.log("Token decodificado:", decoded);
+        return decoded
+    } catch (error) {
+        if (error.name === "TokenExpiredError") {
+
+            return { error: "expired" };
+          } else {
+      
+            return { error: "invalid" };
+          }
+    }
+    
+}
