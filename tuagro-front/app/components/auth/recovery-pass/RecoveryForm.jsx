@@ -1,8 +1,10 @@
 'use client'
+import './recovery.section.css'
 import { useState } from "react"
 import FormContainer from "../../ui/form/FormContainer"
 import CustomInputs from "../../ui/form/CustomInputs"
 import Button from "../../ui/button/Button";
+import VideoSection from '../../ui/video/VideoSection'
 
 const RecoveryForm = () => {
     const [emailUser,setEmailUser] = useState({email:''})
@@ -33,22 +35,25 @@ const RecoveryForm = () => {
     }
 
   return (
-    <div className="recoveryFormSection">
-       <FormContainer>
-        <CustomInputs
-        type={'email'}
-        placeholder={'E-mail'}
-        name={'email'}
-        value={emailUser.email}
-        onChange={handleChange}
-        />
-        <Button
-        type={"submit"}
-        text={"Enviar"}
-        onClick={handleSUbmit}
-        />
-       </FormContainer>
-     </div>
+<div className='recoveryMain'>
+        <div className="recoveryFormSection">
+           <FormContainer>
+            <CustomInputs
+            type={'email'}
+            placeholder={'E-mail'}
+            name={'email'}
+            value={emailUser.email}
+            onChange={handleChange}
+            />
+            <Button
+            type={"submit"}
+            text={"Enviar"}
+            onClick={handleSUbmit}
+            />
+           </FormContainer>
+         </div>
+        <VideoSection/>
+</div>
   )
 }
 

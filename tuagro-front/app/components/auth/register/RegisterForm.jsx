@@ -7,6 +7,7 @@ import FormContainer from '../../ui/form/FormContainer'
 import CustomInputs from '../../ui/form/CustomInputs'
 import { ToastContainer, toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
+import VideoSection from '../../ui/video/VideoSection'
 
 const RegisterForm = () => {
 
@@ -74,63 +75,66 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className="registerContainer">
-      <SectionTitle text={'Registrate'} size={26} />
-      <FormContainer >
-        <CustomInputs
-          onChange={handleChange}
-          type={"text"}
-          name={"first_name"}
-          placeholder={"Nombre"}
-          value={userData.first_name} 
-          required={true}
-          />
-        <CustomInputs
-          onChange={handleChange}
-          type={"text"}
-          name={"last_name"}
-          placeholder={"Apellido"}
-          value={userData.last_name}
-          required={true}
-          />
-        <CustomInputs
-          onChange={handleChange}
-          type={"text"}
-          name={"address"}
-          placeholder={"Direccion"}
-          value={userData.address}
-          />
-        <CustomInputs
-          onChange={handleChange}
-          type={"email"}
-          name={"email"}
-          placeholder={"Email"}
-          value={userData.email}
-          required={true}
-          />
-        <CustomInputs
-          onChange={handleChange}
-          type={"password"}
-          name={"password"}
-          placeholder={"Password"}
-          value={userData.password}
-          required={true}
-          />
-        <CustomInputs
-          onChange={handleChange}
-          type={"password"}
-          name={"confirmPassword"}
-          placeholder={"Repite Password"}
-          value={userData.confirmPassword} 
-          required={true}
-          />
+   <>
+      <div className="registerContainer">
+        <SectionTitle text={'Registrate'} size={26} />
+        <FormContainer >
+          <CustomInputs
+            onChange={handleChange}
+            type={"text"}
+            name={"first_name"}
+            placeholder={"Nombre"}
+            value={userData.first_name} 
+            required={true}
+            />
+          <CustomInputs
+            onChange={handleChange}
+            type={"text"}
+            name={"last_name"}
+            placeholder={"Apellido"}
+            value={userData.last_name}
+            required={true}
+            />
+          <CustomInputs
+            onChange={handleChange}
+            type={"text"}
+            name={"address"}
+            placeholder={"Direccion"}
+            value={userData.address}
+            />
+          <CustomInputs
+            onChange={handleChange}
+            type={"email"}
+            name={"email"}
+            placeholder={"Email"}
+            value={userData.email}
+            required={true}
+            />
+          <CustomInputs
+            onChange={handleChange}
+            type={"password"}
+            name={"password"}
+            placeholder={"Password"}
+            value={userData.password}
+            required={true}
+            />
+          <CustomInputs
+            onChange={handleChange}
+            type={"password"}
+            name={"confirmPassword"}
+            placeholder={"Repite Password"}
+            value={userData.confirmPassword} 
+            required={true}
+            />
+  
+          <div className="errorContainer"> {error && <p style={{ color: 'red' }}>Las contraseñas no coinciden.</p>}</div>
+          <Button type="submit" onClick={handleSubmit} text={'Registrarte'} />
+  
+        </FormContainer>
+        <ToastContainer autoClose={1200} />
+      </div>
 
-        <div className="errorContainer"> {error && <p style={{ color: 'red' }}>Las contraseñas no coinciden.</p>}</div>
-        <Button type="submit" onClick={handleSubmit} text={'Registrarte'} />
-
-      </FormContainer>
-      <ToastContainer autoClose={1200} />
-    </div>
+   </>
   )
 }
 

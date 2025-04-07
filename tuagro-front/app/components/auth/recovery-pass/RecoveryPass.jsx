@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation"
 import FormContainer from "../../ui/form/FormContainer"
 import CustomInputs from "../../ui/form/CustomInputs"
 import Button from "../../ui/button/Button"
+import VideoSection from '../../ui/video/VideoSection'
 import { toast } from "react-toastify"
 
 const RecoveryPass = () => {
@@ -44,34 +45,37 @@ const RecoveryPass = () => {
     }
  
   return (
-    <div className="recoverySection">
-        <FormContainer>
-        <CustomInputs
-        type="password"
-        name={"password"}
-        value={data.password}
-        required={true}
-        placeholder={'Password'}
-        onChange={handleChange}
-        />
-        <CustomInputs
-        type="password"
-        name={"repeatPassword"}
-        value={data.repeatPassword}
-        required={true}
-        placeholder={'Repite Password'}
-        onChange={handleChange}
-        />
-
-        <Button 
-        type="submit"
-        text={"Enviar"}
-        onClick={handleSubmit}
-        />
-
-        </FormContainer> 
-
-    </div>
+<>
+        <div className="recoverySection">
+            <FormContainer>
+            <CustomInputs
+            type="password"
+            name={"password"}
+            value={data.password}
+            required={true}
+            placeholder={'Password'}
+            onChange={handleChange}
+            />
+            <CustomInputs
+            type="password"
+            name={"repeatPassword"}
+            value={data.repeatPassword}
+            required={true}
+            placeholder={'Repite Password'}
+            onChange={handleChange}
+            />
+    
+            <Button 
+            type="submit"
+            text={"Enviar"}
+            onClick={handleSubmit}
+            />
+    
+            </FormContainer> 
+    
+        </div>
+        <VideoSection/>
+</>
   )
 }
 

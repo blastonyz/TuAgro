@@ -1,15 +1,16 @@
 .loginMain{
-    height: 85vh;
+    height: max-content;
     display: flex;
-    flex-direction: column;
+    flex-direction:row;
+    background-color: var(--olive);
 }
 
 .loginContainer{
     display: flex;
     flex-direction: column;
+    width: 50%;
     height: 100%;
     padding-top: 50px;
-    background-color: var(--olive);
     text-align: center;
     align-items: center;
 }

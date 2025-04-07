@@ -3,7 +3,6 @@
 .registerMain{
     display: flex;
     justify-content: center;
-    padding-top: 50px;
     background-color: var(--olive);
     height: 85vh;
 }
@@ -11,8 +10,9 @@
 
 .registerContainer{
     display: flex;
+    padding-top: 25px;
     flex-direction: column;
-    width: 350px;
+    width: 50%;
     height: max-content;
     text-align: center;
     align-items: center;

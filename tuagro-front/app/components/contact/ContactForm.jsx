@@ -5,6 +5,7 @@ import FormContainer from '../ui/form/FormContainer'
 import CustomInputs from '../ui/form/CustomInputs'
 import Button from '../ui/button/Button'
 import SectionTitle from '../ui/title/SectionTitle'
+import VideoSection from '../ui/video/VideoSection'
 
 const ContactForm = () => {
     const [data,setData] = useState({
@@ -31,33 +32,35 @@ const ContactForm = () => {
 
   return (
  
-        <div className="contactContainer">
-            <SectionTitle text={'Contactanos'} size={26}/>
-          <FormContainer >
-                <CustomInputs
-                 onChange={handleContact}
-                  type={"text"} 
-                  name={"firstName" }
-                  placeholder={"Nombre"}
-                   value={data.firstName} />
-
-                <CustomInputs
-                 onChange={handleContact} type={"email"} 
-                 name={"email"} placeholder={"E-mail"} 
-                 value={data.email} />
-
-                <CustomInputs 
-                onChange={handleContact} type={"number"} 
-                name={"phone"} placeholder={"Telefono"} 
-                value={data.phone} />
-
-                <textarea onChange={handleContact} name="consult" value={data.consult} className='inputsArea' placeholder='Dejanos tu Consulta'></textarea>
-                <Button text={'Enviar'} type={'submit'} />
-                
-          </FormContainer>
-
-        </div>
-        
+     <>
+          <div className="contactContainer">
+              <SectionTitle text={'Contactanos'} size={26}/>
+            <FormContainer >
+                  <CustomInputs
+                   onChange={handleContact}
+                    type={"text"} 
+                    name={"firstName" }
+                    placeholder={"Nombre"}
+                     value={data.firstName} />
+  
+                  <CustomInputs
+                   onChange={handleContact} type={"email"} 
+                   name={"email"} placeholder={"E-mail"} 
+                   value={data.email} />
+  
+                  <CustomInputs 
+                  onChange={handleContact} type={"number"} 
+                  name={"phone"} placeholder={"Telefono"} 
+                  value={data.phone} />
+  
+                  <textarea onChange={handleContact} name="consult" value={data.consult} className='inputsArea' placeholder='Dejanos tu Consulta'></textarea>
+                  <Button text={'Enviar'} type={'submit'} />
+                  
+            </FormContainer>
+  
+          </div>
+          <VideoSection/>
+     </>
 
   )
 }

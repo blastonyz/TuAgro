@@ -7,11 +7,11 @@ import FormContainer from '../../ui/form/FormContainer'
 import CustomInputs from '../../ui/form/CustomInputs'
 import Button from "../../ui/button/Button"
 import Link from 'next/link'
-
+import VideoSection from '../../ui/video/VideoSection'
 
 const LoginForm = () => {
 
-    const { getUser, user,verifyUser } = useAuthContext()
+    const { getUser, user, verifyUser } = useAuthContext()
 
     const [userData, setUserData] = useState({
         email: '',
@@ -20,9 +20,9 @@ const LoginForm = () => {
         ;
 
     const googleOAuth = async () => {
-         window.location.href = "http://localhost:8080/auth/google"
-         setTimeout(async () => {
-            await verifyUser(); 
+        window.location.href = "http://localhost:8080/auth/google"
+        setTimeout(async () => {
+            await verifyUser();
         }, 2000);
     }
 
@@ -65,8 +65,9 @@ const LoginForm = () => {
         }
     }
 
-  
+
     return (
+        <>
         <div className="loginContainer">
             <SectionTitle size={26} text={'Inicia Sesion'} />
             <FormContainer>
@@ -103,11 +104,11 @@ const LoginForm = () => {
             </button>
 
             <Link href={'/auth/recovery-form'}>
-               Recuperar Contraseña
+                Recuperar Contraseña
             </Link>
-
-            
         </div>
+     <VideoSection/>
+      </>
     )
 }
 

@@ -1,17 +1,18 @@
 @import '../../colors.css';
 
 .contactMain{
-    height: 85vh;
+    height: max-content;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    background-color: var(--olive);
 }
 
 .contactContainer{
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 50%;
     padding-top: 50px;
-    background-color: var(--olive);
     text-align: center;
     align-items: center;
 }
