@@ -1,9 +1,11 @@
 import { Router } from "express";
 import CartsController from "../controller/carts.controller.js";
+import OrdersController from "../controller/orders.controller.js";
 
 const router = Router();
 
 const cartsController = new CartsController()
+const orderController = new OrdersController()
 
 router.get('/cart/:cid',async (req,res) => {
     const {cid} = req.params
@@ -20,6 +22,20 @@ router.post('/cart',async (req,res)=>{
     
     const updated = await cartsController.updateCart(cid,products)
     res.status(200).json({message:'actualizado',updated})
+})
+
+router.put('/cart/order', async (req,res)=>{
+    try {
+          const order = req.body
+    console.log('body: ',order);
+    const newOrder = await orderController.createOrder(order)
+    res.status(201).json({message:'orden creada con exito',newOrder})
+    
+    } catch (error) {
+        console.error('Error al procesar la orden:', err);
+        res.status(500).json({ message: 'Error interno del servidor' });
+    }
+  
 })
 
 export default router

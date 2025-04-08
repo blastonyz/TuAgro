@@ -7,7 +7,6 @@ export default class ProductsController{
 
     async get({}){
         const products = await this.productsServices.get({});
-        console.log('Total Products',products.length);
         return products;
     }
 

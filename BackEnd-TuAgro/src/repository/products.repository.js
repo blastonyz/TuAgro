@@ -2,7 +2,7 @@ import ProductsDao from "../dao/products.dao.js"
 
 export default class ProductsRepository{
     constructor(){
-        this.productsDao = new ProductsDao
+        this.productsDao = new ProductsDao()
     }
 
     async get ()  {
