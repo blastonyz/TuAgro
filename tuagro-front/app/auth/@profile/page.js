@@ -1,10 +1,9 @@
- 
+ import Profile from "@/app/components/profile/Profile"
  
  export default async function ProfilePage(){
     return(
-        <h1>
-            soy perfil
-        </h1>
-
+    <div>
+        <Profile/>
+    </div>
     )
  }

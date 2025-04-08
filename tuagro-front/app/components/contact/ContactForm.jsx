@@ -21,12 +21,22 @@ const ContactForm = () => {
             ...data,
             [name] : value
         })
-        console.log(data);
-        
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        const response = await fetch('/api/consult',{
+          method:'PUT',
+          headers:{
+            'Content-Type': 'application/json'
+          },
+          body:JSON.stringify(data)
+        })
+        if(!response.ok){
+           console.error('error al realizar consutla');
+        }
+        const responseData= await response.json()
+        console.log('data: ',responseData)
     }
 
 
@@ -54,7 +64,7 @@ const ContactForm = () => {
                   value={data.phone} />
   
                   <textarea onChange={handleContact} name="consult" value={data.consult} className='inputsArea' placeholder='Dejanos tu Consulta'></textarea>
-                  <Button text={'Enviar'} type={'submit'} />
+                  <Button text={'Enviar'} type={'submit'} onClick={handleSubmit}/>
                   
             </FormContainer>
   

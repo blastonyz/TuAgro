@@ -1,0 +1,22 @@
+@import '../../colors.css';
+
+.profileMain{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.initialProfile{
+    height: 128px;
+    width: 128px;
+    font-size: 64px;
+    border-radius: 50%;
+    background-color: var(--yellow);
+    padding-top: 32px;
+}
+
+.initial{
+    text-align: center;
+    align-items: center;
+}
