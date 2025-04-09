@@ -1,8 +1,11 @@
 'use client'
 import { CldImage } from "next-cloudinary"
 import './cart.items.css'
+import '../addcart/counter.css'
 import { useState } from "react"
 import Counter from "../addcart/Counter"
+import Button from "../ui/button/Button"
+import Garbage from "../ui/icons/Garbage"
 
 const CartItems = ({ cart, removeFromCart,updateQuantity }) => {
 
@@ -58,15 +61,16 @@ const CartItems = ({ cart, removeFromCart,updateQuantity }) => {
                                     console.log("Eliminando producto:", product._id); 
                                     removeFromCart(product._id);
                                   }}
-                                className="removeButton">
-                                   Eliminar
+                                className="deleteCart">
+                                  <Garbage size={'20px'} color={'red'}/>
                                 </button>
 
                                 <div className="counterSection">
                                     <Counter onQuantityChange={setQuantity}/>
-                                    <button onClick={() =>updateQuantity(product,quantity)}>
-                                    agregar
-                                    </button>
+                                    <Button 
+                                    onClick={() =>updateQuantity(product,quantity)}
+                                    text={'agregar'}
+                                    /> 
                                 </div>
                             </div>
 

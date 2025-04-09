@@ -18,7 +18,7 @@ export default class ProductsRepository{
     }
 
     async create (data)  {
-        return await this.productsDao.create({data})
+        return await this.productsDao.create(data)
     }
 
     async update (id,data) {
@@ -26,7 +26,7 @@ export default class ProductsRepository{
     }
 
     async delete (id) {
-        return await this.productsDao.delete({id});
+        return await this.productsDao.delete(id);
     }
 
 }

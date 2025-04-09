@@ -2,10 +2,27 @@
 import { CldImage } from "next-cloudinary"
 import Link from "next/link"
 import SectionTitle from "../ui/title/SectionTitle"
+import Garbage from "../ui/icons/Garbage"
+
 const ProductsTable = ({products}) => {
+
+   const deleteProduct = async (_id)=> {
+    const response = await fetch(`/api/product/${_id}`,{
+        method:'DELETE',
+        headers:{
+            'Content-type':'application/json'
+        },
+        credentials:'include'
+    })
+    if(!response.ok){
+        throw new Error('error al borrar producto')
+    }
+    const data = await response.json()
+    console.log('respuesta borrar: ',data);
+    
+   } 
+
   return (
-
-
     <div className="adminMain">
             <SectionTitle text={'Panel de Administracion'} size={26}/>
 
@@ -16,7 +33,7 @@ const ProductsTable = ({products}) => {
                             <th scope="col" className="tableHeader">Precio</th>
                             <th scope="col" className="tableHeader">Categoria</th>
                             <th scope="col" className="tableHeader">Stock</th>
-                            <th scope="col" className="tableHeader">Descripcion</th>
+                          
                             <th scope="col" className="tableHeader">Id</th>
                             <th scope="col" className="tableHeader">Imagen</th>
                             <th scope="col" className="tableHeader">Acciones</th>
@@ -46,6 +63,10 @@ const ProductsTable = ({products}) => {
                                         <button className="bg-green-400">
                                             <Link href={`auth/edit/${product._id}`}>editar</Link>
                                         </button>
+
+                                        <button onClick={()=>deleteProduct(product._id)} >
+                                            <Garbage size={'24px'} color={'red'}/>
+                                        </button>
                                     </td>
                                 </tr>
                             ))
@@ -55,7 +76,7 @@ const ProductsTable = ({products}) => {
  
             </table>
             <div className="tableFooter">
-                <Link href={'/auth/create'}>Crear
+                <Link href={'auth/create'}>Crear
                 </Link>
             </div>
 

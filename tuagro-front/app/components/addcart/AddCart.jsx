@@ -9,6 +9,7 @@ import Button from '../ui/button/Button'
 import AddModal from '../ui/add-modal/AddModal'
 
 
+
 const AddCart = ({ item }) => {
     const { user } = useAuthContext()
     const { addToCart } = useCartContext()

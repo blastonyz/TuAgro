@@ -1,7 +1,9 @@
+import CreateProductsForm from "@/app/components/admin/create/CreateProductsForm"
+
 export default function Create() {
     return(
-        <h2>
-            crear
-        </h2>
+       <div>
+            <CreateProductsForm/>
+       </div>
     )
 }

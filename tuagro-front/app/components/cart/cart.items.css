@@ -7,6 +7,7 @@
     flex-direction: column;
     align-items: center;
     padding-top: 50px;
+    overflow-x: hidden;
 }
 
 .cartMainList{
@@ -75,26 +76,29 @@
     flex-direction: column;
     align-items: center;
     height: 220px;
-    justify-content: space-around;
+    width: 100px;
+    margin-top: 10px;
+    justify-content: flex-start;
 }
 
 .counterSection{
     display: flex;
     flex-direction: column;
-    height: 80px;
-    justify-content: space-around;
-}
-
-.removeButton{
-    width: max-content;
-    align-items: center;
-   border: 2px  solid rgba(255, 0, 0, 0.823);
-   padding: 5px;
-    border-radius: 10px;
+    height:100px;
+   
 }
 
 .cartButtonsFooter{
     width: clamp(780px, 50vw,60vw);
+    align-items: center;
+}
+
+.deleteCart{
+    border:1px solid red;
+    border-radius: 10px;
+    width: 45px;
+    height: 35px;
+    margin-top: 20
 }
 
 .total{
@@ -121,13 +125,16 @@
         width: max-content;
    }
    .cartButtons{
-    height: max-content;
+    height:60px;
+    width: 100%;
     flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 5px;
    }
    .counterSection{
     flex-direction: row;
     align-items: center;
-    width: 50%;
+    width: 60%;
    }
 }
 
