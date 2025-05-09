@@ -31,7 +31,7 @@ router.get('/products', async (req, res) => {
   
   });
 
-  router.put('/products/create', async (req,res)=>{
+  router.post('/products/create', async (req,res)=>{
     const product = req.body
     console.log('product body router: ',product);
     const formattedProduct = {
@@ -41,6 +41,16 @@ router.get('/products', async (req, res) => {
     };
     const newProduct = await productsController.create(formattedProduct)
     res.status(201).json({message: 'producto creado',newProduct}) 
+  })
+
+  router.put('/product/edit/:pid',async(req,res)=>{
+    const {pid} = req.params
+    const updateProduct = req.body
+    console.log('pid: ',pid);
+    console.log('put body: ',updateProduct);
+    
+    const update = await productsController.update(pid,updateProduct)
+    res.status(201).json({message: 'producto actualizado',update}) 
   })
 
   router.delete('/product/:pid', async (req,res) => {

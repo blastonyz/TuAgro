@@ -5,7 +5,7 @@ export default class MessagesDao{
         return MessagesModel.find()
     }
 
-    async getByemail(email){
+    async getByEmail(email){
         return MessagesModel.findOne(email)
     }
 

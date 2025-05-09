@@ -21,6 +21,10 @@ export default class ProductsServices {
         return await this.productsRepository.create(data)
     }
 
+    async update(pid,data){
+        return await this.productsRepository.update(pid,data)
+    }
+
     async delete(pid){
         return await this.productsRepository.delete(pid)
     }

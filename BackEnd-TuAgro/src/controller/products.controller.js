@@ -28,6 +28,12 @@ export default class ProductsController {
         return newPorduct
     }
 
+    async update(pid,data){
+        const updatedProduct = await this.productsServices.update(pid,data)
+        console.log('product updated',updatedProduct);
+        return updatedProduct
+    }
+
     async delete(pid){
         return await this.productsServices.delete(pid)
     }

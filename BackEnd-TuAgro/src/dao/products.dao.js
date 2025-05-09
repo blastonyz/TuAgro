@@ -1,5 +1,5 @@
 import { ProductModel } from "../models/products.model.js";
-import mongoose from "mongoose";
+
 
 export default class ProductsDao {
     async get(criteria = {}){
@@ -18,8 +18,8 @@ export default class ProductsDao {
         return await ProductModel.create(data);
     }
 
-    async updateById(pid, data){
-        return await ProductModel.findByIdAndUpdate(pid, data)
+    async updateById(_id, data){
+        return await ProductModel.findByIdAndUpdate(_id, data)
     }
 
     async delete(pid){

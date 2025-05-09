@@ -23,14 +23,14 @@ export async function GET(request){
 }
 }
 
-export async function PUT(request){
+export async function POST(request){
     const newProduct = await request.json()
     console.log('body de put: ',newProduct);
     
     
         try {
             const response = await fetch('http://localhost:8080/products/create',{
-                method:'PUT',
+                method:'POST',
                 headers:{
                     'Content-Type':'application/json'
                 },

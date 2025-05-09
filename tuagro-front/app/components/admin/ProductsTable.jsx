@@ -3,6 +3,7 @@ import { CldImage } from "next-cloudinary"
 import Link from "next/link"
 import SectionTitle from "../ui/title/SectionTitle"
 import Garbage from "../ui/icons/Garbage"
+import './admin.css'
 
 const ProductsTable = ({products}) => {
 
@@ -24,33 +25,40 @@ const ProductsTable = ({products}) => {
 
   return (
     <div className="adminMain">
-            <SectionTitle text={'Panel de Administracion'} size={26}/>
 
-            <table className="w-full text-s text-left text-gray-600">
+           <div className="titleCont">
+                <SectionTitle text={'Panel de Administracion'} size={26}/>
+           </div>
+
+            <table className="mainTable">
                 <thead>
-                    <tr>
-                            <th scope="col" className="tableHeader">Nombre</th>
+                    <tr className="mainTableHeader">
+                            <th scope="col" className="tableHeader">Producto</th>
+                            <th scope="col" className="tableHeader">Descripcion</th>
                             <th scope="col" className="tableHeader">Precio</th>
                             <th scope="col" className="tableHeader">Categoria</th>
                             <th scope="col" className="tableHeader">Stock</th>
-                          
-                            <th scope="col" className="tableHeader">Id</th>
                             <th scope="col" className="tableHeader">Imagen</th>
                             <th scope="col" className="tableHeader">Acciones</th>
                     </tr>
 
                 </thead> 
-                    <tbody>
+                    <tbody className="tableBody">
                         {
                             products.map((product) =>(
                                 <tr key={product._id}>
-                                    <td className="p-2">{product.title}</td>
-                                    <td className="p-2">$ {product.price}</td>
-                                    <td className="p-2">{product.category}</td>
-                                    <td className="p-2">{product.stock}</td>
-                                    <td className="p-2">{product.description}</td>
-                                    <td className="p-2">{product._id}</td>
-                                    <td className="p-2">
+                                    <td className="tableCell nameCell" data-label="Producto">{product.title}</td>
+                                    <td className="tableCell" data-label="Descripcion">
+                                       <div className="actions">
+                                            <button>larga</button>
+                                            <button>corta</button>
+                                       </div>
+                                    </td>
+                                    <td className="tableCell" data-label="Precio">$ {product.price}</td>
+                                    <td className="tableCell" data-label="Categoria">{product.category}</td>
+                                    <td className="tableCell" data-label="Stock">{product.stock}</td>
+                                
+                                    <td className="tableCell" data-label="Imagen">
                                         
                                      <CldImage
                                      src={product.image}
@@ -59,14 +67,16 @@ const ProductsTable = ({products}) => {
                                      height={80}
                                      />
                                         </td>
-                                    <td className="p-2">
-                                        <button className="bg-green-400">
-                                            <Link href={`auth/edit/${product._id}`}>editar</Link>
-                                        </button>
-
-                                        <button onClick={()=>deleteProduct(product._id)} >
-                                            <Garbage size={'24px'} color={'red'}/>
-                                        </button>
+                                    <td className="tableCell" data-label="Acciones">
+                                        <div className="actions">
+                                            <button className="bg-green-400">
+                                                <Link href={`auth/edit/${product._id}`}>editar</Link>
+                                            </button>
+    
+                                            <button onClick={()=>deleteProduct(product._id)} >
+                                                <Garbage size={'24px'} color={'red'}/>
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                             ))
@@ -75,6 +85,8 @@ const ProductsTable = ({products}) => {
                     </tbody>   
  
             </table>
+
+
             <div className="tableFooter">
                 <Link href={'auth/create'}>Crear
                 </Link>
