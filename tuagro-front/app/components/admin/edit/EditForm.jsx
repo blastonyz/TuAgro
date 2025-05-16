@@ -27,7 +27,7 @@ const EditForm = ({ product }) => {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         console.log('body: ',productUpdate);
-        console.log('👉 Fetching to:', `http://localhost:8080/product/edit/${product._id}`);
+      
             try {
                 const response = await fetch(`http://localhost:8080/product/edit/${product._id}`,{
                     method:'PUT',

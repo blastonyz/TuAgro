@@ -92,6 +92,13 @@ const ProductsTable = ({products}) => {
                 </Link>
             </div>
 
+            
+            <div className="tableFooter">
+                <Link href={'auth/contact'}>Consultas
+                </Link>
+            </div>
+
+
             </div>
   )
 }

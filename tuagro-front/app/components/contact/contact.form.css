@@ -5,16 +5,20 @@
     display: flex;
     flex-direction: row;
     background-color: var(--olive);
+    justify-content: center;
+   
 }
 
 .contactContainer{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     height: 100%;
     width: 50%;
     padding-top: 50px;
     text-align: center;
     align-items: center;
+     margin: 20px auto;
 }
 
 .genericForm{
@@ -50,4 +54,13 @@
 .inputsArea:focus{
     border: 3px solid var(--yellow);
     outline: none;
+}
+
+@media (max-width:592px){
+    .contactMain{
+        flex-direction: column;
+    }
+    .contactContainer{
+        padding-top: 25px;
+    }
 }

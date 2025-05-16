@@ -11,3 +11,11 @@
     object-fit: cover;
 
 }
+
+@media (max-width: 592px) {
+    .video{
+          height: 500px;
+          width: 100%;
+    }
+    
+}

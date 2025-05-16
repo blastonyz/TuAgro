@@ -2,15 +2,12 @@ import { NextResponse } from "next/server";
 
 export async function GET(request){
     try{
-    const requestBody = await request.json()
-    console.log('api order: ', requestBody);
 
     const response = await fetch('http://localhost:8080/consults', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(requestBody),
         credentials: 'include'
     })
 
@@ -24,7 +21,6 @@ export async function GET(request){
 
     const data = await response.json()
     return NextResponse.json({
-        message: 'consulta recibida',
         data
     });
 } catch (error) {
@@ -58,10 +54,11 @@ export async function PUT(request){
     }
 
     const data = await response.json()
-    return NextResponse.json({
-        message: 'consulta recibida',
+    console.log('api data: ',data);
+    
+    return NextResponse.json(  
         data
-    });
+    );
 } catch (error) {
     return NextResponse.json({
         message: 'Error al enviar consulta',

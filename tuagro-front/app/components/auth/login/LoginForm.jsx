@@ -68,47 +68,50 @@ const LoginForm = () => {
 
     return (
         <>
-        <div className="loginContainer">
-            <SectionTitle size={26} text={'Inicia Sesion'} />
-            <FormContainer>
-                <CustomInputs
-                    onChange={handleChange}
-                    type={"email"}
-                    name={"email"}
-                    placeholder={"Email"}
-                    value={userData.email}
-                    required={true}
-                />
-                <CustomInputs
-                    onChange={handleChange}
-                    type={"password"}
-                    name={"password"}
-                    placeholder={"Password"}
-                    value={userData.password}
-                    required={true}
-                />
+            <div className="loginContainer">
+                <SectionTitle size={26} text={'Inicia Sesion'} />
+                <FormContainer>
+                    <CustomInputs
+                        onChange={handleChange}
+                        type={"email"}
+                        name={"email"}
+                        placeholder={"Email"}
+                        value={userData.email}
+                        required={true}
+                    />
+                    <CustomInputs
+                        onChange={handleChange}
+                        type={"password"}
+                        name={"password"}
+                        placeholder={"Password"}
+                        value={userData.password}
+                        required={true}
+                    />
 
-                <Button type="submit" onClick={handleLogin} text={'Iniciar Sesion'} />
-            </FormContainer>
-            <div className='registerLink'>
-                <p className='registerText'>No te registraste aun?</p>
+                    <Button type="submit" onClick={handleLogin} text={'Iniciar Sesion'} />
 
-                <Link href={'/auth/register'}> <p>Registrate</p></Link>
+                    <button onClick={googleOAuth} className='googleButton' >
+                        <img src="./google-icon.png" alt="google button" className='googleButtonImg' />
+                    </button>
+                    
+                </FormContainer>
+                <div className='registerLink'>
+                    <p className='registerText'>No te registraste aun?</p>
+
+                    <Link href={'/auth/register'}> <p>Registrate</p></Link>
+                </div>
+                <button onClick={fetchToProtected}>
+                    Probar
+                </button>
+
+
+
+                <Link href={'/auth/recovery-form'}>
+                    Recuperar Contraseña
+                </Link>
             </div>
-            <button onClick={fetchToProtected}>
-                Probar
-            </button>
-
-            <button onClick={googleOAuth}>
-                Google
-            </button>
-
-            <Link href={'/auth/recovery-form'}>
-                Recuperar Contraseña
-            </Link>
-        </div>
-     <VideoSection/>
-      </>
+            <VideoSection />
+        </>
     )
 }
 

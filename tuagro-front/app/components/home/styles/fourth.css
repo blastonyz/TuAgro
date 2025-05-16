@@ -16,7 +16,7 @@
     flex-direction: row;
     flex-wrap: wrap; 
     justify-content: center;
-    gap:25px;
+    gap:clamp(25px,40px,45px);
 }
 
 .categorieCard {
