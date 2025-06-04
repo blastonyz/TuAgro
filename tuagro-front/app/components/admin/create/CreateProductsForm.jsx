@@ -1,13 +1,15 @@
 'use client'
 import './create.product.css'
 import { CldUploadWidget } from 'next-cloudinary'
-import { useState, useRef } from "react"
+import { useState } from "react"
+import SectionTitle from '../../ui/title/SectionTitle'
 import CustomInputs from "../../ui/form/CustomInputs"
+import { toast, ToastContainer } from 'react-toastify'
 import Button from "../../ui/button/Button"
 
 const CreateProductsForm = () => {
 
-    const [products, setProducts] = useState({
+    const initialState = {
         brand: '',
         category: '',
         image: '',
@@ -16,7 +18,11 @@ const CreateProductsForm = () => {
         shortDescription: '',
         stock: '',
         title: ''
-    })
+    }
+
+    const [products, setProducts] = useState(initialState)
+
+    const [uploadedImage, setUploadedImage] = useState(false)
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -28,7 +34,7 @@ const CreateProductsForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-    
+
         const response = await fetch('/api/products', {
             method: 'POST',
             headers: {
@@ -39,15 +45,18 @@ const CreateProductsForm = () => {
         })
 
         if (!response.ok) {
-            throw new Error('error al crear prodcuto')
+            toast.error('Hubo un error al crear el producto ❌')
+            console.error(error)
         }
         const data = await response.json()
+        toast.success('Producto Agregado!')
+        setProducts(initialState)
         console.log('data: ', data);
 
     }
 
     const handleSuccess = (result) => {
-        // Esto se ejecuta cuando sube exitosamente
+
         console.log('Resultado de Cloudinary:', result)
 
         const imageUrl = result?.info?.secure_url
@@ -56,67 +65,99 @@ const CreateProductsForm = () => {
                 ...prev,
                 image: imageUrl
             }))
+            setUploadedImage(true)
         }
     }
 
-    
+
 
     return (
         <div className="createMain">
+
+            <SectionTitle text={'Crear Producto'} />
+
             <form className='createForm'>
+                 <label htmlFor='title' className='labels'>
+                    Título
+                </label>
+                 <CustomInputs
+                    type={'text'}
+                    name={'title'}
+                    value={products.title}
+                    onChange={handleChange}
+                    placeholder={'Titulo'}
+                    id={'title'}
+                />
+                <label htmlFor='brand' className='labels'>
+                    Marca
+                </label>
                 <CustomInputs
                     type={'text'}
                     name={'brand'}
                     value={products.brand}
                     onChange={handleChange}
                     placeholder={'Marca'}
+                    id={'brand'}
                 />
+                <label htmlFor='category' className='labels'>
+                    Categoría
+                </label>
                 <CustomInputs
                     type={'text'}
                     name={'category'}
                     value={products.category}
                     onChange={handleChange}
                     placeholder={'Categoria'}
+                    id={'category'}
                 />
+                <label htmlFor='longDescription' className='labels'>
+                    Descripción larga
+                </label>
                 <CustomInputs
                     type={'text'}
                     name={'longDescription'}
                     value={products.longDescription}
                     onChange={handleChange}
                     placeholder={'Descripcion Larga'}
+                    id={'longDescription'}
                 />
+                <label htmlFor='price' className='labels'>
+                    Precio
+                </label>
                 <CustomInputs
                     type={'number'}
                     name={'price'}
                     value={products.price}
                     onChange={handleChange}
                     placeholder={'Precio'}
+                    id={'price'}
                 />
+                <label htmlFor='shortDescription' className='labels'>
+                    Descripción corta
+                </label>
                 <CustomInputs
                     type={'text'}
                     name={'shortDescription'}
                     value={products.shortDescription}
                     onChange={handleChange}
                     placeholder={'Descripcion Corta'}
+                    id={'shortDescription'}
                 />
+                <label htmlFor='stock' className='labels'>
+                    Stock
+                </label>
                 <CustomInputs
                     type={'number'}
                     name={'stock'}
                     value={products.stock}
                     onChange={handleChange}
                     placeholder={'Stock'}
+                    id={'stock'}
                 />
-                <CustomInputs
-                    type={'text'}
-                    name={'title'}
-                    value={products.title}
-                    onChange={handleChange}
-                    placeholder={'Titulo'}
-                />
-
+               
                 <Button type={"submit"} text={'Crear'} onClick={handleSubmit} />
             </form>
-         
+
             <CldUploadWidget
                 uploadPreset="ProductImages"
                 onSuccess={handleSuccess}
@@ -129,10 +170,19 @@ const CreateProductsForm = () => {
                 )}
             </CldUploadWidget>
 
+            <div className='upImageContainer'>
 
-            {products.image && (
-                <img src={products.image} alt="Vista previa" width={200} />
-            )}
+                {!uploadedImage ?
+                    <p>Todavia no suviste la imagen</p>
+                    :
+                    (
+                        <img src={products.image || null} alt="Vista previa" width={200} height={200} />
+                    )
+
+                }
+            </div>
+
+            <ToastContainer autoClose={1200} />
         </div>
     )
 }

@@ -1,6 +1,7 @@
 
 import Link from "next/link";
 import { CldImage } from "next-cloudinary";
+import { SectionLink } from "../ui/link/SectionLink";
 import './products.cards.css'
 
 const ProductsCards = ({ products }) => {
@@ -36,10 +37,13 @@ const ProductsCards = ({ products }) => {
             </div>
           </div>
 
-          <div className="linkContainer">
-            <Link href={`/producto/${prods._id}`} className="productsLinks"> Mas
-            </Link>
-          </div>
+       
+            <SectionLink 
+            href={`/producto/${prods._id}`} 
+            text={'Ver Mas'}
+            size={18}
+            /> 
+         
         </div>
       )
       )

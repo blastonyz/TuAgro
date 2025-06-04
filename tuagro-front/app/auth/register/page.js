@@ -5,7 +5,9 @@ export default function RegisterPage(){
     return(
       <div className="registerMain">
         <RegisterForm/>
-        <VideoSection/>
+     
+          <VideoSection/>
+       
       </div>
     )
 }

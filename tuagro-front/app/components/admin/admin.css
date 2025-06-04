@@ -8,11 +8,20 @@
     justify-content: center;
 }
 
+.tableNav{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    margin: 30px;
+}
+
 .mainTable{
     border: solid 2px var(--yellow);
     width: 85%;
     table-layout: auto;
     border-radius: 15px;
+    margin-bottom: 20px;
 }
 
 .titleCont{
@@ -107,6 +116,12 @@
         padding: 0;
     }
    
+    .tableNav{
+        flex-wrap:wrap;
+        width: 80%;
+        gap: 10px;
+    }
+
     .mainTable td {
         justify-content: flex-start;
     }

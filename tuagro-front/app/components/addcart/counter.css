@@ -29,7 +29,9 @@
 }
 
 .number{
-    padding: 30px 5px;
+    padding: 30px 10px;
+    margin-top: 10px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -41,7 +43,7 @@
         width: 80%;
     }
     .quantityCont{
-        padding: 20px 0px;
+        padding: 20px 10px;
         justify-content: space-around;
     }
     

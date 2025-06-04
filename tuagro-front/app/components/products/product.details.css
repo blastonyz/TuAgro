@@ -108,17 +108,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 150px;
-    width: 250px;
-    background: rgb(247,204,15);
-    background: linear-gradient(145deg, rgba(247,204,15,1) 0%, rgba(224,197,25,1) 28%, rgba(89,255,55,1) 67%, rgba(95,187,70,1) 100%);
+    height: 370px;
+    width:450px;
+    background-image: url('../../../public/cart-render.jpg');
+    background-size: contain;
     position: absolute;
     border-radius: 20px;
-    border: var(--gray) 3px solid;
-    box-shadow: 2px 2px 2px 2px var(--yellow);
+    border: var(--green) 3px solid;
+    box-shadow: 2px 4px 4px 2px var(--green-shadow);
     top: 150px;
-    left: 40%;
+    left: 35%;
     z-index: 100;
+    transition: all 0.7s ease;
+    animation: show 0.7s ease;
+}
+
+@keyframes show {
+    0%{
+        opacity: 0;
+        scale: 0.9;
+    }
+    100%{
+        opacity: 1;
+        scale: 1;
+    }
 }
 
 .closeButton{
@@ -191,6 +204,10 @@
     .detailCat {
         font-size: 15px;
     }
+    .addModal{
+        height: 280px;
+        width: 350px;
+    }
 }
 
 @media (max-width: 460px) {
@@ -231,5 +248,10 @@
     .priceText {
         font-size: 16px;
         padding-bottom: 6px;
+    }
+    .addModal{
+        height: 210px;
+        width: 280px;
+        background-size: 100%;
     }
 }

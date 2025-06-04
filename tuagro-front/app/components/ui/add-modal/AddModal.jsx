@@ -1,5 +1,6 @@
 'use client'
 import { useEffect } from "react"
+import SectionTitle from "../title/SectionTitle"
 
 const AddModal = ({ onCloseModal,addMessage,setAddMessage}) => {
  
@@ -12,11 +13,10 @@ const AddModal = ({ onCloseModal,addMessage,setAddMessage}) => {
   return (
 
     <div className="addModal">
-
        <div className="closeButton"> 
         <button onClick={() => onCloseModal(false)}>X</button>
         </div>
-        <p>Producto Agregado!</p>
+       <SectionTitle text={'Producto Agregado!'}/>
     </div>
   )
 }

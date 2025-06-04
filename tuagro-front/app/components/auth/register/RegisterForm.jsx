@@ -11,7 +11,7 @@ import VideoSection from '../../ui/video/VideoSection'
 
 const RegisterForm = () => {
 
-   const router = useRouter()
+  const router = useRouter()
 
   const [userData, setUserData] = useState({
     first_name: '',
@@ -75,18 +75,19 @@ const RegisterForm = () => {
   }
 
   return (
-   <>
+    <>
       <div className="registerContainer">
-        <SectionTitle text={'Registrate'} size={26} />
+
         <FormContainer >
+          <SectionTitle text={'Registrate'} size={26} />
           <CustomInputs
             onChange={handleChange}
             type={"text"}
             name={"first_name"}
             placeholder={"Nombre"}
-            value={userData.first_name} 
+            value={userData.first_name}
             required={true}
-            />
+          />
           <CustomInputs
             onChange={handleChange}
             type={"text"}
@@ -94,14 +95,14 @@ const RegisterForm = () => {
             placeholder={"Apellido"}
             value={userData.last_name}
             required={true}
-            />
+          />
           <CustomInputs
             onChange={handleChange}
             type={"text"}
             name={"address"}
             placeholder={"Direccion"}
             value={userData.address}
-            />
+          />
           <CustomInputs
             onChange={handleChange}
             type={"email"}
@@ -109,7 +110,7 @@ const RegisterForm = () => {
             placeholder={"Email"}
             value={userData.email}
             required={true}
-            />
+          />
           <CustomInputs
             onChange={handleChange}
             type={"password"}
@@ -117,24 +118,24 @@ const RegisterForm = () => {
             placeholder={"Password"}
             value={userData.password}
             required={true}
-            />
+          />
           <CustomInputs
             onChange={handleChange}
             type={"password"}
             name={"confirmPassword"}
             placeholder={"Repite Password"}
-            value={userData.confirmPassword} 
+            value={userData.confirmPassword}
             required={true}
-            />
-  
+          />
+
           <div className="errorContainer"> {error && <p style={{ color: 'red' }}>Las contraseñas no coinciden.</p>}</div>
           <Button type="submit" onClick={handleSubmit} text={'Registrarte'} />
-  
+
         </FormContainer>
         <ToastContainer autoClose={1200} />
       </div>
 
-   </>
+    </>
   )
 }
 

@@ -2,14 +2,16 @@
 import './login.css'
 import { useState } from "react"
 import { useAuthContext } from "../../context/AuthContext"
-import SectionTitle from "../../ui/title/SectionTitle"
 import FormContainer from '../../ui/form/FormContainer'
 import CustomInputs from '../../ui/form/CustomInputs'
 import Button from "../../ui/button/Button"
 import Link from 'next/link'
-import VideoSection from '../../ui/video/VideoSection'
+import { CldImage } from 'next-cloudinary'
+import { useRouter } from 'next/navigation'
 
-const LoginForm = () => {
+const LoginForm = ({ onClose, setFormType }) => {
+
+    const router = useRouter()
 
     const { getUser, user, verifyUser } = useAuthContext()
 
@@ -17,28 +19,22 @@ const LoginForm = () => {
         email: '',
         password: ''
     })
-        ;
+
+    const handleRegister = () => {
+      if (setFormType) {
+        setFormType('register')
+    } else {
+        // redirige a la página de registro
+        router.push('/auth/register')
+    }
+    }
+
 
     const googleOAuth = async () => {
         window.location.href = "http://localhost:8080/auth/google"
         setTimeout(async () => {
             await verifyUser();
         }, 2000);
-    }
-
-    const fetchToProtected = async () => {
-        const response = await fetch('/api/prueba', {
-            method: 'GET',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-
-        if (!response.ok) throw new Error('fallo fecth a ruta prot')
-        console.log('response: ', response);
-        const data = await response.json()
-        console.log(data);
     }
 
     const handleChange = (e) => {
@@ -67,51 +63,60 @@ const LoginForm = () => {
 
 
     return (
-        <>
-            <div className="loginContainer">
-                <SectionTitle size={26} text={'Inicia Sesion'} />
-                <FormContainer>
-                    <CustomInputs
-                        onChange={handleChange}
-                        type={"email"}
-                        name={"email"}
-                        placeholder={"Email"}
-                        value={userData.email}
-                        required={true}
-                    />
-                    <CustomInputs
-                        onChange={handleChange}
-                        type={"password"}
-                        name={"password"}
-                        placeholder={"Password"}
-                        value={userData.password}
-                        required={true}
-                    />
 
-                    <Button type="submit" onClick={handleLogin} text={'Iniciar Sesion'} />
+        <div className="loginContainer">
+         
+            <FormContainer>
+                 
+                <CustomInputs
+                    onChange={handleChange}
+                    type={"email"}
+                    name={"email"}
+                    placeholder={"Email"}
+                    value={userData.email}
+                    required={true}
+                />
+                <CustomInputs
+                    onChange={handleChange}
+                    type={"password"}
+                    name={"password"}
+                    placeholder={"Password"}
+                    value={userData.password}
+                    required={true}
+                />
+                
+              
+             
 
-                    <button onClick={googleOAuth} className='googleButton' >
-                        <img src="./google-icon.png" alt="google button" className='googleButtonImg' />
-                    </button>
-                    
-                </FormContainer>
+                <Button type="submit" onClick={handleLogin} text={'Iniciar Sesion'} /> 
+                
+                 <Link href={'/auth/recovery-form'}>
+                    Recuperar Contraseña  
+                 </Link>
+
+                <button
+                    onClick={googleOAuth} className='googleButton'
+                    type='button'
+                >
+                    <CldImage src="https://res.cloudinary.com/doatjpkkh/image/upload/v1748873423/google-icon_pm9hvd.png" alt="google button" className='googleButtonImg' width={120} height={40} />
+                </button>
+
                 <div className='registerLink'>
                     <p className='registerText'>No te registraste aun?</p>
 
-                    <Link href={'/auth/register'}> <p>Registrate</p></Link>
+                    <button 
+                    onClick={handleRegister}
+                    type='button'
+                        >Registrate
+                        </button>
                 </div>
-                <button onClick={fetchToProtected}>
-                    Probar
-                </button>
 
 
+                
+            </FormContainer>
 
-                <Link href={'/auth/recovery-form'}>
-                    Recuperar Contraseña
-                </Link>
-            </div>
-            <VideoSection />
-        </>
+        </div>
+
     )
 }
 

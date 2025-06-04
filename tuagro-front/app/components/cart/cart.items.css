@@ -7,7 +7,7 @@
     flex-direction: column;
     align-items: center;
     padding-top: 50px;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .cartMainList{
@@ -33,6 +33,7 @@
     justify-content: space-between;
     border-bottom: solid 2px var(--soft-green);
     width: 100%;
+    margin-top: 10px;
 }
 
 .itemContainer{
@@ -85,12 +86,12 @@
     display: flex;
     flex-direction: column;
     height:100px;
-   
 }
 
 .cartButtonsFooter{
-    width: clamp(780px, 50vw,60vw);
+    width: clamp(810px, 55vw,65vw);
     align-items: center;
+    padding-bottom: 5px;
 }
 
 .deleteCart{
@@ -139,10 +140,17 @@
 }
 
 @media (max-width:592px){
-    .cartMainList{
+    .cartMainList, .cartButtonsFooter{
         width: clamp(350px, 80vw,90vw);
     }
 
+    .cartButtonsFooter{
+        height: 100px;
+        margin-bottom: 50px;
+    }
+    .cartButtons{
+        justify-content: space-around;
+    }
     .cartItemsList{
         width: clamp(320px, 75vw,85vw);
     }
@@ -164,4 +172,11 @@
     h3{
         font-size: 14px;
     }
+
+    .counterSection{
+        justify-content: space-between;
+        width: max-content;
+        gap: 10px;
+    }
+
 }

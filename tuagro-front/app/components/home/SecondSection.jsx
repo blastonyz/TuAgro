@@ -42,7 +42,7 @@ const SecondSection = () => {
           </div>
         </div>
         <div className='img2section'>
-         <Image src={'/agricultor.webp'} fill alt='fotografia de agricutor en su siembra' style={{borderRadius: '25% 10%'}}/>
+         <Image src={'/tractor.jpeg'} fill alt='fotografia de agricutor en su siembra' style={{borderRadius: '25% 10%'}}/>
          
         </div>
       </motion.div>

@@ -1,6 +1,6 @@
 import './inputs.css'
 
-const CustomInputs = ({type = 'text',name,value,placeholder,onChange,required}) => {
+const CustomInputs = ({type = 'text',name,value,placeholder,onChange,id,required}) => {
   return (
    <input 
    type={type}
@@ -9,7 +9,7 @@ const CustomInputs = ({type = 'text',name,value,placeholder,onChange,required}) 
    placeholder={placeholder}
    onChange={onChange}
    required={required}
-   className="genericInput"/>
+   id={id}   className="genericInput"/>
   )
 }
 
