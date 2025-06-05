@@ -2,7 +2,7 @@
  
  export default async function ProfilePage(){
     return(
-    <div>
+    <div className="profileMain">
         <Profile/>
     </div>
     )

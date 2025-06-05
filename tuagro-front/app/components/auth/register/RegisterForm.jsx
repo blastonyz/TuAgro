@@ -7,7 +7,7 @@ import FormContainer from '../../ui/form/FormContainer'
 import CustomInputs from '../../ui/form/CustomInputs'
 import { ToastContainer, toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
-import VideoSection from '../../ui/video/VideoSection'
+
 
 const RegisterForm = () => {
 
@@ -23,7 +23,7 @@ const RegisterForm = () => {
   })
 
   const notify = (message, onCloseCallback) => {
-    toast(message, {
+    toast.success(message, {
       onClose: onCloseCallback,
     });
   };
@@ -32,17 +32,23 @@ const RegisterForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setUserData((prev) => ({
-      ...prev,
-      [name]: value
-    }))
-    if (name === 'password' && name === 'confirmPassword') {
-      if (userData.password !== userData.confirmPassword) {
-        setError(true);
-      } else {
-        setError(false);
-      }
-    }
+      const newUserData = {
+    ...userData,
+    [name]: value
+  };
+
+  if (
+    newUserData.password &&
+    newUserData.confirmPassword &&
+    newUserData.password !== newUserData.confirmPassword
+  ) {
+    setError(true);
+  } else {
+    setError(false);
+  }
+
+  setUserData(newUserData);
+  
     console.log(userData);
 
   }
@@ -63,7 +69,10 @@ const RegisterForm = () => {
 
     const data = await response.json()
     if (!response.ok) {
-      return toast.error('Error al Registrarte');
+      console.log(data.message);
+       
+      toast.error(data.message.error);
+ 
     } else {
       notify('Te Registraste!', () => {
         router.push('/auth');
@@ -129,7 +138,7 @@ const RegisterForm = () => {
           />
 
           <div className="errorContainer"> {error && <p style={{ color: 'red' }}>Las contraseñas no coinciden.</p>}</div>
-          <Button type="submit" onClick={handleSubmit} text={'Registrarte'} />
+          <Button type="submit" onClick={handleSubmit} text={'Registrarte'} disabled={error} />
 
         </FormContainer>
         <ToastContainer autoClose={1200} />

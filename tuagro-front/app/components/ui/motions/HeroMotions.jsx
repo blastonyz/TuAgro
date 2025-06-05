@@ -6,17 +6,17 @@ import { SectionLink } from "../link/SectionLink"
   return (
     <>
     <motion.div
-    initial={{ y: -150 }}
+    initial={{ y: -100 }}
     animate={{ y: 0 }}
-    transition={{ transition: {duration1}, type: "spring", stiffness: 100  }}
+    transition={{ transition: {duration1}, stiffness: 100  }}
   > <h2 className='welcome'>Bienvenido a TuAgro</h2>
   </motion.div>
   <div className='hero1'>
 
     <motion.div
-      initial={{ x: -400 }}
+      initial={{ x: -300 }}
       animate={{ x: 0 }}
-      transition={{ transition: {duration2}, type: "spring", stiffness: 100,}}
+      transition={{ transition: {duration2}, stiffness: 100,}}
       >
       <h1 className='mainText'>Comercializadora de productos y soluciones para el Agro</h1></motion.div>
   </div>
@@ -24,7 +24,7 @@ import { SectionLink } from "../link/SectionLink"
   <motion.div
       initial={{ y: 250 }}
       animate={{ y: 0 }}
-      transition={{ transition: {duration3}, type: "spring", stiffness: 100,}}
+      transition={{ transition: {duration3}, stiffness: 100}}
       >
   <SectionLink text={'Sobre Nosotros'} href={'/'} size={'24px'} />
   </motion.div>

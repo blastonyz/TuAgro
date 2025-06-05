@@ -1,9 +1,9 @@
-
+import OrdersList from "@/app/components/orders/OrdersList"
 
 export default async function Orders(){
     return(
         <div>
-            <h2>Ordenes</h2>
+            <OrdersList/>
         </div>
     )
 }
