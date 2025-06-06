@@ -22,6 +22,7 @@
 @media (max-width: 592px){
     .registerMain{
         flex-direction: column;
+        height: max-content;
     }
     .registerContainer{
         margin: 45px auto;

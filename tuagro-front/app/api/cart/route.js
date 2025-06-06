@@ -1,5 +1,27 @@
 import { NextResponse } from "next/server";
 
+export async function GET(request){
+    try {
+        const response = await fetch('http://localhost:8080/cartlist')
+        if(!response.ok) {
+            const errorData = await response.json()
+            return new NextResponse(JSON.stringify(errorData), {
+                status: response.status,
+                headers: { 'Content-Type': 'application/json' }
+            })
+        }
+        const data = await response.json()
+        console.log('carts api: ',data);
+        
+        return new NextResponse(JSON.stringify(data), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+        })        
+    } catch (error) {
+        
+    }
+}
+
 export async function POST(request) {
     try {
         const requestBody = await request.json()

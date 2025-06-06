@@ -3,10 +3,11 @@ import { useEffect, useState } from "react"
 import { useCartContext } from "../context/CartContext"
 import { useAuthContext } from "../context/AuthContext"
 import SectionTitle from "../ui/title/SectionTitle"
-import { ToastContainer,toast } from "react-toastify"
+import { ToastContainer, toast } from "react-toastify"
 import CartItems from "./CartItems"
 import Button from "../ui/button/Button"
 import Garbage from "../ui/icons/Garbage"
+import { useRouter } from "next/navigation"
 
 
 const CartContainer = () => {
@@ -14,6 +15,7 @@ const CartContainer = () => {
 
   const { user } = useAuthContext()
 
+  const router = useRouter()
 
   const [isSave, setIsSave] = useState(false)
 
@@ -26,7 +28,7 @@ const CartContainer = () => {
   }, [cart, isSave]);
 
   const makeOrder = async () => {
-    if(cart.length > 0){
+    if (cart.length > 0) {
       const parsedCart = cart.map(prod => {
         return {
           title: prod.title,
@@ -54,7 +56,11 @@ const CartContainer = () => {
       const data = await response.json()
       console.log('order data: ', data);
       toast.success('Pedido Recibido')
-    }else{
+      setTimeout(() => {
+        clearCart()
+        router.push('/carrito/checkout')
+      }, 2000)
+    } else {
       toast.error('Carrito vacio')
     }
   }
@@ -81,7 +87,7 @@ const CartContainer = () => {
         <h3 className="total">Total: {total(cart)}</h3>
 
       </div>
-      <ToastContainer autoClose={1200}/>
+      <ToastContainer autoClose={1200} />
     </div>
   )
 }

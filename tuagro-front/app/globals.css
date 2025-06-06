@@ -21,6 +21,12 @@ html, body {
   overflow: hidden;
 }
 
+.loader{
+  position: absolute;
+  top: 0;
+  left: 40%;
+}
+
 @font-face {
   font-family: 'Chelsea-Market';
   src: url(../public/fonts/ChelseaMarket-Regular.ttf);

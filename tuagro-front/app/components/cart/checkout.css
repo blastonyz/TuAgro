@@ -1,0 +1,14 @@
+@import '../../colors.css';
+
+.cartCheckoutMain{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+}
+
+.heroCheck{
+    font-size: 4rem;
+    font-family:'RoadRage' ;
+    color: var(--green);
+    text-shadow: rgb(22, 21, 21) 2px 4px 2px;
+}
