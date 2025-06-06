@@ -7,6 +7,10 @@ export default class CartRepository {
     }
 
 
+    async get(){
+        return this.cartDao.get()
+    }
+
     async getCart(cid){
          return this.cartDao.getPopulate(cid)
     }

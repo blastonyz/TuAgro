@@ -5,6 +5,7 @@ import productRouter from './routers/products.routes.js'
 import sessionRouter from  './routers/sessions.routes.js'
 import cartRouter from './routers/cart.routes.js';
 import messageRouter from './routers/message.routes.js'
+import ordersRouter from './routers/orders.routes.js'
 import CategoryController from "./controller/category.controller.js";
 
 const app = express();
@@ -23,7 +24,7 @@ app.use(cookieParser());
 
 const categoryController = new CategoryController()
 
-app.use('/',productRouter,sessionRouter,cartRouter,messageRouter)
+app.use('/',productRouter,sessionRouter,cartRouter,messageRouter,ordersRouter)
 
 
 app.get('/categories', async (req, res) => {

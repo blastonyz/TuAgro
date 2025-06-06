@@ -7,6 +7,13 @@ const router = Router();
 const cartsController = new CartsController()
 const orderController = new OrdersController()
 
+router.get('/cartlist', async (req,res)=> {
+    const cartlist = await cartsController.get()
+    console.log('list ok');
+    
+    res.status(200).json(cartlist)
+})
+
 router.get('/cart/:cid',async (req,res) => {
     const {cid} = req.params
     console.log(cid)
@@ -32,7 +39,7 @@ router.put('/cart/order', async (req,res)=>{
     res.status(201).json({message:'orden creada con exito',newOrder})
     
     } catch (error) {
-        console.error('Error al procesar la orden:', err);
+        console.error('Error al procesar la orden:', error);
         res.status(500).json({ message: 'Error interno del servidor' });
     }
   
