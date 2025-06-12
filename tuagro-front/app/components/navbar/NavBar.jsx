@@ -26,7 +26,7 @@ const NavBar = () => {
             className="logoImg"
             src={'/logo-verde.png'}
             width={170}
-            height={50}
+            height={40}
             alt="Logo Tu Agro Servicios e Insumos"
           />
         </div>

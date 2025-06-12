@@ -26,7 +26,7 @@ import { SectionLink } from "../link/SectionLink"
       animate={{ y: 0 }}
       transition={{ transition: {duration3}, stiffness: 100}}
       >
-  <SectionLink text={'Sobre Nosotros'} href={'/'} size={'24px'} />
+  <SectionLink text={'Sobre Nosotros'} href={'/nosotros'} size={'24px'} />
   </motion.div>
   </>
   )

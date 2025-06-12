@@ -33,12 +33,13 @@ const OrdersList = () => {
 
                 {orders && orders.map(order => {
                     return (
-                        <div className="orderCard">
+                        <div className="orderCard"  key={order._id}>
                             <h2>{order.client}</h2>
                             <div>
                                 {order.products && order.products.map(prod => {
                                     return (
-                                        <div className="orderProductsList"> <p>{prod.title}</p>
+                                        <div className="orderProductsList" key={prod._id}>
+                                            <p>{prod.title}</p>
                                             <p>Cantidad: {prod.quantity}</p>
                                             <p>Subtotal: {prod.subtotal}</p>
 

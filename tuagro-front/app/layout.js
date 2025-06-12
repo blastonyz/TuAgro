@@ -24,17 +24,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3"></meta>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+      </meta>
       <meta name="theme-color" content="#107C10"></meta>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <CategoriesProvider>
           <AuthProvider>
-          <CartProvider>
-            {/*Auth && Cart Context */}
-            <Header />
-            {children}
-            <Footer/>
-          </CartProvider>
+            <CartProvider>
+              {/*Auth && Cart Context */}
+              <Header />
+              {children}
+              <Footer />
+            </CartProvider>
           </AuthProvider>
         </CategoriesProvider>
       </body>

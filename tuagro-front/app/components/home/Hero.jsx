@@ -5,6 +5,7 @@ import { useRef } from 'react'
 
 const Hero = () => {
   const firstRef = useRef(null)
+
   return (
     <section className='heroMain' ref={firstRef}>
       <div className="heroBackground"></div>

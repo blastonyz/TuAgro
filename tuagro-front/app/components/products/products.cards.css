@@ -34,10 +34,12 @@
     font-family: "Chelsea-Market";
     color: var(--green);
     font-size: 20px;
+    margin: 8px 0;
 }
 
 .brand{
     color: black;
+    margin-bottom: 5px;
 }
 
 .priceContainer{
@@ -45,6 +47,7 @@
     flex-direction: row;
     width: 90%;
     justify-content: space-evenly;
+    margin: 20px 10px;
 }
 
 .priceBox{

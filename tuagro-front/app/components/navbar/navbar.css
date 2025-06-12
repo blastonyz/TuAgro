@@ -23,6 +23,7 @@
   .logoContainer{
     width: max-content;
     height: auto;
+    padding-top: 10px;
   }
 
   .cartIconContainer{
@@ -80,6 +81,12 @@
    }
   }
 
+    @media (max-width:720px){
+   .navContainer{
+    padding: 0 50px;
+   }
+  }
+
   @media (max-width:592px){
     .navContainer{
       padding: 0 25px;
@@ -87,6 +94,7 @@
      .cartIconContainer{
       left: 60%;
      }
+     
     .linksContainer{
       padding-top: 80px;
     }

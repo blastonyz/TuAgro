@@ -13,7 +13,7 @@ const Footer = () => {
       <div className='filter'></div>
       <div className='footerSection'>
         <div className='logoSection'>
-          <img src="/logo-tu-agro-blanco.webp" alt="logo de tu agro blaco" />
+          <img src="/logo-tu-agro-blanco.webp" alt="logo de tu agro blanco" />
           <div className='iconsSection'>
             <Fb color={colors.green} />
             <Insta color={colors.green} />

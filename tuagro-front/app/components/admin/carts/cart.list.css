@@ -1,7 +1,5 @@
-@import '../../colors.css';
-
-.ordersMain{
-    width: 100%;
+.cartListMain {
+   width: 100%;
     height: max-content;
     min-height: 70vh;
     display: flex;
@@ -10,7 +8,7 @@
     padding-top: 25px;
 }
 
-.orderList{
+.cartList {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -21,7 +19,7 @@
     gap: 15px;
 }
 
-.orderCard{
+.cartCard {
     width: max-content;
     border: 2px solid var(--green);
     border-radius: 15px;

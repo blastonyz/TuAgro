@@ -1,41 +1,43 @@
 @import '../../../colors.css';
 
-.linkContainer{
-    background-color:var(--green);
+.linkContainer {
+    background-color: var(--green);
     width: max-content;
     padding: 10px;
     align-items: center;
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
     align-items: center;
-    border-radius: 15px ;
+    border-radius: 15px;
     border: solid 2px white;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.813);
 }
 
 .linkContainer:hover {
-       background-color: var(--yellow);
+    background-color: var(--yellow);
     border: 2px solid black;
 }
 
-.link{
-    width: 100%;
+.link {
+    width: max-content;
     height: 100%;
     align-items: center;
     text-decoration: none;
-    align-self: center;
     color: var(--white);
+    font-family: 'Chelsea-Market';
 }
 
 .linkContainer:hover .link {
     color: black;
 }
 
-@media  (max-width: 592px) {
-    .linkContainer{
+@media (max-width: 592px) {
+    .linkContainer {
         padding: 5px;
     }
-    .linkText{
+
+    .linkText {
         font-size: 16px;
     }
 
-  }
+}

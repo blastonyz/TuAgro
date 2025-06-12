@@ -33,7 +33,7 @@
       padding: 2px;
 }
 
-@media (max-width: 592px){
+@media (max-width: 720px){
     .loginMain{
         flex-direction: column;
     }

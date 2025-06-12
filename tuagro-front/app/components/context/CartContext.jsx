@@ -38,7 +38,7 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     if (cart?.length > 0 && user?.email && user.email !== '') {
       localStorage.setItem(`cart-${user.email}`, JSON.stringify(cart));
-    } 
+    }
   }, [cart]);
 
   const addToCart = (item) => {
@@ -82,9 +82,32 @@ export const CartProvider = ({ children }) => {
     return cart.reduce((initial, item) => item.price * item.quantity + initial, 0)
   }
 
-  const clearCart = () => {
-    setCart(() => []);
+  const clearCart = async () => {
+   
     localStorage.removeItem(`cart-${user.email}`);
+    const cid = user.cart
+    try {
+      const response = await fetch(`/api/cart/${cid}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include'
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        return errorData
+      }
+
+      const data = await response.json()
+      console.log('data de cartPut: ', data);
+      setCart(() => []);
+      return data
+    } catch (error) {
+      console.log('error: ',error)
+    }
+     
   };
 
   const getSavedCart = async (cid) => {
