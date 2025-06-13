@@ -7,4 +7,4 @@ await connectionDB();
 const server =  http.createServer(app);
 const PORT = configuration.port;
 
-server.listen(PORT, ()=>{console.log(`Server runing on port:${HOST}:${PORT} `)});
+server.listen(PORT, ()=>{console.log(`Server runing on port:${PORT} `)});
