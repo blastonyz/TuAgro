@@ -1,0 +1,18 @@
+@import '../../../colors.css';
+
+.titleContainer{
+    width:max-content;
+    padding: 15px;
+    background-color:var(--yellow);
+    display: flex;
+    text-align: center;
+    border-radius:25px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+   
+}
+
+.sectionTitle{
+    color: black;
+    background-color:var(--yellow);
+    font-family: 'Chelsea-Market';
+}

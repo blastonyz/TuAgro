@@ -1,0 +1,40 @@
+.usMain{
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    padding-bottom: 25px;
+}
+
+.usSection{
+    display: flex;
+    flex-direction: row;
+}
+
+.imageSection{
+    display: flex;
+    flex-direction: row;
+}
+
+.columnImages{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.usImage, .usImage2{
+    border-radius: 10px;
+}
+
+.usImage{
+    height: 600px;
+    width: 334px;
+}
+
+.textSection{
+    align-items: baseline;
+    text-align: start;
+}
+
+ p {
+    max-width: 600px;
+}

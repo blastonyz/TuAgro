@@ -1,0 +1,12 @@
+.recoveryMain, .recoveryPassMain{
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.recoverySection, .recoveryFormSection{
+    display: flex;
+    width: 50%;
+}
+

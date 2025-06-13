@@ -1,0 +1,57 @@
+@import '../../colors.css';
+
+.modalContainer{
+    width:100%;
+    height: auto;
+    z-index: 1000;
+    position: absolute;
+    top: 100px;
+    left: 0;
+   
+}
+
+.modalFormContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modalSection{
+    width: max-content;
+    padding: 25px;
+    margin: auto;
+}
+.filterModal{
+    width:100%;
+    height: 70%;
+    position: absolute;
+    top: 150px;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(248, 248, 248, 0.635);
+}
+
+.butonContainer{
+    position: absolute;
+    left: 130px;
+    top: 95px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.closeModal{
+    display: flex;
+    border: 3px solid var(--green);
+    border-radius: 15px;
+    padding: 5px;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--green);
+    background-color: var(--yellow);
+}
+
+.closeModal:hover{
+    transform: scale(1.1);
+}

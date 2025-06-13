@@ -1,0 +1,289 @@
+@import '../../colors.css';
+
+.productDetailsMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.detailsContainer {
+    display: flex;
+    flex-direction: column;
+    width: clamp(700px, 60%, 900px);
+    height: max-content;
+    margin: auto;
+    background-color: var(--soft-green);
+    border-radius: 20px;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+}
+
+.prodData {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+}
+
+.dataContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    text-align: end;
+}
+
+.imageContainer {
+    width: 350px;
+    height: 350px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.productDetailImage {
+    border-radius: 20px;
+}
+
+.descriptionContainer {
+    width: 50%;
+    margin: 25px auto;
+}
+
+.detailTitle {
+    color: var(--green);
+    font-family: 'Chelsea-Market';
+}
+
+.priceCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 40%;
+}
+
+.priceText {
+    color: var(--gray);
+    font-size: larger;
+    padding-top: 10px;
+}
+
+.detailPrice {
+    background-color: var(--green);
+    padding: 10px;
+    color: var(--yellow);
+    border-radius: 10px;
+}
+
+.detailCat {
+    margin-top: 2px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.number {
+    font-size: larger;
+    font-weight: 600;
+    font-size: 24px;
+    margin-top: 18px;
+}
+
+.addCont {
+    align-items: center;
+}
+
+.controlsContianer {
+    height: 160px;
+}
+
+
+.counterContianer {
+    height: 160px;
+}
+
+.addModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 370px;
+    width: 450px;
+    background-image: url('../../../public/cart-render.jpg');
+    background-size: contain;
+    position: absolute;
+    border-radius: 20px;
+    border: var(--green) 3px solid;
+    box-shadow: 2px 4px 4px 2px var(--green-shadow);
+    top: 150px;
+    left: 35%;
+    z-index: 100;
+    transition: all 0.7s ease;
+    animation: show 0.7s ease;
+}
+
+.addText {
+    font-family: 'Chelsea-Market';
+    font-size: 2rem;
+    color: var(--yellow);
+    backdrop-filter: blur(3px);
+    padding: 10px;
+    border-radius: 15px;
+    text-shadow: 2px 2px black;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+        scale: 0.9;
+    }
+
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.closeButton {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 8px;
+}
+
+@media (max-width: 720px) {
+    .detailsContainer {
+        width: 90%;
+    }
+
+    .descriptionContainer {
+        width: 90%;
+    }
+
+    .priceText {
+        font-size: large;
+        padding-top: 10px;
+    }
+
+    .dataContainer {
+        text-align: center;
+    }
+
+    .priceCont {
+        margin-left: 0px;
+    }
+
+    .detailPrice {
+        background-color: var(--green);
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .addModal {
+        left: 10%;
+    }
+}
+
+.close {
+    border: 3px solid var(--green);
+    background-color: var(--yellow);
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.x {
+    color: var(--green);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+@media (max-width: 635px) {
+    .imageContainer {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+    }
+
+    .productDetailImage {
+        width: 100%;
+        min-width: 180px;
+        height: auto;
+    }
+
+    .top {
+        max-height: 300px;
+    }
+
+    .prodData {
+        width: 70%;
+        padding: 10px;
+        padding-bottom: 35px;
+    }
+
+    .detailTitle {
+        font-size: 16px;
+    }
+
+    .detailCat {
+        font-size: 15px;
+    }
+
+    .addModal {
+        height: 280px;
+        width: 350px;
+    }
+
+    .addText {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 460px) {
+    .detailsContainer {
+        width: 95%;
+    }
+
+    .top {
+        max-height: 250px;
+    }
+
+    .prodData {
+        padding: 5px;
+    }
+
+    .imageContainer {
+        margin-top: 0px;
+    }
+
+    .productDetailImage {
+        min-width: 128px;
+    }
+
+    .dataContainer {
+        max-height: 250px;
+        justify-content: space-between;
+    }
+
+    .priceCont {
+        justify-content: space-around;
+    }
+
+    .detailPrice {
+        padding-top: 7px;
+        font-size: 14px;
+    }
+
+    .priceText {
+        font-size: 16px;
+        padding-bottom: 6px;
+    }
+
+    .addModal {
+        height: 210px;
+        width: 280px;
+        background-size: 100%;
+    }
+
+}
