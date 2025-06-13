@@ -15,14 +15,18 @@ export default class CartRepository {
          return this.cartDao.getPopulate(cid)
     }
 
-    async createCart(data) {
-        return this.cartDao.createCart({data})
+    async createCart(email) {
+        console.log('repo: ',email);
+        
+        return this.cartDao.createCart(email)
     }
 
     async updateCart(id,data) {
         return this.cartDao.update(id,data)
     }
 
-
+    async resetCart(cid){
+        return this.cartDao.resetCart(cid)
+    }
 
 }

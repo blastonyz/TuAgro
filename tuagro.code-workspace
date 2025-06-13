@@ -1,0 +1,56 @@
+{
+	"folders": [
+		{
+			"path": "../../OneDrive-Blas/OneDrive/Escritorio/Practica/Ethereum-Bootcamp"
+		},
+		{
+			"path": "../BackEnd/entrega1"
+		},
+		{
+			"path": "../FinalProyect-CC"
+		},
+		{
+			"path": "../Consultoria/GraphicsResources"
+		},
+		{
+			"path": "../carpeta de practica"
+		},
+		{
+			"path": "../Alchemy"
+		},
+		{
+			"path": "../ReactNative"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../Foundry"
+		},
+		{
+			"path": "../ReactNative/app-profe"
+		},
+		{
+			"path": "../Alchemy/Curso-alchemy/Erc20-TokenIndexer"
+		},
+		{
+			"path": "../Alchemy/Curso-alchemy/token-erc20"
+		},
+		{
+			"path": "../HardHat"
+		},
+		{
+			"path": "../Criptonary"
+		},
+		{
+			"path": "../Next.js/3d-renders/3D-renders"
+		},
+		{
+			"path": "../Next.js/entrega-uno"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "carpeta de practica",
+		"git.ignoreLimitWarning": true
+	}
+}

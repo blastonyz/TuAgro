@@ -26,4 +26,7 @@ export default class CartsController {
         return await this.cartServices.updateCart(cid, data)
     }
 
+    async resetCart(cid){
+        return await this.cartServices.resetCart(cid)
+    }
 }

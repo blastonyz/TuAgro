@@ -17,12 +17,17 @@ export default class CartService{
             
     }
 
-    async create(data){
-        return await this.cartRepository.createCart(data)
+    async create(email){
+        console.log('service: ',email);
+        
+        return await this.cartRepository.createCart(email)
     }
 
    async  updateCart(cid,data){
         return await this.cartRepository.updateCart(cid,data)
     }
 
+    async resetCart(cid){
+        return await this.cartRepository.resetCart(cid)
+    }
 }

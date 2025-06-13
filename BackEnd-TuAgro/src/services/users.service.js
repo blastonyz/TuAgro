@@ -28,7 +28,7 @@ export default class UsersService {
         try {
             const exist = await this.usersRepository.getByEmail(data.email)
             if(exist) throw new Error('user already exist')
-            const newCart = await this.cartService.create()
+            const newCart = await this.cartService.create(data.email)
             const newCartId = newCart._id.toString()
             const planePassword = data.password
             const hashPassword = await createHash(planePassword)

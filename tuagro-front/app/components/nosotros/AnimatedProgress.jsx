@@ -4,7 +4,7 @@ import {motion} from 'framer-motion'
 const AnimatedProgress = ({value, color}) => {
   return (
     
-  
+
       <div
         style={{
           background: "#eee",

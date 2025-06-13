@@ -1,8 +1,10 @@
 import OrdersService from "../services/orders.service.js";
 
+
 export default class OrdersController{
     constructor(){
         this.ordersService = new OrdersService()
+        
     }
 
     async get(){
@@ -14,9 +16,10 @@ export default class OrdersController{
         const order = await this.ordersService.getByEmail(email)
         return order
     }
-
+  
     async createOrder(order){
         const newOrder = await this.ordersService.createOrder(order)
+        
         return newOrder    
     }
 }
