@@ -13,7 +13,7 @@ const Footer = () => {
       <div className='filter'></div>
       <div className='footerSection'>
         <div className='logoSection'>
-          <img src="/logo-tu-agro-blanco.webp" alt="logo de tu agro blanco" />
+          <img src="/logo-tu-agro-blanco.webp" alt="logo de tu agro blanco" className='logoImage'/>
           <div className='iconsSection'>
             <Fb color={colors.green} />
             <Insta color={colors.green} />
@@ -22,21 +22,27 @@ const Footer = () => {
         </div>
 
         <div className='contactSection'>
+
           <h2 className='contactsFootTitle'> Contacto</h2>
-          <div className='contactPhoneFoot'>
-            <PhoneIcon className={'phoneIcon'} color={colors.yellow} size={'clamp(18px, 4vw, 24px)'} />
-            <h2 className='contactsFoot'>3875321321</h2>
-          </div>
-          <div className='mailIcon'>
-            <MailIcon color={colors.yellow} />
-            <h2 className='contactsFoot mail'>
-              jorgemoreno@tuagro.com.ar
-            </h2>
+
+
+          <div className='contactDetails'>
+            <div className='contactPhoneFoot'>
+              <PhoneIcon className={'phoneIcon'} color={colors.yellow} size={'clamp(18px, 4vw, 24px)'} />
+              <h2 className='contactsFoot'>3875321321</h2>
+            </div>
+            <div className='mailIconFoot'>
+              <MailIcon color={colors.yellow} />
+              <h2 className='contactsFoot'>
+                jorgemoreno@tuagro.com.ar
+              </h2>
+            </div>
+            <div className='mailIconFoot'>
+              <MailIcon color={colors.yellow} />  <h2 className='contactsFoot '>info@tuagro.com.ar</h2>
+            </div>
           </div>
 
-          <div className='mailIcon'>
-            <MailIcon color={colors.yellow} />  <h2 className='contactsFoot mail'>info@tuagro.com.ar</h2>
-          </div>
+
 
         </div>
 

@@ -38,10 +38,16 @@
     justify-content: space-evenly;
 }
 
+.logoImage{
+    width: 190px;
+    height: 60px;
+}
+
 .iconsSection{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-top: 25px;
 }
 
 .iconBg{
@@ -59,7 +65,19 @@
     width: max-content;
 }
 
-.mailIcon{
+.contactsFootTitle{
+    font-family: 'Chelsea-Market';
+}
+
+.contactDetails{
+    display: flex;
+    flex-direction: column;
+    height: 110px;
+    justify-content: space-between;
+    width: max-content;
+}
+
+.mailIconFoot{
     display: flex;
 }
 
@@ -86,8 +104,41 @@
     }
 }
 
-@media(max-width:593px){
+@media(max-width:720px){ 
     .footerSection{
-        color: aliceblue;
+        display: flex;
+        flex-direction: column;
+        height: max-content;
     }
+
+    .logoSection{
+        display: flex;
+        flex-direction: row;
+        padding-top: 25px;
+    }
+
+    .iconsSection{
+        width: 150px;
+        align-items: first baseline;
+        margin-top: 0;
+    }
+    .filter{
+        background-size: 150%;
+    }
+
+    .contactSection{
+        width: 100%;
+        margin: 35px auto;
+        align-items: center;
+    }   
+
+    .contactsFootTitle{
+        margin: auto 0;
+    }
+
+    .contactDetails{
+        margin-top: 25px;    
+        justify-content: space-between;
+    }
+
 }

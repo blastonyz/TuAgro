@@ -52,6 +52,8 @@ const OrdersList = () => {
                             <h4>{order.totalPrice}</h4>
 
                             <p>Entregado: {order.isDelivered ? 'Si' : 'No'}</p>
+
+                            <p>Total: {order.totalPrice}</p>
                         </div>
                     )
                 })
