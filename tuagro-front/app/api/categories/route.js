@@ -9,14 +9,16 @@ export async function GET(request){
               'Cache-Control': 'max-age=3600', 
               'Pragma': ''
             },
-          }).then(response => response.json())
-          console.log('categories handler: ',data);
+          })
+          const response = await data.json()
+          console.log('categories handler: ',response);
           
-          return new NextResponse(JSON.stringify(data), {
+          return new NextResponse(JSON.stringify(response), {
             status: 200,
-            headers: {   'Content-Type': 'application/json' ,
-              'Cache-Control': 'max-age=3600', 
-              'Pragma': ''}
+            headers: {   
+              'Content-Type': 'application/json' ,
+              'Cache-Control': 'max-age=3600'
+              }
           });
     } catch (error) {
         console.log(error)
