@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 import {createSecureHeaders} from 'next-secure-headers'
+
 const nextConfig = {
     reactStrictMode: false,
    async headers() {
@@ -14,6 +15,7 @@ const nextConfig = {
               script-src 'self' https: 'unsafe-inline';
               style-src 'self' https: 'unsafe-inline';
               img-src 'self' https: data: blob: res.cloudinary.com;
+              media-src 'self' https: data: blob: res.cloudinary.com;
               font-src 'self' https: data:;
               connect-src 'self' https:;
               frame-src 'none';

@@ -10,6 +10,8 @@ export async function GET(request){
               'Pragma': ''
             },
           }).then(response => response.json())
+          console.log('categories handler: ',data);
+          
           return new NextResponse(JSON.stringify(data), {
             status: 200,
             headers: {   'Content-Type': 'application/json' ,
