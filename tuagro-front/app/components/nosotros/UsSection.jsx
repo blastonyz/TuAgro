@@ -24,20 +24,25 @@ const UsSection = () => {
                         Somos una organización comercial que provee de insumos y soluciones agrícolas de manera rápida eficaz y segura a lo largo de todo el territorio nacional.
                     </p>
 
-                    <h3>
-                        Asesoramiento Técnico a medida
+                   <div className='usTitles'>
+                        <h3>
+                            Asesoramiento Técnico a medida
+                           
+                        </h3> 
                         <CheckCircle/>
-                    </h3>
+                   </div>
 
                     <p>
                         Ofrecemos acompañamiento personalizado en cada etapa del ciclo productivo. Nuestro objetivo es brindar no solo productos de alta calidad, sino también estrategias integrales que permitan al productor optimizar costos de explotación sin comprometer la eficiencia en el control de plagas, enfermedades y malezas.
                     </p>
 
-                    <h3>
-                        Amplia gama de productos agroquímicos
-                             <CheckCircle/>
-                    </h3>
-
+   <div className='usTitles'>
+                        <h3>
+                            Amplia gama de productos agroquímicos
+                                
+                        </h3>
+     <CheckCircle/>
+   </div>
                     <p>Contamos con un completo portafolio de insumos, que incluye:</p>
 
                     <p>
@@ -64,11 +69,14 @@ const UsSection = () => {
                     <AnimatedProgress value={93} color={colors.green} />
 
 
-                    <h3>
-                        Representantes oficiales de Bloemen
-                             <CheckCircle/>
-                    </h3>
-
+       <div className='ustitles'>
+                        <h3>
+                            Representantes oficiales de Bloemen
+                                
+                        </h3> 
+                        <CheckCircle/>
+    
+       </div>
                     <p>
                         Somos distribuidores autorizados de la línea Bloemen, lo que nos permite ofrecer tecnologías de vanguardia y soluciones confiables para una agricultura más eficiente y sustentable.
                     </p>
