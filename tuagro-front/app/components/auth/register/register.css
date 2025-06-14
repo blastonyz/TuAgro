@@ -1,0 +1,31 @@
+@import '../../../colors.css';
+
+.registerMain{
+    display: flex;
+    justify-content: center;
+    background-color: var(--olive);
+    height:672px
+}
+
+
+
+.registerContainer{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: max-content;
+    text-align: center;
+    align-items: center;
+    margin: 48px auto;
+}
+
+@media (max-width: 720px){
+    .registerMain{
+        flex-direction: column;
+        height: max-content;
+    }
+    .registerContainer{
+        margin: 45px auto;
+    }
+    
+}

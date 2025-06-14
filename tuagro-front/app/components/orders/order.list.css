@@ -1,0 +1,29 @@
+@import '../../colors.css';
+
+.ordersMain{
+    width: 100%;
+    height: max-content;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 0px;
+}
+
+.orderList{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    gap: 15px;
+}
+
+.orderCard{
+    width: max-content;
+    border: 2px solid var(--green);
+    border-radius: 15px;
+    padding: 10px;
+}
