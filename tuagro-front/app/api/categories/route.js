@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(request){
     try {
-          const data = await fetch('http://localhost:8080/categories', {
+          const data = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/categories`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json' ,

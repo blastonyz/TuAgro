@@ -8,7 +8,7 @@ const OrdersList = () => {
 
     const getOrders = async () => {
         try {
-            const response = await fetch('http://localhost:8080/orders')
+            const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/orders`)
             if (!response.ok) throw new Error("Error al obtener Pedidos");
             const data = await response.json();
             console.log('respuesta ordenes: ', data);

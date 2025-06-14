@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function GET(request){
   {
     try {
-        const response = await fetch('http://localhost:8080/products',{cache:'force-cache'});
+        const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/products`,{cache:'force-cache'});
         if (!response.ok) throw new Error("Error al obtener productos");
         
         const data = await response.json();
@@ -29,7 +29,7 @@ export async function POST(request){
     
     
         try {
-            const response = await fetch('http://localhost:8080/products/create',{
+            const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/products/create`,{
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json'

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(request){
     try {
-        const response = await fetch('http://localhost:8080/cartlist')
+        const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/cartlist`)
         if(!response.ok) {
             const errorData = await response.json()
             return new NextResponse(JSON.stringify(errorData), {
@@ -27,7 +27,7 @@ export async function POST(request) {
         const requestBody = await request.json()
         console.log('api cart: ', requestBody);
 
-        const response = await fetch('http://localhost:8080/cart', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/cart`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

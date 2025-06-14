@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 export async function POST(request){
     try {
         const requestBody = await request.json();
-        const response = await fetch('http://localhost:8080/login', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/login`, {
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json',

@@ -19,7 +19,7 @@ const RecoveryForm = () => {
 
     const handleSUbmit = async (e) => {
         e.preventDefault()
-        const response = await fetch('http://localhost:8080/recovery-link',{
+        const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/recovery-link`,{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'

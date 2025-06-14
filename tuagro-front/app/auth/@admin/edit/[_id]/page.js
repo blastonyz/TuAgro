@@ -3,7 +3,7 @@ import EditForm from '@/app/components/admin/edit/EditForm'
 
 export default async function Edit({ params }) {
   const { _id } = await params; 
-  const res = await fetch(`http://localhost:3000/api/product/${_id}`);
+  const res = await fetch(`/api/product/${_id}`);
   const product = await res.json()
 
   return (

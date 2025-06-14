@@ -5,7 +5,7 @@ export async function GET(request, { params }) {
     console.log('id: ',_id);
     
     try {
-        const response = await fetch(`http://localhost:8080/product/${_id}`)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/product/${_id}`)
         const data = await response.json();
 
         return new NextResponse(JSON.stringify(data), {
@@ -27,7 +27,7 @@ export async function PUT(request,{params}){
     console.log('id: ',_id);
     const requestBody = await request.json();
     try {
-        const response = await fetch(`http://localhost:8080/product/edit/${_id}`,{
+        const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/product/edit/${_id}`,{
             method:'PUT',
             headers:{
                 'Content-Type':'application/json'
@@ -58,7 +58,7 @@ export async function DELETE(request,{params}){
     console.log('id: ',_id);
     
     try {
-        const response = await fetch(`http://localhost:8080/product/${_id}`,{
+        const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/product/${_id}`,{
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json'

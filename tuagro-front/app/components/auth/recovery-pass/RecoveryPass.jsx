@@ -29,7 +29,7 @@ const RecoveryPass = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(e);
-        const response = await fetch(`http://localhost:8080/recovery-password/${token}`,{
+        const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/recovery-password/${token}`,{
             method:'POST',
             headers:{
                 'Content-Type': 'application/json'

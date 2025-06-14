@@ -20,7 +20,7 @@ export async function GET() {
     }
 
     // Enviar token al backend para validar sesión
-    const response = await fetch("http://localhost:8080/verify-session", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/verify-session`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

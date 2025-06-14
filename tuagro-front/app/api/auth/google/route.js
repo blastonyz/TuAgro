@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import {cookies} from 'next/headers'
 
 export async function GET(request) {
-    const response = await fetch('http://localhost:8080/auth/google')
+    const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/auth/google`)
     const data = await response.json()
     const token = response.headers.get('set-cookie') 
     console.log('token: ',token);

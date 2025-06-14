@@ -6,7 +6,7 @@ export async function GET(request,{params}) {
     console.log('cid api: ',cid);
     
     try {
-        const response = await fetch(`http://localhost:8080/cart/${cid}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/cart/${cid}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ export async function PUT(request,{params}) {
 
       
     try {
-        const response = await fetch(`http://localhost:8080/cart/${cid}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/cart/${cid}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
