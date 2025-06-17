@@ -7,11 +7,27 @@ import cartRouter from './routers/cart.routes.js';
 import messageRouter from './routers/message.routes.js'
 import ordersRouter from './routers/orders.routes.js'
 import CategoryController from "./controller/category.controller.js";
+import rateLimit from 'express-rate-limit'
 
 const app = express();
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 min
+  max: 100,
+  message: { error: "Demasiadas solicitudes desde esta IP, intentá más tarde." },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+
+
+const allowedOrigins = [
+  'http://localhost:3000',              // desarrollo local
+  'https://tu-agro.vercel.app'          // producción en Vercel
+];
+
 app.use(cors({
-  origin: 'http://localhost:3000', 
+  origin: allowedOrigins, 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
   credentials:true
@@ -19,6 +35,8 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+app.use(limiter)
 
 //app.use(express.static(path.join(__dirname,'../public')));
 
