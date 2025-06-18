@@ -3,7 +3,6 @@
 .checkContainer{
     width: 35px;
     height: 35px;
-    margin-left: 40px;
     border-radius: 50%;
     background: linear-gradient(45deg, var(--yellow), rgb(251, 255, 0), yellow);
     display: flex;
