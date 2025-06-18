@@ -20,6 +20,13 @@ const NavBar = () => {
   return (
     <nav className="navbar">
 
+       {menuOpen && (
+        <div 
+        className="menuOverlay"
+         onClick={() => setMenuOpen(!menuOpen)}>
+         </div>
+      )}
+
       <div className="navContainer">
         <div className="logoContainer">
           <Image
