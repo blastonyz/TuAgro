@@ -12,7 +12,7 @@ import rateLimit from 'express-rate-limit'
 const app = express();
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 min
+  windowMs: 15 * 60 * 1000, 
   max: 100,
   message: { error: "Demasiadas solicitudes desde esta IP, intentá más tarde." },
   standardHeaders: true,
@@ -22,8 +22,8 @@ const limiter = rateLimit({
 
 
 const allowedOrigins = [
-  'http://localhost:3000',              // desarrollo local
-  'https://tu-agro.vercel.app'          // producción en Vercel
+  'http://localhost:3000',           
+  'https://tu-agro.vercel.app'         
 ];
 
 app.use(cors({
