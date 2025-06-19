@@ -51,7 +51,7 @@ const EditForm = ({ product }) => {
         console.log('body: ', productUpdate);
 
         try {
-            const response = await fetch(`http://localhost:8080/product/edit/${product._id}`, {
+            const response = await fetch(`/product/edit/${product._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
