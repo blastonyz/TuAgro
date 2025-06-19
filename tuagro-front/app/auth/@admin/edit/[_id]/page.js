@@ -1,3 +1,4 @@
+'use client'
 import '../../../../components/admin/edit/edit.form.css'
 import EditForm from '@/app/components/admin/edit/EditForm'
 
