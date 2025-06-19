@@ -8,15 +8,22 @@ import messageRouter from './routers/message.routes.js'
 import ordersRouter from './routers/orders.routes.js'
 import CategoryController from "./controller/category.controller.js";
 import rateLimit from 'express-rate-limit'
+import requestIp from 'request-ip'
 
 const app = express();
 
+app.set('trust proxy', true);
+
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, 
-  max: 100,
+  windowMs: 15 * 60 * 1000,
+  max: 100, 
   message: { error: "Demasiadas solicitudes desde esta IP, intentá más tarde." },
   standardHeaders: true,
   legacyHeaders: false,
+  keyGenerator: (req) => {
+    const ip = requestIp.getClientIp(req) || req.ip;
+    return ip;
+  }
 });
 
 
@@ -35,7 +42,7 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
+app.use(requestIp.mw())
 app.use(limiter)
 
 //app.use(express.static(path.join(__dirname,'../public')));
