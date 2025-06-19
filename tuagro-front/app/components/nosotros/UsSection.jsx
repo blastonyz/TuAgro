@@ -3,26 +3,26 @@ import './us.section.css'
 import AnimatedProgress from './AnimatedProgress'
 import CheckCircle from '../ui/check-circle/CheckCircle'
 import { colors } from '../ui/colors'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 
 
 const fadeIn = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 }
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 }
 }
 
 const UsSection = () => {
     return (
         <div className='usMain'>
             <div className="usSection">
-                 <motion.div
-          className="imageSection"
-          variants={fadeIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
-        >
+                <motion.div
+                    className="imageSection"
+                    variants={fadeIn}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.8 }}
+                >
                     <div className="columnImages">
                         <img src="https://res.cloudinary.com/doatjpkkh/image/upload/v1749763895/nosotros1_fyodw9.webp" alt="" className='usImage2' />
                         <img src="https://res.cloudinary.com/doatjpkkh/image/upload/v1749763895/nosotros3_kmbtgq.webp" alt="" className='usImage2' />
@@ -33,14 +33,14 @@ const UsSection = () => {
 
                 </motion.div>
 
-               <motion.div
-          className='textSection'
-          variants={fadeIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
+                <motion.div
+                    className='textSection'
+                    variants={fadeIn}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                >
                     <h2 className='usSectionTitle'>Sobre Nosotros</h2>
                     <p>
                         Somos una organización comercial que provee de insumos y soluciones agrícolas de manera rápida eficaz y segura a lo largo de todo el territorio nacional.
@@ -97,7 +97,7 @@ const UsSection = () => {
                             Representantes oficiales de Bloemen
                         </h3>
                     </div>
-                    
+
                     <p>
                         Somos distribuidores autorizados de la línea Bloemen, lo que nos permite ofrecer tecnologías de vanguardia y soluciones confiables para una agricultura más eficiente y sustentable.
                     </p>
