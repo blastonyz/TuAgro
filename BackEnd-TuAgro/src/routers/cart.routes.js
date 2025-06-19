@@ -33,7 +33,7 @@ router.post('/cart', async (req, res) => {
 
 router.put('/cart/:cid', async (req, res) => {
     const { cid } = req.params
-    console.log(cid)
+    console.log('cid router,to reset: ',cid)
     const restartedCart = await cartsController.resetCart(cid)
     console.log('cart put: ',restartedCart);
     
@@ -41,10 +41,10 @@ router.put('/cart/:cid', async (req, res) => {
 })
 
 
-router.put('/cart/order', async (req, res) => {
+router.post('/cart/order', async (req, res) => {
     try {
         const order = req.body
-        console.log('body router put: ', order);
+        console.log('body router createOrder: ', order);
         const newOrder = await orderController.createOrder(order)
         res.status(201).json({ message: 'orden creada con exito', newOrder })
 

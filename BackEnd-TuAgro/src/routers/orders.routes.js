@@ -11,8 +11,7 @@ router.get('/orders', async (req, res) => {
     try {
         const orderList = await ordersController.get()
         console.log('ordenes: ',orderList);
-        const ordersJson = JSON.stringify(orderList)
-        res.status(200).send(ordersJson)
+        res.status(200).json(orderList)
     } catch (error) {
         console.error('Error al solicitar ordenes de Compra:', error);
         res.status(500).json({ message: 'Error interno ruta ordenes de compras' });
