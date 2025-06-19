@@ -15,15 +15,20 @@ export default class OrdersService{
     }
 
     async createOrder(order){
-       const newOrder =  this.ordersRepository.createOrder(order)
+       try {
+        const newOrder = await this.ordersRepository.createOrder(order)
 
-         const send = await this.emailServices.sendMail(
-                `${order.client}`,
-                'Gracias por realizar un pedido en TuAgro',
-                `<p>Nuestro equipo se pondra en contacto a la brevedad para avanzar en la compra</p>`
-            )
+        await this.emailServices.sendMail(
+            order.client,
+            'Gracias por realizar un pedido en TuAgro',
+            `<p>Nuestro equipo se pondrá en contacto a la brevedad para avanzar en la compra</p>`
+        )
 
-             return newOrder
+        return newOrder
+    } catch (err) {
+        console.error("Error creando la orden:", err)
+        throw new Error("Error interno creando la orden")
+    }
     }
 
    
