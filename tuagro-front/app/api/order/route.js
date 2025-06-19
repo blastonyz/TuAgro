@@ -23,6 +23,8 @@ export async function PUT(request){
         }
 
         const data = await response.json()
+        console.log('order api data:',data);
+        
         return NextResponse.json({
             message: 'orden creada',
             data

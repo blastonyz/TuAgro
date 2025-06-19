@@ -22,8 +22,8 @@ const limiter = rateLimit({
 
 
 const allowedOrigins = [
-  'http://localhost:3000',              // desarrollo local
-  'https://tu-agro.vercel.app'          // producción en Vercel
+  'http://localhost:3000',             
+  'https://tu-agro.vercel.app'          
 ];
 
 app.use(cors({
