@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
-import {createSecureHeaders} from 'next-secure-headers'
+import { createSecureHeaders } from 'next-secure-headers'
 
 const nextConfig = {
-    reactStrictMode: false,
-   async headers() {
+  reactStrictMode: false,
+  async headers() {
     return [
       {
         source: '/(.*)',
@@ -11,19 +11,19 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value: `
-              default-src 'self';
-              script-src 'self' https: 'unsafe-inline';
-              style-src 'self' https: 'unsafe-inline';
-              img-src 'self' https: data: blob: res.cloudinary.com;
-              media-src 'self' https: data: blob: res.cloudinary.com;
-              font-src 'self' https: data:;
-              connect-src 'self' https:;
-              frame-src 'none';
-              object-src 'none';
-              base-uri 'self';
-              form-action 'self';
-              upgrade-insecure-requests;
-            `.replace(/\s{2,}/g, ' ').trim()
+      default-src 'self';
+      script-src 'self' https: 'unsafe-inline';
+      style-src 'self' https: 'unsafe-inline';
+      img-src 'self' https: data: blob: res.cloudinary.com;
+      media-src 'self' https: data: blob: res.cloudinary.com;
+      font-src 'self' https: data:;
+      connect-src 'self' https:;
+      frame-src 'self' https://*.cloudinary.com;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      upgrade-insecure-requests;
+    `.replace(/\s{2,}/g, ' ').trim()
           },
           {
             key: 'Referrer-Policy',
@@ -33,9 +33,10 @@ const nextConfig = {
             key: 'X-Content-Type-Options',
             value: 'nosniff'
           },
+          // Cambiado o eliminado:
           {
             key: 'X-Frame-Options',
-            value: 'DENY'
+            value: 'SAMEORIGIN'
           },
           {
             key: 'X-XSS-Protection',
@@ -47,7 +48,7 @@ const nextConfig = {
           },
           {
             key: 'Permissions-Policy',
-              value: 'camera=*, microphone=*, geolocation=*',
+            value: 'camera=*, microphone=*, geolocation=*',
           }
         ]
       }
