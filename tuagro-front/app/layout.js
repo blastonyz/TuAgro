@@ -29,12 +29,7 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         </meta>
         <meta name="theme-color" content="#107C10"></meta>
-        <link
-          rel="preload"
-          as="image"
-          href="/back1.webp"
-          type="image/webp"
-        />
+
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
