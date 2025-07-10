@@ -58,6 +58,7 @@ router.get('/auth/google', async (req,res) => {
         access_type: 'offline',
         scope:['profile', 'email'],
       });
+    console.log('Authorize URL:', authorizeUrl);  
       res.redirect(authorizeUrl)
 })
 //callback url
