@@ -7,6 +7,7 @@ import FormContainer from '../../ui/form/FormContainer'
 import CustomInputs from '../../ui/form/CustomInputs'
 import { ToastContainer, toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
+import { registerSchema } from '../../schemas/ContactSchema'
 
 
 const RegisterForm = () => {
@@ -48,12 +49,17 @@ const RegisterForm = () => {
   }
 
   setUserData(newUserData);
-  
-    console.log(userData);
-
   }
 
   const handleSubmit = async (e) => {
+    const result = registerSchema.safeParse(userData)
+
+    if (!result.success) {
+        console.log("Errores de validación: ", result.error.issues)
+       toast.error("Registro inválido. Por favor revisá los campos.");
+        return;
+    }
+
     e.preventDefault()
     const { confirmPassword, ...user } = userData
     if (user.password !== confirmPassword) {

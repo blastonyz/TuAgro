@@ -15,7 +15,8 @@
     "next-secure-headers": "^2.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-toastify": "^11.0.5"
+    "react-toastify": "^11.0.5",
+    "zod": "^3.25.68"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
