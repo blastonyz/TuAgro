@@ -8,6 +8,7 @@ import messageRouter from './routers/message.routes.js'
 import ordersRouter from './routers/orders.routes.js'
 import CategoryController from "./controller/category.controller.js";
 import rateLimit from 'express-rate-limit'
+import configuration from "./config/configuration.js";
 
 const app = express();
 
@@ -19,6 +20,7 @@ const limiter = rateLimit({
   legacyHeaders: false,
 });
 
+console.log('🌐 CALLBACK URL en producción:', configuration.googleCallback);
 
 
 const allowedOrigins = [
