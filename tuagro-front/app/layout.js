@@ -24,6 +24,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
+      <link rel="icon" href="/favicon.png" type="image/png"></link>
 
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
