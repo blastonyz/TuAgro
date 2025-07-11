@@ -86,7 +86,7 @@ router.get('/auth/google/callback', async (req,res) => {
             secure: true,
             sameSite: 'None',
             maxAge: 60 * 60 * 1000
-        }).redirect(`${configuration.clientUrl}`);
+        }).redirect(`${configuration.clientUrl}/auth/oauth-callback?token=${token}`);
     } catch (error) {
         console.error("Error en autenticación:", error);
         res.status(500).json({ error: "Error al autenticar con Google" });
