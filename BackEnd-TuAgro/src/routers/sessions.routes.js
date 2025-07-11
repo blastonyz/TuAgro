@@ -81,7 +81,7 @@ router.get('/auth/google/callback', async (req,res) => {
         console.log('token2: ',token);
         const editedToken = `authToken=${token}`
 
-        res.cookie('authToken',editedToken, {
+        res.cookie('authToken',token, {
             httpOnly: true,
             secure: true,
             sameSite: 'None',
