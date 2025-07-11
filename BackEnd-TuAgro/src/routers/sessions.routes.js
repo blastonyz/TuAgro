@@ -93,6 +93,10 @@ router.get('/auth/google/callback', async (req,res) => {
     }
 })
 
+router.get('/debug/oauth', (req, res) => {
+  res.send(`Callback actual en ejecución: ${configuration.googleCallback}`);
+});
+
 
 
 router.get('/verify-session', verifyToken(usersController), async (req, res) => {
