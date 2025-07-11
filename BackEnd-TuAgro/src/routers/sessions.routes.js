@@ -57,6 +57,7 @@ router.get('/auth/google', async (req,res) => {
     const authorizeUrl =  oAuth2Client.generateAuthUrl({
         access_type: 'offline',
         scope:['profile', 'email'],
+        redirect_uri: configuration.googleCallback
       });
     console.log('Authorize URL:', authorizeUrl);  
       res.redirect(authorizeUrl)

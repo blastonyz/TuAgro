@@ -23,7 +23,8 @@ const limiter = rateLimit({
 
 const allowedOrigins = [
   'http://localhost:3000',             
-  'https://tu-agro.vercel.app'          
+  'https://tu-agro.vercel.app',
+  'https://www.tuagro.com.ar'         
 ];
 
 app.use(cors({
