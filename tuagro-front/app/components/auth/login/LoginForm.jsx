@@ -32,9 +32,10 @@ const LoginForm = ({ onClose, setFormType }) => {
 
     const googleOAuth = async () => {
         window.location.href = `${process.env.NEXT_PUBLIC_RENDER_API_URL}/auth/google`
+        /*
         setTimeout(async () => {
             await verifyUser();
-        }, 2000);
+        }, 2000);*/
     }
 
     const handleChange = (e) => {
