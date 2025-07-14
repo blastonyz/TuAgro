@@ -12,6 +12,8 @@ import configuration from "./config/configuration.js";
 
 const app = express();
 
+app.set('trust proxy', true);
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 min
   max: 100,
