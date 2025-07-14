@@ -1,25 +1,26 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useRouter} from 'next/navigation'
+import { useRouter, useSearchParams} from 'next/navigation'
 import { useAuthContext } from '../components/context/AuthContext'
 
-export default async function OAuthCallback({params}) {
+export default function OAuthCallback({params}) {
     const router = useRouter()
     const {verifyUser} = useAuthContext()
-    const {token} = await params
+    const searchParams = useSearchParams()
+    const token = searchParams.get('token')
 
-    const getUser = async () => {
-        await verifyUser()
+  useEffect(() => {
+    if (token) {
+      // ✅ Cookie con prefijo esperado
+      document.cookie = `authToken=authToken=${token}; path=/; max-age=${60 * 60 * 24 * 7}; secure; samesite=strict`
+
+      verifyUser().then(() => {
+        router.replace('/')
+      })
     }
+  }, [token])
 
-    useEffect(() => {
-        if (token) {
-            document.cookie = `authToken=${token}; path=/; max-age=${60 * 60 * 24 * 7}; secure; samesite=strict`
-           getUser()
-            router.replace('/')
-        }
-    }, [token])
+  return <div>Redirigiendo...</div>
 
-    return <div>Redirigiendo...</div>
 }
