@@ -79,9 +79,9 @@ router.get('/auth/google/callback', async (req,res) => {
         
         const token = await usersController.googleUser(data)
         console.log('token2: ',token);
-    
+         const editedToken = `authToken=${token}`
 
-        res.cookie('authToken',token, {
+        res.cookie('authToken',editedToken, {
             httpOnly: true,
             secure: true,
             sameSite: 'None',
