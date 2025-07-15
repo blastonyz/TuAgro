@@ -25,7 +25,8 @@ const RecoveryForm = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(emailUser)
+            body: JSON.stringify(emailUser),
+            credentials: 'include'
         })
         if (!response.ok) {
             throw new Error('errroe al solicitar recuperar password')
