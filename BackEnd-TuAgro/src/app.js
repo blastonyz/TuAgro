@@ -32,11 +32,21 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-  origin: allowedOrigins, 
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS bloqueado: origen no permitido'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
-  credentials:true
+  credentials: true
 }));
+
+app.options('*', cors());
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
