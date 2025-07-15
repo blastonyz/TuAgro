@@ -13,6 +13,8 @@ export default function OAuthCallback({params}) {
 
   useEffect(() => {
     if (tokenWithPrefix) {
+      document.cookie = `authToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC`;
+
       document.cookie = `authToken=${tokenWithPrefix}; path=/; max-age=${60 * 60 * 24 * 7}; secure; samesite=lax`
 
       verifyUser().then(() => {
