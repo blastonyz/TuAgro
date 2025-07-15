@@ -13,7 +13,7 @@ export default function OAuthCallback({params}) {
 
   useEffect(() => {
     if (tokenWithPrefix) {
-      document.cookie = `authToken=${tokenWithPrefix}; path=/; max-age=${60 * 60 * 24 * 7}; secure; samesite=strict`
+      document.cookie = `authToken=${tokenWithPrefix}; path=/; max-age=${60 * 60 * 24 * 7}; secure; samesite=lax`
 
       verifyUser().then(() => {
         router.push('/')
