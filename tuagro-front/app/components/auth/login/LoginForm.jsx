@@ -31,11 +31,22 @@ const LoginForm = ({ onClose, setFormType }) => {
 
 
     const googleOAuth = async () => {
-        window.location.href = `${process.env.NEXT_PUBLIC_RENDER_API_URL}/auth/google`
-        /*
-        setTimeout(async () => {
-            await verifyUser();
-        }, 2000);*/
+        /*window.location.href = `${process.env.NEXT_PUBLIC_RENDER_API_URL}/auth/google`*/
+        const popup = window.open(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/auth/google`, "_blank", "width=500,height=600");
+        const poll = setInterval(async () => {
+            if (!popup || popup.closed) {
+                clearInterval(poll);
+                return;
+            }
+
+            const result = await verifyUser();
+            if (result.success) {
+                clearInterval(poll);
+                popup.close();
+                router.push('/');
+            }
+        }, 1200);
+
     }
 
     const handleChange = (e) => {
@@ -87,7 +98,7 @@ const LoginForm = ({ onClose, setFormType }) => {
                 />
 
                 <Link href={'/auth/recovery-form'}
-                className='recoverLink'
+                    className='recoverLink'
                 >
                     Recuperar Contraseña
                 </Link>
