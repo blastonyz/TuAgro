@@ -85,10 +85,21 @@ router.get('/auth/google/callback', async (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: 'None',
-            domain: ".tuagro.com.ar", 
+            domain: ".tuagro.com.ar",
             path: "/",
             maxAge: 60 * 60 * 1000
         })
+            .send(`
+                    <html>
+                    <body>
+                        <script>
+                        window.opener.postMessage("authSuccess", "*");
+                        window.close();
+                        </script>
+                    </body>
+                    </html>
+                 `)
+
         //.redirect(`${configuration.clientUrl}`);
     } catch (error) {
         console.error("Error en autenticación:", error);
