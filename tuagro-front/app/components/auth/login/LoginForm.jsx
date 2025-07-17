@@ -29,25 +29,45 @@ const LoginForm = ({ onClose, setFormType }) => {
         }
     }
 
+    const handleMessage = async (event) => {
+        if (event.data === "authSuccess") {
+            const result = await verifyUser()
+            if (result.success) {
+                router.push("/")
+            } else {
+                console.warn("Usuario no verificado")
+            }
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener("message", handleMessage)
+
+        return () => {
+            window.removeEventListener("message", handleMessage)
+        }
+    }, [])
+
 
     const googleOAuth = async () => {
         /*window.location.href = `${process.env.NEXT_PUBLIC_RENDER_API_URL}/auth/google`*/
-        const popup = window.open(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/auth/google`, "_blank", "width=500,height=600");
-        const poll = setInterval(async () => {
-            if (!popup || popup.closed) {
-                clearInterval(poll);
-                return;
-            }
+        const popup = window.open(
+            `${process.env.NEXT_PUBLIC_RENDER_API_URL}/auth/google`,
+            "_blank",
+            "width=500,height=600"
+        )
 
-            const result = await verifyUser();
-            if (result.success) {
-                clearInterval(poll);
-                popup.close();
-                router.push('/');
+        const pollInterval = setInterval(() => {
+            if (!popup || popup.closed) {
+                clearInterval(pollInterval)
             }
-        }, 1200);
+        }, 1000)
 
     }
+
+    useEffect(() => {
+        return () => window.removeEventListener("message", () => { }) // Cleanup on unmount
+    }, [])
 
     const handleChange = (e) => {
         const { name, value } = e.target
