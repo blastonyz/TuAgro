@@ -85,6 +85,8 @@ router.get('/auth/google/callback', async (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: 'None',
+            domain: ".tuagro.com.ar", 
+            path: "/",
             maxAge: 60 * 60 * 1000
         })
         //.redirect(`${configuration.clientUrl}`);
