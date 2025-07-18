@@ -6,7 +6,6 @@ import FormContainer from "../../ui/form/FormContainer"
 import CustomInputs from "../../ui/form/CustomInputs"
 import Button from "../../ui/button/Button"
 import VideoSection from '../../ui/video/VideoSection'
-import SectionTitle from '../../ui/title/SectionTitle'
 import { toast } from "react-toastify"
 
 const RecoveryPass = () => {
@@ -48,9 +47,6 @@ const RecoveryPass = () => {
   return (
 <>
         <div className="recoverySection">
-
-            <SectionTitle text={'Recuperar Pass'}/>
-
             <FormContainer>
             <CustomInputs
             type="password"

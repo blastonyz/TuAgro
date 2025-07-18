@@ -141,7 +141,7 @@ const RegisterForm = () => {
           <Button type="submit" onClick={handleSubmit} text={'Registrarte'} disabled={error} />
 
         </FormContainer>
-        <ToastContainer autoClose={800} />
+        <ToastContainer autoClose={1200} />
       </div>
 
     </>

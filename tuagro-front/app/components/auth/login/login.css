@@ -16,14 +16,6 @@
     margin: 20px auto;
 }
 
-.recoverLink{
-    text-decoration: none;
-    font-weight: 700;
-    color: black;
-    font-family: 'Chelsea-Market';
-    text-shadow: 2px 2px white;
-}
-
 .googleButton{
      width: 120px;
     height: 40px;

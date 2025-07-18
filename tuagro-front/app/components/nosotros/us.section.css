@@ -1,30 +1,24 @@
-@import '../../colors.css';
-
 .usMain{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: max-content;
     padding-bottom: 25px;
-    margin-top: 25px;
 }
 
 .usSection{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
 }
 
 .imageSection{
     display: flex;
     flex-direction: row;
-    max-height: 550px;
-    margin-top: 90px;
 }
 
 .columnImages{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 25px;
 }
 
 .usImage, .usImage2{
@@ -32,73 +26,20 @@
 }
 
 .usImage{
-    height: 550px;
-    width: 306px;
-    margin-left: 42px;
+    height: 600px;
+    width: 334px;
 }
 
 .textSection{
     align-items: baseline;
     text-align: start;
-    display: flex;
-    flex-direction: column;
-    min-height: 850px;
-    justify-content: space-evenly;
 }
-
-.usSectionTitle{
-    text-align: center;
-    font-family: 'Chelsea-Market';
-    color: var(--green);
-    font-size: 2rem;
-    text-shadow: 2px 2px var(--yellow);
-    margin: 0 auto ;
-}
-
 
  p {
     max-width: 600px;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 500;
-    font-size: larger;
 }
 
 .usTitles{
     display: flex;
     flex-direction: row;
-    font-family: 'Chelsea-Market';
-    color: var(--green);
-    align-items: center;
-}
-
-h3 {
-    font-size: 1.5rem;
-    padding-left: 25px;
-}
-
-
-@media(max-width:1300px){
-    .usSection{
-        flex-direction: column-reverse;
-        align-items: center;
-    }
-}
-
-@media(max-width:665px){
-    .textSection{
-        width: 90%;
-        margin: 0 auto;
-        gap:20px;
-    }
-    .usTitles{
-        justify-content: baseline;
-    }
-    .usImage{
-        height: 270px;
-        width: 150px;
-    }
-    .usImage2{
-        height: 130px;
-        width: 130px;
-    }
 }
