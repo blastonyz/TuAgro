@@ -64,7 +64,7 @@ export default class UsersService {
             if(user){
                 return sessionToken(user)
             }
-            const newCart = await this.cartService.create()
+            const newCart = await this.cartService.create(data.email)
             const newCartId = newCart._id.toString()
             const newUserData = {...data,cart:  newCartId}
             const newUser = await this.usersRepository.createUser(newUserData)

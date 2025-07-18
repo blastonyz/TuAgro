@@ -9,29 +9,41 @@ import ordersRouter from './routers/orders.routes.js'
 import CategoryController from "./controller/category.controller.js";
 import rateLimit from 'express-rate-limit'
 
+
 const app = express();
 
+app.set('trust proxy', 1);
+
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, 
+  windowMs: 15 * 60 * 1000, // 15 min
   max: 100,
   message: { error: "Demasiadas solicitudes desde esta IP, intentá más tarde." },
   standardHeaders: true,
   legacyHeaders: false,
 });
 
-
-
 const allowedOrigins = [
-  'http://localhost:3000',           
-  'https://tu-agro.vercel.app'         
+  'http://localhost:3000',             
+  'https://tu-agro.vercel.app',
+  'https://www.tuagro.com.ar'         
 ];
 
 app.use(cors({
-  origin: allowedOrigins, 
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS bloqueado: origen no permitido'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
-  credentials:true
+  credentials: true
 }));
+
+app.options('*', cors());
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
