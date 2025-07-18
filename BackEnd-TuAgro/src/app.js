@@ -8,11 +8,11 @@ import messageRouter from './routers/message.routes.js'
 import ordersRouter from './routers/orders.routes.js'
 import CategoryController from "./controller/category.controller.js";
 import rateLimit from 'express-rate-limit'
-import configuration from "./config/configuration.js";
+
 
 const app = express();
 
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 min
@@ -21,9 +21,6 @@ const limiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
 });
-
-console.log('🌐 CALLBACK URL en producción:', configuration.googleCallback);
-
 
 const allowedOrigins = [
   'http://localhost:3000',             
