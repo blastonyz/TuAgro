@@ -1,12 +1,33 @@
+@import '../../../colors.css';
+
 .recoveryMain, .recoveryPassMain{
     height: max-content;
     display: flex;
     flex-direction: row;
+    background-color: var(--olive);
 }
 
 
-.recoverySection, .recoveryFormSection{
+.recoverySection {
     display: flex;
     width: 50%;
+    align-items: center;
+    justify-content: center;
 }
 
+.recoveryFormSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    justify-content: center;
+}
+
+@media (max-width: 720px){
+    .recoveryMain{
+        flex-direction: column;
+    }
+    .recoverySection{
+        width: 100%;
+    }
+}

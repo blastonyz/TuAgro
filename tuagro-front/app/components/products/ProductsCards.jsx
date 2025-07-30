@@ -13,7 +13,7 @@ const ProductsCards = ({ products }) => {
       {products.map((prods, index) => (
         <div key={index} className="productCard">
 
-          <h3 className="productTitle">{prods.title}</h3>
+          <h3 className="productTitle">{prods.title.length > 21 ? prods.title.slice(0, 21) + '...' : prods.title}</h3>
           <h2 className="brand">{prods.brand}</h2>
 
           {prods.image ?

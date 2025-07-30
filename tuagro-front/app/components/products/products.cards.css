@@ -17,12 +17,13 @@
     flex-direction: column;
     background-color: var(--olive) ;
     justify-content: space-evenly;
-    width: 350;
+    width: 350px;
     height:450px;
     align-items: center;
     text-align: center;
     border-radius: 20px;
     box-shadow: 2px 4px 10px var(--yellow);
+    word-break: break-word;
 }
 
 .productImage{ 

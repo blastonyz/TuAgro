@@ -86,6 +86,8 @@ export const CartProvider = ({ children }) => {
    
     localStorage.removeItem(`cart-${user.email}`);
     const cid = user.cart
+    console.log('cid clear cart context:',cid);
+    
     try {
       const response = await fetch(`/api/cart/${cid}`, {
         method: 'PUT',
@@ -101,7 +103,7 @@ export const CartProvider = ({ children }) => {
       }
 
       const data = await response.json()
-      console.log('data de cartPut: ', data);
+      console.log('data de cartPut clear: ', data);
       setCart(() => []);
       return data
     } catch (error) {

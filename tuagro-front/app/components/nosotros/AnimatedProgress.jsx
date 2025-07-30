@@ -17,7 +17,7 @@ const AnimatedProgress = ({value, color}) => {
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${value}%` }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
           style={{
             height: "100%",
             backgroundColor: color,

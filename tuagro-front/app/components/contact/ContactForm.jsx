@@ -7,7 +7,7 @@ import Button from '../ui/button/Button'
 import SectionTitle from '../ui/title/SectionTitle'
 import VideoSection from '../ui/video/VideoSection'
 import { ToastContainer, toast } from 'react-toastify'
-import { contactSchema } from '../shcemas/ContactSchema'
+import { contactSchema } from '../schemas/ContactSchema'
 
 const ContactForm = () => {
   const initialState = {

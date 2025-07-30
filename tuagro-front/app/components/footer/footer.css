@@ -83,7 +83,7 @@
 
 .contactPhoneFoot{
     display: flex;
-     font-size: 1rem;
+     font-size: 1.5rem;
     color: aliceblue;
 }
 
@@ -93,7 +93,7 @@
 }
 
 .contactsFoot{
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: aliceblue;
 }
 
@@ -141,4 +141,7 @@
         justify-content: space-between;
     }
 
+    .contactsFoot{
+        font-size: 1rem;
+    }
 }

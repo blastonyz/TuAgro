@@ -40,31 +40,36 @@ const ProductsTable = () => {
     }, []);
 
     const modalStyle = windowWidth < 768
-  ? {
-      position: 'absolute',
-      top: modalPosition.top,
-      left: 16,
-      right: 16,
-      width: 'auto',
-      maxWidth: 'calc(100vw - 32px)',
-      zIndex: 1000,
-      borderRadius: '8px',
-      backgroundColor: 'white',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-    }
-  : {
-      position: 'absolute',
-      top: modalPosition.top,
-      left: modalPosition.left,
-      zIndex: 1000,
-      backgroundColor: 'white',
-      borderRadius: '8px',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-    }
+        ? {
+            position: 'absolute',
+            top: modalPosition.top,
+            left: 16,
+            right: 16,
+            width: 'auto',
+            maxWidth: 'calc(100vw - 32px)',
+            zIndex: 1000,
+            borderRadius: '8px',
+            backgroundColor: 'white',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+        }
+        : {
+            position: 'absolute',
+            top: modalPosition.top,
+            left: modalPosition.left,
+            zIndex: 1000,
+            backgroundColor: 'white',
+            borderRadius: '8px',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+        }
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('/api/products', { cache: 'reload' })
+            const response = await fetch('/api/products', {
+                method: 'GET',
+                headers: {
+                    'Cache-Control': 'no-store'
+                }
+            })
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }

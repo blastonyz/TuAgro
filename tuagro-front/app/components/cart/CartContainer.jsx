@@ -43,7 +43,7 @@ const CartContainer = () => {
       console.log('orden: ', order);
 
       const response = await fetch('/api/order', {
-        method: 'PUT',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -59,7 +59,7 @@ const CartContainer = () => {
       setTimeout(() => {
         clearCart()
         router.push('/carrito/checkout')
-      }, 2000)
+      }, 1000)
     } else {
       toast.error('Carrito vacio')
     }

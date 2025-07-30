@@ -21,21 +21,53 @@ const LoginForm = ({ onClose, setFormType }) => {
     })
 
     const handleRegister = () => {
-      if (setFormType) {
-        setFormType('register')
-    } else {
-        // redirige a la página de registro
-        router.push('/auth/register')
+        if (setFormType) {
+            setFormType('register')
+        } else {
+            // redirige a la página de registro
+            router.push('/auth/register')
+        }
     }
+
+    const handleMessage = async (event) => {
+        if (event.data === "authSuccess") {
+            const result = await verifyUser()
+            if (result.success) {
+                router.push("/")
+            } else {
+                console.warn("Usuario no verificado")
+            }
+        }
     }
+
+    useEffect(() => {
+        window.addEventListener("message", handleMessage)
+
+        return () => {
+            window.removeEventListener("message", handleMessage)
+        }
+    }, [])
 
 
     const googleOAuth = async () => {
-        window.location.href = `${process.env.NEXT_PUBLIC_RENDER_API_URL}/auth/google`
-        setTimeout(async () => {
-            await verifyUser();
-        }, 2000);
+        /*window.location.href = `${process.env.NEXT_PUBLIC_RENDER_API_URL}/auth/google`*/
+        const popup = window.open(
+            `${process.env.NEXT_PUBLIC_RENDER_API_URL}/auth/google`,
+            "_blank",
+            "width=500,height=600"
+        )
+
+        const pollInterval = setInterval(() => {
+            if (!popup || popup.closed) {
+                clearInterval(pollInterval)
+            }
+        }, 1000)
+
     }
+
+    useEffect(() => {
+        return () => window.removeEventListener("message", () => { }) // Cleanup on unmount
+    }, [])
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -65,9 +97,9 @@ const LoginForm = ({ onClose, setFormType }) => {
     return (
 
         <div className="loginContainer">
-         
+
             <FormContainer>
-                 
+
                 <CustomInputs
                     onChange={handleChange}
                     type={"email"}
@@ -84,15 +116,15 @@ const LoginForm = ({ onClose, setFormType }) => {
                     value={userData.password}
                     required={true}
                 />
-                
-              
-             
 
-                <Button type="submit" onClick={handleLogin} text={'Iniciar Sesion'} /> 
-                
-                 <Link href={'/auth/recovery-form'}>
-                    Recuperar Contraseña  
-                 </Link>
+                <Link href={'/auth/recovery-form'}
+                    className='recoverLink'
+                >
+                    Recuperar Contraseña
+                </Link>
+
+
+                <Button type="submit" onClick={handleLogin} text={'Iniciar Sesion'} />
 
                 <button
                     onClick={googleOAuth} className='googleButton'
@@ -104,15 +136,15 @@ const LoginForm = ({ onClose, setFormType }) => {
                 <div className='registerLink'>
                     <p className='registerText'>No te registraste aun?</p>
 
-                    <button 
-                    onClick={handleRegister}
-                    type='button'
-                        >Registrate
-                        </button>
+                    <Button
+                        onClick={handleRegister}
+                        type='button'
+                        text={'Registrate'}
+                    />
                 </div>
 
 
-                
+
             </FormContainer>
 
         </div>

@@ -8,12 +8,12 @@ const OrdersList = () => {
 
     const getOrders = async () => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/orders`)
+            const response = await fetch('/api/order')
             if (!response.ok) throw new Error("Error al obtener Pedidos");
             const data = await response.json();
             console.log('respuesta ordenes: ', data);
 
-            setOrders(data)
+            setOrders(data.data)
         } catch (error) {
             console.error(error)
         }

@@ -18,17 +18,18 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "TuAgro Insumos y Servicios",
-  description: "todo lo que buscas para tu campo, asesoramiento, productos, granos, compra y vende tus productos, gestion de comercio exterior",
+  description: "Todo lo que buscas para tu campo, asesoramiento, productos, granos, compra y vende tus productos, gestion de comercio exterior",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-
+     
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         </meta>
         <meta name="theme-color" content="#107C10"></meta>
+         <link rel="icon" href="/favicon.png" type="image/png"></link>
 
       </head>
 
@@ -36,7 +37,7 @@ export default function RootLayout({ children }) {
         <CategoriesProvider>
           <AuthProvider>
             <CartProvider>
-              {/*Auth && Cart Context */}
+            
               <Header />
               {children}
               <Footer />
