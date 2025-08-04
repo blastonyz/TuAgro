@@ -8,8 +8,11 @@ const productsController = new ProductsController()
 router.get('/products', async (req, res) => {
   const products = await productsController.get({});
   const productsJSON = JSON.stringify(products);
-  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.setHeader('Content-Type', 'application/json');
+
   res.send(productsJSON)
 });
 
