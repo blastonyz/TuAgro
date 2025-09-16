@@ -1,5 +1,3 @@
-
-import Link from "next/link";
 import { CldImage } from "next-cloudinary";
 import { SectionLink } from "../ui/link/SectionLink";
 import './products.cards.css'
@@ -12,10 +10,6 @@ const ProductsCards = ({ products }) => {
 
       {products.map((prods, index) => (
         <div key={index} className="productCard">
-
-          <h3 className="productTitle">{prods.title.length > 21 ? prods.title.slice(0, 21) + '...' : prods.title}</h3>
-          <h2 className="brand">{prods.brand}</h2>
-
           {prods.image ?
             <CldImage
               width="250"
@@ -28,6 +22,9 @@ const ProductsCards = ({ products }) => {
             null
           }
 
+          <h3 className="productTitle">{prods.title.length > 21 ? prods.title.slice(0, 21) + '...' : prods.title}</h3>
+          <h2 className="brand">{prods.brand}</h2>
+
           <div className="priceContainer">
             <p className="precio">Precio</p>
 
@@ -37,13 +34,13 @@ const ProductsCards = ({ products }) => {
             </div>
           </div>
 
-       
-            <SectionLink 
-            href={`/producto/${prods._id}`} 
+
+          <SectionLink
+            href={`/producto/${prods._id}`}
             text={'Ver Mas'}
             size={18}
-            /> 
-         
+          />
+
         </div>
       )
       )
