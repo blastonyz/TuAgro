@@ -8,7 +8,7 @@ import SectionTitle from "../../ui/title/SectionTitle";
 
 const EditForm = ({ product }) => {
     const initialState = {
-         brand: product.brand || "",
+        brand: product.brand || "",
         category: product.category || "",
         image: product.image || "",
         longDescription: product.longDescription || "",
@@ -16,12 +16,13 @@ const EditForm = ({ product }) => {
         shortDescription: product.shortDescription || "",
         stock: product.stock || "",
         tags: product.tags || "",
-        title: product.title || ""
+        title: product.title || "",
+        size: product.sizes?.join(",") || ""
     }
 
     const [productUpdate, setProductUpdate] = useState(initialState)
 
-       const [uploadedImage, setUploadedImage] = useState(false)
+    const [uploadedImage, setUploadedImage] = useState(false)
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -31,7 +32,7 @@ const EditForm = ({ product }) => {
         }))
     }
 
-     const handleSuccess = (result) => {
+    const handleSuccess = (result) => {
 
         console.log('Resultado de Cloudinary:', result)
 
@@ -42,7 +43,7 @@ const EditForm = ({ product }) => {
                 image: imageUrl
             }))
             setUploadedImage(imageUrl)
-           
+
         }
     }
 
@@ -83,8 +84,8 @@ const EditForm = ({ product }) => {
             </div>
 
             <form className="editForm">
-             <div className="inputsContainer">
-                  <div className="leftForm">
+                <div className="inputsContainer">
+                    <div className="leftForm">
                         <label htmlFor='title' className='labels'>
                             Título
                         </label>
@@ -140,8 +141,8 @@ const EditForm = ({ product }) => {
                             value={productUpdate.stock}
                             id={'stock'}
                         />
-                  </div>
-                <div className="rightForm">
+                    </div>
+                    <div className="rightForm">
                         <label htmlFor='shortDescription' className='labels'>
                             Descripción corta
                         </label>
@@ -164,29 +165,40 @@ const EditForm = ({ product }) => {
                             id={'longDescription'}
                             className="areaText"
                         />
-        
-                </div>
+                        <label htmlFor='size' className='labels'>
+                            Presentaciones
+                        </label>
+                        <CustomInputs
+                            onChange={handleChange}
+                            type="text"
+                            name="sizes"
+                            placeholder={product.size?.join(", ")} 
+                            value={productUpdate.size}
+                            id="sizes"
+                        />
+
+                    </div>
                     <div className="imageSection">
                         <h3>Imagen</h3>
-                        <img src={!uploadedImage ? productUpdate.image : uploadedImage} alt={`imagen de ${productUpdate.title}`} className="editImage"/>
+                        <img src={!uploadedImage ? productUpdate.image : uploadedImage} alt={`imagen de ${productUpdate.title}`} className="editImage" />
                     </div>
-             </div>
-               <div className="editButtons"> 
-                <Button type="submit" onClick={handleSubmit} text={'Actualizar'} />
-                  <CldUploadWidget
-                uploadPreset="ProductImages"
-                onSuccess={handleSuccess}
-                options={{ multiple: false }}
-            >
-                {({ open }) => (
-                    <Button type="button" onClick={() => open()} text={'Nueva Imagen'}>
-                        Subir Imagen
-                    </Button>
-                )}
-            </CldUploadWidget>
+                </div>
+                <div className="editButtons">
+                    <Button type="submit" onClick={handleSubmit} text={'Actualizar'} />
+                    <CldUploadWidget
+                        uploadPreset="ProductImages"
+                        onSuccess={handleSuccess}
+                        options={{ multiple: false }}
+                    >
+                        {({ open }) => (
+                            <Button type="button" onClick={() => open()} text={'Nueva Imagen'}>
+                                Subir Imagen
+                            </Button>
+                        )}
+                    </CldUploadWidget>
                 </div>
             </form>
-                <ToastContainer autoClose={1200}/>
+            <ToastContainer autoClose={1200} />
         </div>
     )
 }

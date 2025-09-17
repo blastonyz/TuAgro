@@ -2,61 +2,77 @@ import { CldImage } from "next-cloudinary"
 import './product.details.css'
 import AddCart from "../addcart/AddCart"
 
-const ProductDetails = ({ productSelected }) => {
 
+const ProductDetails = ({ productSelected }) => {
   return (
     <div className="productDetailsMain">
-      <div className="detailsContainer">
-        <div className="top">
-          <div className="imageContainer">
-            {productSelected.image ? <CldImage
-              width="350"
-              height="350"
-              priority="true"
+      <div className="detailsGrid">
+
+        <div className="imageWrapper">
+          {productSelected.image && (
+            <CldImage
+              width="500"
+              height="500"
+              priority
               src={productSelected.image}
-              alt="Description of my image"
-              className='productDetailImage'
+              alt={productSelected.title}
+              className="productImage"
             />
-              :
-              null
-            }
-          </div>
-          <div className="prodData">
+          )}
+        </div>
 
-            <div className="dataContainer">
-              <h3 className="detailCat">
-                {productSelected.category}</h3>
-              <h2 className="detailTitle">
-                {productSelected.title}
-              </h2>
+       
+        <div className="infoWrapper">
+          <p className="breadcrumb">
+            Products / {productSelected.category}
+          </p>
+          <h1 className="productTitle">{productSelected.title}</h1>
+          
 
-              <div className="priceCont">
-                <h4 className="priceText">Precio:</h4>
-                <h4 className="detailPrice">
-                  U$D {productSelected.price}
-                </h4>
-              </div>
-              <h5 className="detailBrand">
-                {productSelected.brand}
-              </h5>
+          <div className="techCard">
+            <div>
+              <span className="label">Marca</span>
+              <p>{productSelected.brand}</p>
             </div>
+            <div>
+              <span className="label">Categoria</span>
+              <p>{productSelected.category}</p>
+            </div>
+          
+          </div>
 
-          </div >
+          <div className="descriptionBlock">
+            <h2>Descripcion</h2>
+            <p>{productSelected.shortDescription}</p>
+            <p>{productSelected.longDescription}</p>
+          </div>
 
+          <div className="presentationsBlock">
+            <h3>Presentaciones</h3>
+            <div className="pills">
+              {productSelected.size?.map((pres, idx) => (
+                <button key={idx} className="pill">
+                  {pres} lts
+                </button>
+              ))} 
+            </div>
+          </div> 
+          <p className="stock">
+            <span className="dot"></span> Disponible
+          </p>
         </div>
 
-        <div className="controlsContainer">
-          <AddCart item={productSelected} />
+    
+        <div className="footerBlock">
+         
+          <div className="cartBtnContainer">
+            <AddCart item={productSelected} />
+          </div>
         </div>
-      </div>
-      
-      <div className="descriptionContainer">
-        <h2 className="descriptionTitle">Descripcion del Producto</h2>
-        <p>{productSelected.shortDecription}</p>
-        <p>{productSelected.longDescription}</p>
+
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductDetails
+export default ProductDetails;

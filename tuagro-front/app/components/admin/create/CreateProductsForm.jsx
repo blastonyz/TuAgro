@@ -4,10 +4,15 @@ import { CldUploadWidget } from 'next-cloudinary'
 import { useState } from "react"
 import SectionTitle from '../../ui/title/SectionTitle'
 import CustomInputs from "../../ui/form/CustomInputs"
+import { useCategoriesContext } from '../../context/CategoriesContext'
 import { toast, ToastContainer } from 'react-toastify'
 import Button from "../../ui/button/Button"
 
 const CreateProductsForm = () => {
+    const { categories } = useCategoriesContext()
+
+    const inputCategories = categories.map(cat => cat.title)
+    console.log('categories en CreateProductsForm:', inputCategories)
 
     const initialState = {
         brand: '',
@@ -51,8 +56,6 @@ const CreateProductsForm = () => {
         const data = await response.json()
         toast.success('Producto Agregado!')
         setProducts(initialState)
-        console.log('data: ', data);
-
     }
 
     const handleSuccess = (result) => {
@@ -77,10 +80,10 @@ const CreateProductsForm = () => {
             <SectionTitle text={'Crear Producto'} />
 
             <form className='createForm'>
-                 <label htmlFor='title' className='labels'>
+                <label htmlFor='title' className='labels'>
                     Título
                 </label>
-                 <CustomInputs
+                <CustomInputs
                     type={'text'}
                     name={'title'}
                     value={products.title}
@@ -102,14 +105,15 @@ const CreateProductsForm = () => {
                 <label htmlFor='category' className='labels'>
                     Categoría
                 </label>
-                <CustomInputs
-                    type={'text'}
-                    name={'category'}
+              <CustomInputs
+                    type="select"
+                    name="category"
                     value={products.category}
                     onChange={handleChange}
-                    placeholder={'Categoria'}
-                    id={'category'}
+                    options={inputCategories}
+                    required={true}
                 />
+
                 <label htmlFor='longDescription' className='labels'>
                     Descripción larga
                 </label>
@@ -154,7 +158,9 @@ const CreateProductsForm = () => {
                     placeholder={'Stock'}
                     id={'stock'}
                 />
-               
+
+             
+
                 <Button type={"submit"} text={'Crear'} onClick={handleSubmit} />
             </form>
 

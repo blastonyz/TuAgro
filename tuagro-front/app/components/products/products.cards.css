@@ -41,7 +41,7 @@
     justify-content: space-between;
     margin-top: 10px;
     width: 100%;
-    padding: 0 15px;
+    padding: 0 10px;
 }
 
 .productTitle {
@@ -53,13 +53,14 @@
 .brand {
     color: black;
     font-size: 18px;
+    margin-top: 3px;
 }
 
 .categoryContainer {
     display: flex;
     flex-direction: row;
     margin: 10px;
-    padding: 0 15px;
+    padding: 0 10px;
     justify-content: space-between;
     width: 100%;
 }
@@ -69,7 +70,7 @@
     flex-direction: row;
     justify-content: center;
     gap: 5px;
-    margin-right: 10px;
+    margin-right:0 10px ;
 }
 
 .sizeTag{

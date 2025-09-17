@@ -9,7 +9,7 @@ const FourthSection = () => {
 
   return (
     <section className="categoriesMain">
-      <SectionTitle size={'35px'} text={'Productos'} />
+      <SectionTitle size={'35px'} text={'Catalogo'} />
         <CategorieCard/>
     </section>
   );
