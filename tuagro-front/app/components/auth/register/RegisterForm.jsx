@@ -51,7 +51,8 @@ const RegisterForm = () => {
   setUserData(newUserData);
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {  
+    e.preventDefault()
     const result = registerSchema.safeParse(userData)
 
     if (!result.success) {
@@ -60,7 +61,7 @@ const RegisterForm = () => {
         return;
     }
 
-    e.preventDefault()
+  
     const { confirmPassword, ...user } = userData
     if (user.password !== confirmPassword) {
       setError(true);

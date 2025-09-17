@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
+    console.log('post recibido');
+    
     const requestBody = await request.json();
     const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/register`, {
         method: 'POST',
@@ -16,7 +18,7 @@ export async function POST(request) {
             success: false,
             message: errorData || "Error al registrarte",
         }), {
-            status: response.status, // Usa el código de estado de la respuesta
+            status: response.status, 
             headers: { 'Content-Type': 'application/json' },
         });
     } else {

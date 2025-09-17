@@ -97,7 +97,7 @@ useEffect(() => {
         <motion.img
           key={`left-${leftIndex}-${direction}`}
           src={images[leftIndex]}
-          className="sliderImg sideImg"
+          className="sliderImg sideImg leftImg"
           initial={{ opacity: 0.1, x: 0, y: 0, scale: 0.8 }}
           animate={{
             opacity: 0.6,
@@ -140,7 +140,7 @@ useEffect(() => {
         <motion.img
           key={`right-${rightIndex}-${direction}`}
           src={images[rightIndex]}
-          className="sliderImg sideImg"
+          className="sliderImg sideImg rightImg"
           initial={{ opacity: 0.1, x: 0, y: 0, scale: 0.8 }}
           animate={{
             opacity: 0.6,

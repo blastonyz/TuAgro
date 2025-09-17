@@ -22,24 +22,33 @@ const ProductsCards = ({ products }) => {
             null
           }
 
-          <h3 className="productTitle">{prods.title.length > 21 ? prods.title.slice(0, 21) + '...' : prods.title}</h3>
-          <h2 className="brand">{prods.brand}</h2>
-
-          <div className="priceContainer">
-            <p className="precio">Precio</p>
-
-            <div className="priceBox">
-              <h4 className="price">U$D {prods.price}
-              </h4>
-            </div>
+          <div className="brandContainer">
+            <h3 className="productTitle">{prods.title.length > 21 ? prods.title.slice(0, 21) + '...' : prods.title}</h3>
+            <h2 className="brand">{prods.brand}</h2>
           </div>
 
+          <div className="categoryContainer">
+            <h4 className="productTitle">{prods.category}</h4>
+            <div className="sizes">
+              {
+              prods && prods.size.map((s, i) => (
+                <span key={i} className="size">
+                  <p className="sizeTag"> {s} lts </p>
+                </span>
+              ))
+            }
+            </div>
+            
+          </div>
 
-          <SectionLink
-            href={`/producto/${prods._id}`}
-            text={'Ver Mas'}
-            size={18}
-          />
+          <div className="linkCard">
+            <SectionLink
+              href={`/producto/${prods._id}`}
+              text={'Ver Mas'}
+              size={18}
+            />
+
+          </div>
 
         </div>
       )
