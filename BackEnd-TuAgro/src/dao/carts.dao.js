@@ -39,11 +39,9 @@ export default class CartDao {
     }
 
     async resetCart(cid){
-      console.log('cid dao:',cid);
-      
          try {
             const updatedCart = await CartModel.findByIdAndUpdate(
-             cid,
+              cid,
               { $set: { products: [] } },
               { new: false } 
             );

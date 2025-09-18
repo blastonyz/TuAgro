@@ -6,7 +6,7 @@ export default class OrdersDao{
     }
 
     async getByEmail(email){
-        return OrderModel.findOne({email})
+        return OrderModel.findOne(email)
     }
 
     async createOrder (order){

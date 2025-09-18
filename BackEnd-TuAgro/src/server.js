@@ -7,4 +7,7 @@ await connectionDB();
 const server =  http.createServer(app);
 const PORT = configuration.port;
 
+console.log('url callback: ', configuration.googleCallback);
+
+
 server.listen(PORT, ()=>{console.log(`Server runing on port:${PORT} `)});

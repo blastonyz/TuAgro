@@ -18,7 +18,7 @@ export default class UsersController {
     async getByEmail(email) {
         return this.userServices.getByEmail(email)
     }
-    //incluir logica para dividir email para google auth y para registro por app
+   
     async createUser(newUser) {
         try {
             const register = await this.userServices.createUser(newUser);
