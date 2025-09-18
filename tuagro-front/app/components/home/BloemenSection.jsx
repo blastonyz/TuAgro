@@ -6,7 +6,7 @@ const BloemenSection = () => {
   return (
     <div className="mainBloemen">
       <div className='firstTitleContainer'>
-         <h2 className='firstTitle'>Representates Oficiales de</h2>
+         <h2 className='firstTitle'>Fertilizantes</h2>
          <img src="./logobloemen-1.svg" alt="" className='bloemenLogo'/>
       </div>
       
