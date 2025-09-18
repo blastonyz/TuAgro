@@ -16,8 +16,8 @@ export async function GET(request) {
    const cookiesStore = await cookies();
    cookiesStore.set("authToken", token, {
        httpOnly: true,
-       secure: process.env.NODE_ENV === "production",
-       sameSite: "strict",
+       secure: true,
+       sameSite: "none",
        maxAge: 60 * 60 * 24 * 7, // 7 días
        path: "/",
    });

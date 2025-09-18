@@ -89,7 +89,7 @@ router.get('/auth/google/callback', async (req, res) => {
             path: "/",
             maxAge: 60 * 60 * 1000
         })
-            .send(`
+           /* .send(`
                     <html>
                     <body>
                         <script>
@@ -98,9 +98,9 @@ router.get('/auth/google/callback', async (req, res) => {
                         </script>
                     </body>
                     </html>
-                 `)
+                 `)*/
 
-        //.redirect(`${configuration.clientUrl}`);
+        .redirect(`${configuration.clientUrl}`);
     } catch (error) {
         console.error("Error en autenticación:", error);
         res.status(500).json({ error: "Error al autenticar con Google" });
