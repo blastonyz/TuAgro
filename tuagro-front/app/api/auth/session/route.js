@@ -3,10 +3,7 @@ import { cookies } from "next/headers";
 
 export async function GET() {
 
-
     // Si no hay email y password, verificar sesión en la cookie
-
-    console.log("Verificando sesión con cookie...");
     const authToken = (await cookies()).get("authToken")?.value;
     console.log('sesion verif tk next/api: ', authToken);
 
@@ -49,8 +46,8 @@ export async function GET() {
     // Guardar cookie con el token (si es necesario)
     nextResponse.cookies.set("authToken", authToken, {
         httpOnly: true,
-        secure: false,
-        sameSite: 'strict',
+        secure: true,
+        sameSite: 'none',
         maxAge: 60 * 60 * 24 * 7,
         path: "/",
     });
