@@ -100,7 +100,7 @@ router.get('/auth/google/callback', async (req, res) => {
                     </html>
                  `)*/
 
-        .redirect(`${configuration.clientUrl}/auth/success`);
+        .redirect(`${configuration.clientUrl}/auth-redirect`);
     } catch (error) {
         console.error("Error en autenticación:", error);
         res.status(500).json({ error: "Error al autenticar con Google" });
