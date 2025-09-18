@@ -27,7 +27,8 @@ router.post('/login', async (req, res) => {
     const userData = req.body
     try {
         const userAndToken = await usersController.logInUser(userData.email, userData.password)
-
+        console.log('userAndToken: ', userAndToken);
+        
         res.cookie('authToken', userAndToken.token, {
             httpOnly: true,
             secure: true,
