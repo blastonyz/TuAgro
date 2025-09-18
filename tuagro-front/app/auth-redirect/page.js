@@ -1,25 +1,19 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useRouter, useSearchParams} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useAuthContext } from '../components/context/AuthContext'
 
-export default function OAuthCallback({params}) {
- const router = useRouter()
+export default function OAuthCallback() {
+  const router = useRouter()
   const { verifyUser } = useAuthContext()
-  const searchParams = useSearchParams()
-
-  const tokenWithPrefix = searchParams.get('token')
 
   useEffect(() => {
-    if (tokenWithPrefix) {
-      document.cookie = `authToken=${tokenWithPrefix}; path=/; max-age=${60 * 60 * 24 * 7}; secure; samesite=lax`
-
-      verifyUser().then(() => {
-        router.push('/')
-      })
-    }
-  }, [tokenWithPrefix])
+    // La cookie ya debería estar seteada por el backend
+    verifyUser().then(() => {
+      router.push('/')
+    })
+  }, [])
 
   return <div>Redirigiendo...</div>
 }
