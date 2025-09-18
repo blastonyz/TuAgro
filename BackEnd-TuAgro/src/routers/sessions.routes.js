@@ -80,9 +80,9 @@ router.get('/auth/google/callback', async (req, res) => {
 
         const token = await usersController.googleUser(data)
         console.log('token2: ', token);
-        const editedToken = `authToken=${token}`
+        //const editedToken = `authToken=${token}`
 
-        res.cookie('authToken', editedToken, {
+        res.cookie('authToken', token, {
             httpOnly: true,
             secure: true,
             sameSite: 'None',
@@ -90,7 +90,8 @@ router.get('/auth/google/callback', async (req, res) => {
             path: "/",
             maxAge: 60 * 60 * 1000
         })
-           /* .send(`
+        .redirect(`${configuration.clientUrl}/auth-redirect`);
+         /* .send(`
                     <html>
                     <body>
                         <script>
@@ -101,7 +102,6 @@ router.get('/auth/google/callback', async (req, res) => {
                     </html>
                  `)*/
 
-        .redirect(`${configuration.clientUrl}/auth-redirect`);
     } catch (error) {
         console.error("Error en autenticación:", error);
         res.status(500).json({ error: "Error al autenticar con Google" });
