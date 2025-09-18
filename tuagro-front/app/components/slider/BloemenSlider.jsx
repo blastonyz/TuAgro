@@ -27,8 +27,7 @@ const BloemenSlider = ({ time = 3000, category = 'Fertilizantes' }) => {
 
         setProducts(data);
         setImages(validImages);
-        console.log('Fetched products for slider:', data);
-        console.log('Valid images for slider:', validImages);
+      
 
       } catch (error) {
         console.error("Error fetching products:", error);
