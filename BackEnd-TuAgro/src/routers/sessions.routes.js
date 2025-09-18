@@ -85,8 +85,7 @@ router.get('/auth/google/callback', async (req, res) => {
         res.cookie('authToken', token, {
             httpOnly: true,
             secure: true,
-            sameSite: 'None',
-            domain: ".tuagro.com.ar",
+            sameSite: 'none',
             path: "/",
             maxAge: 60 * 60 * 1000
         })
