@@ -3,9 +3,18 @@ import { cookies } from "next/headers";
 
 export async function GET() {
 
-    // Si no hay email y password, verificar sesión en la cookie
-    const authToken = (await cookies()).get("authToken")?.value;
-    console.log('sesion verif tk next/api: ', authToken);
+   const cookieStore = await cookies();
+    let authToken = cookieStore.get("authToken")?.value;
+
+    // Si no vino cookie, intento sacar del header Authorization
+    if (!authToken) {
+        const authHeader = request.headers.get("authorization");
+        if (authHeader && authHeader.startsWith("Bearer ")) {
+            authToken = authHeader.split(" ")[1];
+        }
+    }
+
+    console.log("sesion verif tk next/api: ", authToken);
 
     if (!authToken) {
         return new NextResponse(JSON.stringify({ message: "No autenticado" }), {
@@ -17,15 +26,16 @@ export async function GET() {
     }
 
     // Enviar token al backend para validar sesión
-    const response = await fetch(`${process.env.NEXT_PUBLIC_RENDER_API_URL}/verify-session`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Cookie": `authToken=${authToken}`
-        },
-        credentials: "include",
-    });
-
+    const response = await fetch(
+        `${process.env.NEXT_PUBLIC_RENDER_API_URL}/verify-session`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${authToken}`, // <- pasamos siempre por header
+            },
+        }
+    );
 
     if (!response.ok) {
         return new NextResponse(JSON.stringify({ message: "Sesión no válida" }), {
@@ -43,15 +53,15 @@ export async function GET() {
         headers: { "Content-Type": "application/json" }
     });
 
-    // Guardar cookie con el token (si es necesario)
-    nextResponse.cookies.set("authToken", authToken, {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'none',
-        maxAge: 60 * 60 * 24 * 7,
-        path: "/",
-    });
-
+    if (cookieStore.get("authToken")) {
+        nextResponse.cookies.set("authToken", authToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            maxAge: 60 * 60 * 24 * 7,
+            path: "/",
+        });
+    }
     return nextResponse;
 
 
