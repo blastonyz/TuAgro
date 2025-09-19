@@ -11,15 +11,16 @@ export default function OAuthCallback() {
 
   useEffect(() => {
     const token = searchParams.get("token")
+
     if (token) {
-      // Guardar el token en localStorage para usarlo como Bearer
+      
       localStorage.setItem("authToken", token)
-      router.replace("/") // redirige al home
-    } else {
-      // Si no hay token en query param, probamos cookie (login interno)
       verifyUser().then(() => {
-        router.replace("/")
+        router.replace("/") // redirige al home
       })
+    } else {
+      
+      router.replace("/auth/login")
     }
   }, [searchParams, router, verifyUser])
 
