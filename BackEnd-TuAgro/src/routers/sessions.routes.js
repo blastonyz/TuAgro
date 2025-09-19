@@ -80,27 +80,9 @@ router.get('/auth/google/callback', async (req, res) => {
 
         const token = await usersController.googleUser(data)
         console.log('token2: ', token);
-        //const editedToken = `authToken=${token}`
 
-        res.cookie('authToken', token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'none',
-            path: "/",
-            maxAge: 60 * 60 * 1000
-        })
-        .redirect(`${configuration.clientUrl}/auth-redirect`);
-         /* .send(`
-                    <html>
-                    <body>
-                        <script>
-                        window.opener.postMessage("authSuccess", "*");
-                        window.close();
-                        </script>
-                    </body>
-                    </html>
-                 `)*/
-
+         res.redirect(`${configuration.clientUrl}/auth-redirect?token=${token}`)
+      
     } catch (error) {
         console.error("Error en autenticación:", error);
         res.status(500).json({ error: "Error al autenticar con Google" });
