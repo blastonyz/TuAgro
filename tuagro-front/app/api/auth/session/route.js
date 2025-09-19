@@ -1,28 +1,20 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
-export async function GET() {
+export async function GET(request) {
 
-   const cookieStore = await cookies();
-    let authToken = cookieStore.get("authToken")?.value;
+    const authHeader = request.headers.get("authorization");
+    console.log("authHeader:", authHeader);
 
-    // Si no vino cookie, intento sacar del header Authorization
-    if (!authToken) {
-        const authHeader = request.headers.get("authorization");
-        if (authHeader && authHeader.startsWith("Bearer ")) {
-            authToken = authHeader.split(" ")[1];
-        }
-    }
-
+    // O si querés seguir con cookie
+    const authToken = (await cookies()).get("authToken")?.value;
     console.log("sesion verif tk next/api: ", authToken);
 
-    if (!authToken) {
-        return new NextResponse(JSON.stringify({ message: "No autenticado" }), {
-            status: 401,
-            headers: {
-                "Content-Type": "application/json",
-            }
-        });
+    if (!authToken && !authHeader) {
+        return new NextResponse(
+            JSON.stringify({ message: "No autenticado" }),
+            { status: 401, headers: { "Content-Type": "application/json" } }
+        );
     }
 
     // Enviar token al backend para validar sesión
@@ -30,10 +22,13 @@ export async function GET() {
         `${process.env.NEXT_PUBLIC_RENDER_API_URL}/verify-session`,
         {
             method: "GET",
-            headers: {
+             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${authToken}`, // <- pasamos siempre por header
+                ...(authToken
+                    ? { Cookie: `authToken=${authToken}` }
+                    : { Authorization: authHeader }),
             },
+            credentials: "include",
         }
     );
 
