@@ -48,7 +48,7 @@ export async function GET(request) {
         headers: { "Content-Type": "application/json" }
     });
 
-    if (cookieStore.get("authToken")) {
+    if (authToken) {
         nextResponse.cookies.set("authToken", authToken, {
             httpOnly: true,
             secure: true,
@@ -57,6 +57,7 @@ export async function GET(request) {
             path: "/",
         });
     }
+
     return nextResponse;
 
 
