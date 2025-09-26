@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "TuAgro Insumos y Servicios",
-  description: "Todo lo que buscas para tu campo, asesoramiento, productos, granos, compra y vende tus productos, gestion de comercio exterior",
+  title: "TuAgro | Agroquímicos, Fertilizantes, Insecticidas y Más",
+  description: "Encontrá agroquímicos, fertilizantes, insecticidas y productos agrícolas en TuAgro. Asesoramiento técnico, comercio exterior, compra y venta de insumos, granos y soluciones para tu campo.",
 };
 
 export default function RootLayout({ children }) {
